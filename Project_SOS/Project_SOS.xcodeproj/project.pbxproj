@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AA73903C64A1BCB47BE0359 /* Pods_Project_SOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */; };
+		6A33C8521F60F6F7005FC0A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */; };
+		6A33C8541F60FBB6005FC0A8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8531F60FBB6005FC0A8 /* README.md */; };
 		D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394C1F5E8C2B00D34790 /* AppDelegate.swift */; };
 		D865394F1F5E8C2B00D34790 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394E1F5E8C2B00D34790 /* ViewController.swift */; };
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
@@ -15,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_SOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6A33C8531F60FBB6005FC0A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D865394E1F5E8C2B00D34790 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,7 @@
 		D86539531F5E8C2B00D34790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D86539561F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D86539581F5E8C2B00D34790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA73903C64A1BCB47BE0359 /* Pods_Project_SOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B712367AB85463F8A081567 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		57EEF79A161D3C67D36F706C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */,
+				74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D86539401F5E8C2B00D34790 = {
 			isa = PBXGroup;
 			children = (
+				6A33C8531F60FBB6005FC0A8 /* README.md */,
 				D865394B1F5E8C2B00D34790 /* Project_SOS */,
 				D865394A1F5E8C2B00D34790 /* Products */,
+				57EEF79A161D3C67D36F706C /* Pods */,
+				1B712367AB85463F8A081567 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +88,7 @@
 				D86539501F5E8C2B00D34790 /* Main.storyboard */,
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */,
+				6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 			);
 			path = Project_SOS;
@@ -71,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D865395B1F5E8C2B00D34790 /* Build configuration list for PBXNativeTarget "Project_SOS" */;
 			buildPhases = (
+				225530C9B904D5EEAE9292B2 /* [CP] Check Pods Manifest.lock */,
 				D86539451F5E8C2B00D34790 /* Sources */,
 				D86539461F5E8C2B00D34790 /* Frameworks */,
 				D86539471F5E8C2B00D34790 /* Resources */,
+				B991277EF9DE85CAA7E1DB63 /* [CP] Embed Pods Frameworks */,
+				A7AD3376072F52E3C81EA8C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +129,7 @@
 				TargetAttributes = {
 					D86539481F5E8C2B00D34790 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = NN7QXHC8A3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
+				6A33C8521F60F6F7005FC0A8 /* GoogleService-Info.plist in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
 			);
@@ -131,11 +166,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		225530C9B904D5EEAE9292B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A7AD3376072F52E3C81EA8C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B991277EF9DE85CAA7E1DB63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D86539451F5E8C2B00D34790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A33C8541F60FBB6005FC0A8 /* README.md in Sources */,
 				D865394F1F5E8C2B00D34790 /* ViewController.swift in Sources */,
 				D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */,
 			);
@@ -258,8 +342,10 @@
 		};
 		D865395C1F5E8C2B00D34790 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.xoul.Project-SOS";
@@ -270,8 +356,10 @@
 		};
 		D865395D1F5E8C2B00D34790 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.xoul.Project-SOS";
@@ -299,6 +387,7 @@
 				D865395D1F5E8C2B00D34790 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
