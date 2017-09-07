@@ -39,8 +39,6 @@
 - 박보영 | fimuxd@gmail.com | [<img src = "https://www.pmg.com/content/uploads/2016/12/github-logo.png" width = 55>](https://github.com/fimuxd)
 - 조선미 | jemma3136@gmail.com | [<img src = "https://www.pmg.com/content/uploads/2016/12/github-logo.png" width = 55>](https://github.com/joeseonmi)
 
-- [Reference 창고](https://drive.google.com/drive/folders/0B-XGxL6sYMvUMjBiWmk1VXVvaVk?usp=sharing)
-
 ---
 :)
 
