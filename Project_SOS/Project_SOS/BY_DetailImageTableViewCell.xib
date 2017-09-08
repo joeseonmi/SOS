@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailImageTableViewCell" rowHeight="200" id="KGk-i7-Jjw" customClass="BY_DetailImageTableViewCell" customModule="Project_SOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="197.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="ptc-Nf-gea">
+                        <rect key="frame" x="10" y="5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ptc-Nf-gea" secondAttribute="height" multiplier="1:1" id="72b-HI-991"/>
+                            <constraint firstAttribute="width" constant="50" id="OWe-dZ-gpv"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yub-hL-HaD">
+                        <rect key="frame" x="65" y="5" width="242" height="182"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_Bubble" translatesAutoresizingMaskIntoConstraints="NO" id="CmX-6A-leN">
+                                <rect key="frame" x="12" y="11" width="218" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CmX-6A-leN" secondAttribute="height" multiplier="113:64" id="vhH-0E-8FM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CmX-6A-leN" firstAttribute="centerX" secondItem="yub-hL-HaD" secondAttribute="centerX" id="OPx-GO-d6A"/>
+                            <constraint firstAttribute="width" secondItem="yub-hL-HaD" secondAttribute="height" multiplier="4:3" id="XWO-aT-0Ut"/>
+                            <constraint firstItem="CmX-6A-leN" firstAttribute="width" secondItem="yub-hL-HaD" secondAttribute="width" multiplier="0.9" id="nEZ-qd-Jbv"/>
+                            <constraint firstItem="CmX-6A-leN" firstAttribute="centerY" secondItem="yub-hL-HaD" secondAttribute="centerY" multiplier="4/5" id="oJa-WG-eCY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yub-hL-HaD" firstAttribute="top" secondItem="ptc-Nf-gea" secondAttribute="top" id="Yip-Tx-7Pc"/>
+                    <constraint firstItem="ptc-Nf-gea" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="bCU-iE-CH6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yub-hL-HaD" secondAttribute="trailing" constant="5" id="gAu-d5-MSE"/>
+                    <constraint firstItem="yub-hL-HaD" firstAttribute="leading" secondItem="ptc-Nf-gea" secondAttribute="trailing" constant="5" id="uCb-hI-exT"/>
+                    <constraint firstItem="ptc-Nf-gea" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="v5T-mw-QLL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="34" y="131"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="default_Bubble" width="300" height="166"/>
+        <image name="default_Profile" width="128" height="128"/>
+    </resources>
+</document>
