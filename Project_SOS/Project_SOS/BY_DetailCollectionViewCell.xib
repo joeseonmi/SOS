@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailCollectionViewCell" id="gTV-IL-0wX" customClass="BY_DetailCollectionViewCell" customModule="Project_SOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iMD-n7-pFy">
+                        <rect key="frame" x="5" y="5" width="90" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="iMD-n7-pFy" secondAttribute="height" multiplier="1:1" id="kcf-C9-VGe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고구마에게 메일링" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKf-W9-htW">
+                        <rect key="frame" x="0.0" y="100" width="100" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="iMD-n7-pFy" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.9" id="1Bm-Li-ah5"/>
+                <constraint firstItem="iMD-n7-pFy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="4x7-zB-aWL"/>
+                <constraint firstItem="iMD-n7-pFy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="N1b-Ps-fkW"/>
+                <constraint firstItem="XKf-W9-htW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="O39-nZ-et6"/>
+                <constraint firstItem="XKf-W9-htW" firstAttribute="top" secondItem="iMD-n7-pFy" secondAttribute="bottom" constant="5" id="tDW-ZA-Rcl"/>
+                <constraint firstAttribute="trailing" secondItem="XKf-W9-htW" secondAttribute="trailing" id="tiv-c2-h1p"/>
+            </constraints>
+            <size key="customSize" width="169" height="218"/>
+            <connections>
+                <outlet property="imageView" destination="iMD-n7-pFy" id="C5d-Sg-n6r"/>
+                <outlet property="textLabel" destination="XKf-W9-htW" id="JtI-uU-HNo"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="80.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
