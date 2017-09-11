@@ -23,13 +23,6 @@ class BY_MainTableViewCell: UITableViewCell {
     @IBOutlet weak var tagFourLabel: UILabel?
     
     @IBOutlet weak var favoriteCountLabel: UILabel!
- 
-    
-    /*******************************************/
-    //MARK:-         Functions                 //
-    /*******************************************/
-    
-    
     
     
     /*******************************************/
@@ -47,5 +40,8 @@ class BY_MainTableViewCell: UITableViewCell {
     }
     
     
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
     
 }

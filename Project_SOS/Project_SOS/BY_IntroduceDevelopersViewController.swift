@@ -14,12 +14,7 @@ class BY_IntroduceDevelopersViewController: UIViewController {
     //MARK:-        Properties                 //
     /*******************************************/
     
-    
-    
-    /*******************************************/
-    //MARK:-         Functions                 //
-    /*******************************************/
-    
+
     
     
     
@@ -34,4 +29,10 @@ class BY_IntroduceDevelopersViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
+    
+
 }

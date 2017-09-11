@@ -20,6 +20,20 @@ class BY_CharacterChoiceViewController: UIViewController {
     
     
     /*******************************************/
+    //MARK:-        LifeCycle                  //
+    /*******************************************/
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    
+    /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
     
@@ -67,7 +81,7 @@ class BY_CharacterChoiceViewController: UIViewController {
             case "보영": self.dismissSelf()
             case "선미": self.dismissSelf()
             case "재성": self.dismissSelf()
-            default: noSelectAlert()
+            default: noSelectedCharacterAlert()
             }
         
         }
@@ -78,7 +92,7 @@ class BY_CharacterChoiceViewController: UIViewController {
         //TODO: 추후 각자의 이미지파일 및 설명이 추가되면, 중복되는 코드를 이 함수 하나로 묶을 생각임
     }
     
-    func noSelectAlert() {
+    func noSelectedCharacterAlert() {
         let alert = UIAlertController(title: "이런!", message: "아무 캐릭터도 고르지 않았네요.\n취향인 캐릭터를 골라주세요.", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
         alert.addAction(confirmAction)
@@ -88,19 +102,6 @@ class BY_CharacterChoiceViewController: UIViewController {
     
     func dismissSelf() {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    /*******************************************/
-    //MARK:-        LifeCycle                  //
-    /*******************************************/
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
 }
