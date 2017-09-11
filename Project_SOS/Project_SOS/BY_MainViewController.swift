@@ -38,6 +38,33 @@ class BY_MainViewController: UIViewController {
         }
     }
     
+    
+    /*******************************************/
+    //MARK:-        LifeCycle                  //
+    /*******************************************/
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.mainTableView.register(UINib.init(nibName: "BY_MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        
+        if UserDefaults.standard.object(forKey: "SelectedCharacter") != nil {
+            self.selectedCharater = UserDefaults.standard.object(forKey: "SelectedCharacter") as! String
+        }
+        
+        awakeFromNib()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    
     /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
@@ -103,31 +130,6 @@ class BY_MainViewController: UIViewController {
         self.mainTableView.reloadData()
     }
     
-    
-    /*******************************************/
-    //MARK:-        LifeCycle                  //
-    /*******************************************/
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        self.mainTableView.register(UINib.init(nibName: "BY_MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
-        
-        if UserDefaults.standard.object(forKey: "SelectedCharacter") != nil {
-            self.selectedCharater = UserDefaults.standard.object(forKey: "SelectedCharacter") as! String
-        }
-        
-        awakeFromNib()
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
 }
 

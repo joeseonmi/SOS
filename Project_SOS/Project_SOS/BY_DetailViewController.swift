@@ -28,12 +28,6 @@ class BY_DetailViewController: UIViewController {
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tagStackView: UIStackView!
     
-    /*******************************************/
-    //MARK:-         Functions                 //
-    /*******************************************/
-    
-    
-    
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
@@ -68,7 +62,14 @@ class BY_DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
+    
+  
 }
+
 
 //콜렉션뷰 설정
 extension BY_DetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
