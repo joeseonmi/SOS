@@ -53,8 +53,7 @@ class SM_DataTestViewController: UIViewController {
             self.userUid = uid
         }
         
-        //선택한캐릭터를 유저디폴드에저장
-        setSelectedCharacter(selectedCharacter: selectedCharacterName)
+        //선택한캐릭터를 유저디폴드에저장setValue(uid, forKey: "User_ID")        setSelectedCharacter(selectedCharacter: selectedCharacterName)
  
         //만들어진 uid를 유저디폴트에저장
         setUserWithUid(user: userUid)
