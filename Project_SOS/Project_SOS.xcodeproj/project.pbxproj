@@ -18,7 +18,7 @@
 		6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8621F614D19005FC0A8 /* BY_MainTableViewCell.swift */; };
 		6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */; };
 		6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */; };
-		D803EEE61F6FA3A400912E8B /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = D803EEE51F6FA3A400912E8B /* GoogleService-Info (1).plist */; };
+		D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */; };
 		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
 		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
 		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
@@ -43,7 +43,7 @@
 		6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_MainTableViewCell.xib; sourceTree = "<group>"; };
 		6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_SearchResultsViewController.swift; sourceTree = "<group>"; };
 		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
-		D803EEE51F6FA3A400912E8B /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
 		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
 		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				6A33C8611F614CEB005FC0A8 /* BY_Customs */,
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
-				D803EEE51F6FA3A400912E8B /* GoogleService-Info (1).plist */,
+				D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 			);
 			path = Project_SOS;
@@ -234,11 +234,8 @@
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
-<<<<<<< HEAD
-				D803EEE61F6FA3A400912E8B /* GoogleService-Info (1).plist in Resources */,
-=======
+				D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */,
 				FE4FE6EB1F6C25030052AFB0 /* JS_AdMobTest.storyboard in Resources */,
->>>>>>> 2ef9c56accb342bd080d4d6610395b11f572acf8
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,11 +257,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-<<<<<<< HEAD
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-=======
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
->>>>>>> 2ef9c56accb342bd080d4d6610395b11f572acf8
 			showEnvVarsInLog = 0;
 		};
 		A7AD3376072F52E3C81EA8C1 /* [CP] Copy Pods Resources */ = {
@@ -291,11 +284,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
