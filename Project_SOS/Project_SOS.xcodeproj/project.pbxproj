@@ -19,6 +19,9 @@
 		6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8621F614D19005FC0A8 /* BY_MainTableViewCell.swift */; };
 		6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */; };
 		6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */; };
+		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
+		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
+		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
 		D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394C1F5E8C2B00D34790 /* AppDelegate.swift */; };
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
 		D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86539531F5E8C2B00D34790 /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 		6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_MainTableViewCell.xib; sourceTree = "<group>"; };
 		6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_SearchResultsViewController.swift; sourceTree = "<group>"; };
 		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
+		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
+		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
+		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86539511F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +102,16 @@
 			name = "BY_Search Controllers";
 			sourceTree = "<group>";
 		};
+		D8321BEB1F6AB85F006D7506 /* SM_DataTest */ = {
+			isa = PBXGroup;
+			children = (
+				D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */,
+				D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */,
+				D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */,
+			);
+			name = SM_DataTest;
+			sourceTree = "<group>";
+		};
 		D86539401F5E8C2B00D34790 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +144,7 @@
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
 				6A33C8611F614CEB005FC0A8 /* BY_Customs */,
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
+				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
 				6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 			);
@@ -200,6 +217,7 @@
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
 				6A33C8521F60F6F7005FC0A8 /* GoogleService-Info.plist in Resources */,
 				6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */,
+				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
@@ -263,10 +281,12 @@
 			files = (
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
 				6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */,
+				D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */,
 				6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */,
 				6A33C85E1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift in Sources */,
 				6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */,
 				6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */,
+				D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */,
 				6A33C8541F60FBB6005FC0A8 /* README.md in Sources */,
 				D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */,
 				6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */,

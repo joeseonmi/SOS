@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qO1-Yx-gud">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Data Test View Controller-->
+        <scene sceneID="IFx-ob-Kmv">
+            <objects>
+                <viewController id="qO1-Yx-gud" customClass="SM_DataTestViewController" customModule="Project_SOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Fl-d4-XYt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1lC-xt-gVE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g0g-bI-NwC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-fc-R8h">
+                                <rect key="frame" x="137.5" y="318.5" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.81568627449999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="h5i-t5-Gvi"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedMakeUser:" destination="qO1-Yx-gud" eventType="touchUpInside" id="taA-dl-J1u"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcC-K3-OcN">
+                                <rect key="frame" x="37.5" y="120" width="300" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfE-te-na1">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="4Ap-n2-dDo"/>
+                                            <constraint firstAttribute="width" secondItem="qfE-te-na1" secondAttribute="height" multiplier="1:1" id="tzB-ui-pGV"/>
+                                        </constraints>
+                                        <state key="normal" title="BY" image="BY_OFF">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="BY_ON"/>
+                                        <state key="highlighted" image="BY_ON"/>
+                                        <connections>
+                                            <action selector="selectedCharacter:" destination="qO1-Yx-gud" eventType="touchUpInside" id="Zqh-Du-3DX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-0c-iVt">
+                                        <rect key="frame" x="100" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dbb-0c-iVt" secondAttribute="height" multiplier="1:1" id="LjT-ct-ZjS"/>
+                                            <constraint firstAttribute="width" constant="100" id="dLv-eO-bfQ"/>
+                                        </constraints>
+                                        <state key="normal" title="JS" image="JS_OFF">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="JS_ON"/>
+                                        <state key="highlighted" image="JS_ON"/>
+                                        <connections>
+                                            <action selector="selectedCharacter:" destination="qO1-Yx-gud" eventType="touchUpInside" id="aI5-jN-nHJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-MP-FVm">
+                                        <rect key="frame" x="200" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="p0g-6I-ZUP"/>
+                                            <constraint firstAttribute="width" secondItem="vb4-MP-FVm" secondAttribute="height" multiplier="1:1" id="ymk-6g-kSn"/>
+                                        </constraints>
+                                        <state key="normal" title="SM" image="SM_OFF">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="SM_ON"/>
+                                        <state key="highlighted" image="SM_ON"/>
+                                        <connections>
+                                            <action selector="selectedCharacter:" destination="qO1-Yx-gud" eventType="touchUpInside" id="IgY-hB-Qjd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vb4-MP-FVm" firstAttribute="width" secondItem="vb4-MP-FVm" secondAttribute="height" multiplier="1:1" id="1JM-ge-u65"/>
+                                    <constraint firstItem="dbb-0c-iVt" firstAttribute="width" secondItem="dbb-0c-iVt" secondAttribute="height" multiplier="1:1" id="ISK-Xa-oKy"/>
+                                    <constraint firstItem="vb4-MP-FVm" firstAttribute="width" secondItem="vb4-MP-FVm" secondAttribute="height" multiplier="1:1" id="bc0-Ua-gV5"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qcC-K3-OcN" firstAttribute="centerX" secondItem="g0g-bI-NwC" secondAttribute="centerX" id="0rU-as-9pm"/>
+                            <constraint firstItem="7ER-fc-R8h" firstAttribute="centerX" secondItem="g0g-bI-NwC" secondAttribute="centerX" id="2yu-8J-ac7"/>
+                            <constraint firstItem="7ER-fc-R8h" firstAttribute="centerY" secondItem="g0g-bI-NwC" secondAttribute="centerY" id="daS-ur-5tL"/>
+                            <constraint firstItem="qcC-K3-OcN" firstAttribute="top" secondItem="5Fl-d4-XYt" secondAttribute="bottom" constant="100" id="hrX-fV-dNu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iconBY" destination="qfE-te-na1" id="Kc0-6e-HvC"/>
+                        <outlet property="iconJS" destination="dbb-0c-iVt" id="EcR-ht-xbf"/>
+                        <outlet property="iconSM" destination="vb4-MP-FVm" id="7eL-TW-8cG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8k-ff-0MT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="-38.23088455772114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BY_OFF" width="38" height="48"/>
+        <image name="BY_ON" width="47" height="48"/>
+        <image name="JS_OFF" width="39" height="47"/>
+        <image name="JS_ON" width="49" height="47"/>
+        <image name="SM_OFF" width="40" height="48"/>
+        <image name="SM_ON" width="50" height="48"/>
+    </resources>
+</document>
