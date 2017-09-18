@@ -10,7 +10,6 @@
 		3AA73903C64A1BCB47BE0359 /* Pods_Project_SOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */; };
 		6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A30CFD61F623B5C0076A883 /* BY_DetailCollectionViewCell.swift */; };
 		6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A30CFD71F623B5C0076A883 /* BY_DetailCollectionViewCell.xib */; };
-		6A33C8521F60F6F7005FC0A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */; };
 		6A33C8541F60FBB6005FC0A8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8531F60FBB6005FC0A8 /* README.md */; };
 		6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8551F614931005FC0A8 /* BY_MainViewController.swift */; };
 		6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8571F614941005FC0A8 /* BY_DetailViewController.swift */; };
@@ -19,6 +18,10 @@
 		6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8621F614D19005FC0A8 /* BY_MainTableViewCell.swift */; };
 		6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */; };
 		6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */; };
+		D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */; };
+		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
+		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
+		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
 		D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394C1F5E8C2B00D34790 /* AppDelegate.swift */; };
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
 		D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86539531F5E8C2B00D34790 /* Assets.xcassets */; };
@@ -31,7 +34,6 @@
 		3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_SOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A30CFD61F623B5C0076A883 /* BY_DetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A30CFD71F623B5C0076A883 /* BY_DetailCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_DetailCollectionViewCell.xib; sourceTree = "<group>"; };
-		6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A33C8531F60FBB6005FC0A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6A33C8551F614931005FC0A8 /* BY_MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_MainViewController.swift; sourceTree = "<group>"; };
 		6A33C8571F614941005FC0A8 /* BY_DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_DetailViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,10 @@
 		6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_MainTableViewCell.xib; sourceTree = "<group>"; };
 		6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_SearchResultsViewController.swift; sourceTree = "<group>"; };
 		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
+		D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
+		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
+		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86539511F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,16 @@
 			name = "BY_Search Controllers";
 			sourceTree = "<group>";
 		};
+		D8321BEB1F6AB85F006D7506 /* SM_DataTest */ = {
+			isa = PBXGroup;
+			children = (
+				D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */,
+				D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */,
+				D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */,
+			);
+			name = SM_DataTest;
+			sourceTree = "<group>";
+		};
 		D86539401F5E8C2B00D34790 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +149,8 @@
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
 				6A33C8611F614CEB005FC0A8 /* BY_Customs */,
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
-				6A33C8511F60F6F7005FC0A8 /* GoogleService-Info.plist */,
+				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
+				D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 			);
 			path = Project_SOS;
@@ -212,11 +229,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
-				6A33C8521F60F6F7005FC0A8 /* GoogleService-Info.plist in Resources */,
 				6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */,
+				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
+				D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */,
 				FE4FE6EB1F6C25030052AFB0 /* JS_AdMobTest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,11 +284,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -287,10 +309,12 @@
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
 				FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */,
 				6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */,
+				D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */,
 				6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */,
 				6A33C85E1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift in Sources */,
 				6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */,
 				6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */,
+				D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */,
 				6A33C8541F60FBB6005FC0A8 /* README.md in Sources */,
 				D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */,
 				6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */,
@@ -421,7 +445,7 @@
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.xoul.Project-SOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sos.project-sos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -436,7 +460,7 @@
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.xoul.Project-SOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sos.project-sos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

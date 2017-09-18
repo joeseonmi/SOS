@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>635397308042-j421mlh03k2eombghctfqb0vn6ndefmg.apps.googleusercontent.com</string>
+	<string>1004484417959-qv9tmf1d0m84nfrcoc1orrlle73o2hr6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.635397308042-j421mlh03k2eombghctfqb0vn6ndefmg</string>
+	<string>com.googleusercontent.apps.1004484417959-qv9tmf1d0m84nfrcoc1orrlle73o2hr6</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAI8WDRul2XFMgN0DUd3dpDMqpTSbmgUwY</string>
+	<string>AIzaSyD_8N8IHcRS_P0Kqv_SS4pdTaKkRLJgaV4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>635397308042</string>
+	<string>1004484417959</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>kr.xoul.Project-SOS</string>
+	<string>com.sos.project-sos</string>
 	<key>PROJECT_ID</key>
-	<string>sos-source-of-swift</string>
+	<string>sos-source-of-swift-r0</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sos-source-of-swift.appspot.com</string>
+	<string>sos-source-of-swift-r0.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:635397308042:ios:134fb70efa65167d</string>
+	<string>1:1004484417959:ios:da2ae49067b1e4b1</string>
 	<key>DATABASE_URL</key>
-	<string>https://sos-source-of-swift.firebaseio.com</string>
+	<string>https://sos-source-of-swift-r0.firebaseio.com</string>
 </dict>
 </plist>
