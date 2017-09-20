@@ -7,15 +7,15 @@
 //
 
 import UIKit
-//import GoogleMobileAds //애드몹 라이브러리 관련 이미지가 없다는 치명적인 에러가 있어서 잠시 주석 처리합니다.
+import GoogleMobileAds
 
 class JS_AdMobTestViewController: UIViewController {
     
-    // var bannerView: GADBannerView!
+    var bannerView: GADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
         bannerView = GADBannerView(adSize: kGADAdSizeFullBanner)
         self.view.addSubview(bannerView)
         
@@ -23,7 +23,7 @@ class JS_AdMobTestViewController: UIViewController {
         bannerView.rootViewController = self
         
         bannerView.load(GADRequest())
- */
+ 
     }
 
     override func didReceiveMemoryWarning() {
