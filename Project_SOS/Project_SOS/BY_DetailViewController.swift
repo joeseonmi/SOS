@@ -82,15 +82,15 @@ extension BY_DetailViewController: UICollectionViewDataSource, UICollectionViewD
         
         switch indexPath.item {
         case 0:
-            cell.imageView.image = #imageLiteral(resourceName: "default_Profile")
+            cell.imageView.image = #imageLiteral(resourceName: "naver-logo")
             cell.textLabel.text = "고구마에게\n메일링"
         case 1:
-            cell.imageView.image = #imageLiteral(resourceName: "default_Google")
+            cell.imageView.image = #imageLiteral(resourceName: "naver-logo")
             cell.textLabel.text = "이 키워드로\n구글링"
         case 2:
-            cell.imageView.image = #imageLiteral(resourceName: "default_Naver")
+           cell.imageView.image = #imageLiteral(resourceName: "naver-logo")
             cell.textLabel.text = "이 키워드로\n네이빙"
-        default: cell.imageView.image = #imageLiteral(resourceName: "default_Profile")
+        default: cell.imageView.image = #imageLiteral(resourceName: "naver-logo")
         }
         
         return cell

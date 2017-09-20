@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3AA73903C64A1BCB47BE0359 /* Pods_Project_SOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */; };
+		6A15CBC41F72806900F74B1A /* BY_CharacterIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */; };
+		6A15CBCA1F72AEB300F74B1A /* BY_MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A15CBC91F72AEB300F74B1A /* BY_MainTableViewController.swift */; };
+		6A15CBCC1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A15CBCB1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift */; };
 		6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A30CFD61F623B5C0076A883 /* BY_DetailCollectionViewCell.swift */; };
 		6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A30CFD71F623B5C0076A883 /* BY_DetailCollectionViewCell.xib */; };
 		6A33C8541F60FBB6005FC0A8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8531F60FBB6005FC0A8 /* README.md */; };
-		6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8551F614931005FC0A8 /* BY_MainViewController.swift */; };
 		6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8571F614941005FC0A8 /* BY_DetailViewController.swift */; };
 		6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */; };
 		6A33C85E1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C85D1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift */; };
@@ -32,10 +34,12 @@
 
 /* Begin PBXFileReference section */
 		3797BC891606DB449E4B05E9 /* Pods_Project_SOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_SOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BY_CharacterIntroduceViewController.swift; sourceTree = "<group>"; };
+		6A15CBC91F72AEB300F74B1A /* BY_MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BY_MainTableViewController.swift; sourceTree = "<group>"; };
+		6A15CBCB1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BY_SearchPresentOverNavigationBarViewController.swift; sourceTree = "<group>"; };
 		6A30CFD61F623B5C0076A883 /* BY_DetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A30CFD71F623B5C0076A883 /* BY_DetailCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		6A33C8531F60FBB6005FC0A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		6A33C8551F614931005FC0A8 /* BY_MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_MainViewController.swift; sourceTree = "<group>"; };
 		6A33C8571F614941005FC0A8 /* BY_DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_DetailViewController.swift; sourceTree = "<group>"; };
 		6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_CharacterChoiceViewController.swift; sourceTree = "<group>"; };
 		6A33C85D1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_IntroduceDevelopersViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */,
+				6A15CBCB1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift */,
 			);
 			name = "BY_Search Controllers";
 			sourceTree = "<group>";
@@ -141,9 +146,10 @@
 				D86539501F5E8C2B00D34790 /* Main.storyboard */,
 				D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */,
 				D865394C1F5E8C2B00D34790 /* AppDelegate.swift */,
-				6A33C8551F614931005FC0A8 /* BY_MainViewController.swift */,
+				6A15CBC91F72AEB300F74B1A /* BY_MainTableViewController.swift */,
 				6A33C8571F614941005FC0A8 /* BY_DetailViewController.swift */,
 				6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */,
+				6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */,
 				6A33C85D1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift */,
 				FE4FE6E71F6C24B00052AFB0 /* JS_AdMobTest */,
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
@@ -284,15 +290,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -306,14 +308,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A15CBCC1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift in Sources */,
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
 				FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */,
 				6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */,
 				D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */,
 				6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */,
+				6A15CBC41F72806900F74B1A /* BY_CharacterIntroduceViewController.swift in Sources */,
 				6A33C85E1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift in Sources */,
 				6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */,
-				6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */,
+				6A15CBCA1F72AEB300F74B1A /* BY_MainTableViewController.swift in Sources */,
 				D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */,
 				6A33C8541F60FBB6005FC0A8 /* README.md in Sources */,
 				D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */,
