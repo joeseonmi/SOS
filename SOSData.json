@@ -1,0 +1,83 @@
+{
+  "Like": [
+    {
+      "Question_ID": 0,
+      "User_ID": 0
+    }
+  ],
+  "User": [
+    {
+      "User_ID": "uid"
+    }
+  ],
+  "Question": [
+    {
+      "Question_ID": "0",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "앱 델리게이트에대해 설명해보세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    }
+  ]
+}
