@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z1t-zF-flc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HhU-jv-Nlq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,13 +28,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-BV-eEE">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fg0-c7-pn9">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="32"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Tq-BV-eEE" secondAttribute="trailing" id="Q7m-Xd-rlk"/>
+                            <constraint firstItem="aXZ-lc-h14" firstAttribute="top" secondItem="2Tq-BV-eEE" secondAttribute="bottom" id="WvG-72-MPg"/>
+                            <constraint firstItem="2Tq-BV-eEE" firstAttribute="leading" secondItem="O3Q-2K-Wsx" secondAttribute="leading" id="z0p-kB-8xV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="uiViewAdmobBannerBackgroundView" destination="2Tq-BV-eEE" id="sGL-vw-qtA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-4q-4gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386" y="-107"/>
+            <point key="canvasLocation" x="384.80000000000001" y="-107.49625187406298"/>
         </scene>
         <!--Test Simple Mark Down Parser View Controller-->
         <scene sceneID="hdn-37-fwp">
