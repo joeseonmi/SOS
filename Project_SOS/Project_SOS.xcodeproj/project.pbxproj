@@ -59,8 +59,8 @@
 		DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FE4FE6E81F6C24E00052AFB0 /* JS_AdMobTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_AdMobTestViewController.swift; path = JS_AdmobTest/JS_AdMobTestViewController.swift; sourceTree = "<group>"; };
 		FE4FE6EA1F6C25030052AFB0 /* JS_AdMobTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = JS_AdMobTest.storyboard; path = JS_AdmobTest/JS_AdMobTest.storyboard; sourceTree = "<group>"; };
+		FE75080C1F73D3A900312C96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8D1C1E1F71035D007B4396 /* JS_TestSimpleMarkDownParserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestSimpleMarkDownParserViewController.swift; path = JS_AdmobTest/JS_TestSimpleMarkDownParserViewController.swift; sourceTree = "<group>"; };
-		FEDABE661F73D0350047A0B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
-				FEDABE661F73D0350047A0B5 /* GoogleService-Info.plist */,
+				FE75080C1F73D3A900312C96 /* GoogleService-Info.plist */,
 			);
 			path = Project_SOS;
 			sourceTree = "<group>";
