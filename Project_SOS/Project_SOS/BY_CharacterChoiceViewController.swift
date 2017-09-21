@@ -39,37 +39,37 @@ class BY_CharacterChoiceViewController: UIViewController {
     
     @IBAction func selectBYButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "BY_ON"), for: .normal)
+            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
+            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
             UserDefaults.standard.set("보영", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
         }
     }
     
     @IBAction func selectSMButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "SM_ON"), for: .normal)
+            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
             UserDefaults.standard.set("선미", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
         }
     }
     
     @IBAction func selectJSButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "JS_ON"), for: .normal)
+            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             
             UserDefaults.standard.set("재성", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
         }
     }
     
