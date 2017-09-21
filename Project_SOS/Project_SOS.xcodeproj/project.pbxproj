@@ -26,6 +26,12 @@
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
 		D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86539531F5E8C2B00D34790 /* Assets.xcassets */; };
 		D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */; };
+		D88019BD1F7389C800DDF7B6 /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88019BB1F7389C800DDF7B6 /* BubbleTableViewCell.swift */; };
+		D88019BE1F7389C800DDF7B6 /* BubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88019BC1F7389C800DDF7B6 /* BubbleTableViewCell.xib */; };
+		D88019C01F738B1A00DDF7B6 /* BubbleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88019BF1F738B1A00DDF7B6 /* BubbleTableViewController.swift */; };
+		D88019C31F73AAD900DDF7B6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88019C11F73AAD900DDF7B6 /* MainTableViewCell.swift */; };
+		D88019C41F73AAD900DDF7B6 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88019C21F73AAD900DDF7B6 /* MainTableViewCell.xib */; };
+		D88019C81F73AF0900DDF7B6 /* SM_MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88019C71F73AF0900DDF7B6 /* SM_MainTableViewController.swift */; };
 		FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4FE6E81F6C24E00052AFB0 /* JS_AdMobTestViewController.swift */; };
 		FE4FE6EB1F6C25030052AFB0 /* JS_AdMobTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4FE6EA1F6C25030052AFB0 /* JS_AdMobTest.storyboard */; };
 /* End PBXBuildFile section */
@@ -53,6 +59,12 @@
 		D86539531F5E8C2B00D34790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D86539561F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D86539581F5E8C2B00D34790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D88019BB1F7389C800DDF7B6 /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
+		D88019BC1F7389C800DDF7B6 /* BubbleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BubbleTableViewCell.xib; sourceTree = "<group>"; };
+		D88019BF1F738B1A00DDF7B6 /* BubbleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableViewController.swift; sourceTree = "<group>"; };
+		D88019C11F73AAD900DDF7B6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		D88019C21F73AAD900DDF7B6 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		D88019C71F73AF0900DDF7B6 /* SM_MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM_MainTableViewController.swift; sourceTree = "<group>"; };
 		DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FE4FE6E81F6C24E00052AFB0 /* JS_AdMobTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_AdMobTestViewController.swift; path = JS_AdmobTest/JS_AdMobTestViewController.swift; sourceTree = "<group>"; };
 		FE4FE6EA1F6C25030052AFB0 /* JS_AdMobTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = JS_AdMobTest.storyboard; path = JS_AdmobTest/JS_AdMobTest.storyboard; sourceTree = "<group>"; };
@@ -111,7 +123,10 @@
 			children = (
 				D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */,
 				D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */,
+				D88019C71F73AF0900DDF7B6 /* SM_MainTableViewController.swift */,
+				D88019BF1F738B1A00DDF7B6 /* BubbleTableViewController.swift */,
 				D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */,
+				D88019BA1F73899000DDF7B6 /* testNib */,
 			);
 			name = SM_DataTest;
 			sourceTree = "<group>";
@@ -154,6 +169,17 @@
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 			);
 			path = Project_SOS;
+			sourceTree = "<group>";
+		};
+		D88019BA1F73899000DDF7B6 /* testNib */ = {
+			isa = PBXGroup;
+			children = (
+				D88019C11F73AAD900DDF7B6 /* MainTableViewCell.swift */,
+				D88019C21F73AAD900DDF7B6 /* MainTableViewCell.xib */,
+				D88019BB1F7389C800DDF7B6 /* BubbleTableViewCell.swift */,
+				D88019BC1F7389C800DDF7B6 /* BubbleTableViewCell.xib */,
+			);
+			name = testNib;
 			sourceTree = "<group>";
 		};
 		FE4FE6E71F6C24B00052AFB0 /* JS_AdMobTest */ = {
@@ -229,8 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
+				D88019BE1F7389C800DDF7B6 /* BubbleTableViewCell.xib in Resources */,
 				6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */,
 				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
+				D88019C41F73AAD900DDF7B6 /* MainTableViewCell.xib in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
@@ -310,13 +338,17 @@
 				FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */,
 				6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */,
 				D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */,
+				D88019C31F73AAD900DDF7B6 /* MainTableViewCell.swift in Sources */,
 				6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */,
 				6A33C85E1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift in Sources */,
 				6A33C8581F614941005FC0A8 /* BY_DetailViewController.swift in Sources */,
+				D88019C01F738B1A00DDF7B6 /* BubbleTableViewController.swift in Sources */,
 				6A33C8561F614931005FC0A8 /* BY_MainViewController.swift in Sources */,
 				D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */,
 				6A33C8541F60FBB6005FC0A8 /* README.md in Sources */,
+				D88019C81F73AF0900DDF7B6 /* SM_MainTableViewController.swift in Sources */,
 				D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */,
+				D88019BD1F7389C800DDF7B6 /* BubbleTableViewCell.swift in Sources */,
 				6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
