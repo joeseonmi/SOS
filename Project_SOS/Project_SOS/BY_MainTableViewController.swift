@@ -44,11 +44,18 @@ class BY_MainTableViewController: UITableViewController {
         }
     }
     
+    //네비게이션 바
+    @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
+    
+    
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

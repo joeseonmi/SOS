@@ -10,10 +10,15 @@ import UIKit
 
 class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewController {
     
-    // MARK: - Properties
+    /*******************************************/
+    //MARK:-        Properties                 //
+    /*******************************************/
     var searchController: UISearchController!
     
-    // MARK: - Actions
+    
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
     @IBAction func searchButtonClicked(_ button: UIBarButtonItem) {
         
         UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
