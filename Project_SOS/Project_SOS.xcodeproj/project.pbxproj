@@ -20,6 +20,7 @@
 		6AFBF11F1F74E3D600C0F2D1 /* BY_DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFBF11D1F74E3D600C0F2D1 /* BY_DetailTableViewCell.swift */; };
 		6AFBF1201F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */; };
 		6AFBF1241F74F97A00C0F2D1 /* BY_DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFBF1231F74F97A00C0F2D1 /* BY_DetailViewController.swift */; };
+		6AFBF1261F751EDD00C0F2D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AFBF1251F751EDD00C0F2D1 /* GoogleService-Info.plist */; };
 		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
 		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
 		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
@@ -46,6 +47,7 @@
 		6AFBF11D1F74E3D600C0F2D1 /* BY_DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BY_DetailTableViewCell.swift; sourceTree = "<group>"; };
 		6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BY_DetailTableViewCell.xib; sourceTree = "<group>"; };
 		6AFBF1231F74F97A00C0F2D1 /* BY_DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BY_DetailViewController.swift; sourceTree = "<group>"; };
+		6AFBF1251F751EDD00C0F2D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
 		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
 		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		D865394B1F5E8C2B00D34790 /* Project_SOS */ = {
 			isa = PBXGroup;
 			children = (
+				6AFBF1251F751EDD00C0F2D1 /* GoogleService-Info.plist */,
 				D86539501F5E8C2B00D34790 /* Main.storyboard */,
 				D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */,
 				D865394C1F5E8C2B00D34790 /* AppDelegate.swift */,
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
+				6AFBF1261F751EDD00C0F2D1 /* GoogleService-Info.plist in Resources */,
 				6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */,
 				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
