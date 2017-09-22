@@ -20,7 +20,6 @@
 		6A33C8641F614D19005FC0A8 /* BY_MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C8621F614D19005FC0A8 /* BY_MainTableViewCell.swift */; };
 		6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */; };
 		6A33C86C1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */; };
-		D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */; };
 		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
 		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
 		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
@@ -30,6 +29,7 @@
 		D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */; };
 		FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4FE6E81F6C24E00052AFB0 /* JS_AdMobTestViewController.swift */; };
 		FE4FE6EB1F6C25030052AFB0 /* JS_AdMobTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE4FE6EA1F6C25030052AFB0 /* JS_AdMobTest.storyboard */; };
+		FE75080E1F73D8EF00312C96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE75080D1F73D8EF00312C96 /* GoogleService-Info.plist */; };
 		FE8D1C1F1F71035D007B4396 /* JS_TestSimpleMarkDownParserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8D1C1E1F71035D007B4396 /* JS_TestSimpleMarkDownParserViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,6 @@
 		6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BY_MainTableViewCell.xib; sourceTree = "<group>"; };
 		6A33C86B1F6175F9005FC0A8 /* BY_SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BY_SearchResultsViewController.swift; sourceTree = "<group>"; };
 		74712F43957544BEF922B58C /* Pods-Project_SOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.release.xcconfig"; sourceTree = "<group>"; };
-		D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
 		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
 		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		DBEC6AE63B063AEBB4F31C52 /* Pods-Project_SOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_SOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FE4FE6E81F6C24E00052AFB0 /* JS_AdMobTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_AdMobTestViewController.swift; path = JS_AdmobTest/JS_AdMobTestViewController.swift; sourceTree = "<group>"; };
 		FE4FE6EA1F6C25030052AFB0 /* JS_AdMobTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = JS_AdMobTest.storyboard; path = JS_AdmobTest/JS_AdMobTest.storyboard; sourceTree = "<group>"; };
+		FE75080D1F73D8EF00312C96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8D1C1E1F71035D007B4396 /* JS_TestSimpleMarkDownParserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestSimpleMarkDownParserViewController.swift; path = JS_AdmobTest/JS_TestSimpleMarkDownParserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,8 +158,8 @@
 				6A33C8611F614CEB005FC0A8 /* BY_Customs */,
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
-				D803EEE51F6FA3A400912E8B /* GoogleService-Info.plist */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
+				FE75080D1F73D8EF00312C96 /* GoogleService-Info.plist */,
 			);
 			path = Project_SOS;
 			sourceTree = "<group>";
@@ -238,12 +238,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */,
+				FE75080E1F73D8EF00312C96 /* GoogleService-Info.plist in Resources */,
 				6A33C8651F614D19005FC0A8 /* BY_MainTableViewCell.xib in Resources */,
 				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
 				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6A30CFD91F623B5C0076A883 /* BY_DetailCollectionViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
-				D803EEE61F6FA3A400912E8B /* GoogleService-Info.plist in Resources */,
 				FE4FE6EB1F6C25030052AFB0 /* JS_AdMobTest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
