@@ -49,6 +49,16 @@ class BY_DetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         
+        //테이블뷰 백그라운드 이미지
+        let tableViewBackgroundImage:UIImage = #imageLiteral(resourceName: "background")
+        let imageView:UIImageView = UIImageView(image: tableViewBackgroundImage)
+        self.detailTableView.backgroundView = imageView
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        //셀라인 삭제
+        self.detailTableView.separatorStyle = .none
+        
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
         NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNoti(_:)), name: Notification.Name("characterSelected"), object: nil)
     }
@@ -184,6 +194,8 @@ extension BY_DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
+        
+        cell.selectionStyle = .none
         
         //선택된 세그에 따라 이미지 변경
         self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
