@@ -1,35 +1,39 @@
 PODS:
-  - Firebase/Auth (4.0.2):
+  - Firebase/Auth (4.1.1):
     - Firebase/Core
-    - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.2):
-    - FirebaseAnalytics (= 4.0.1)
-    - FirebaseCore (= 4.0.2)
-  - Firebase/Database (4.0.2):
+    - FirebaseAuth (= 4.1.1)
+  - Firebase/Core (4.1.1):
+    - FirebaseAnalytics (= 4.0.3)
+    - FirebaseCore (= 4.0.6)
+  - Firebase/Database (4.1.1):
     - Firebase/Core
-    - FirebaseDatabase (= 4.0.0)
-  - Firebase/Storage (4.0.2):
+    - FirebaseDatabase (= 4.0.2)
+  - Firebase/Storage (4.1.1):
     - Firebase/Core
-    - FirebaseStorage (= 2.0.0)
-  - FirebaseAnalytics (4.0.1):
+    - FirebaseStorage (= 2.0.1)
+  - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseAuth (4.0.0):
+    - nanopb (~> 0.3)
+  - FirebaseAuth (4.1.1):
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.2):
+  - FirebaseCore (4.0.6):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseDatabase (4.0.0):
+    - nanopb (~> 0.3)
+  - FirebaseDatabase (4.0.2):
     - FirebaseAnalytics (~> 4.0)
-  - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
-  - FirebaseStorage (2.0.0):
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (2.0.2):
+    - FirebaseCore (~> 4.0)
+  - FirebaseStorage (2.0.1):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - Google-Mobile-Ads-SDK (7.21.0)
+  - Google-Mobile-Ads-SDK (7.23.0)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -40,7 +44,13 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMSessionFetcher/Core (1.1.10)
+  - GTMSessionFetcher/Core (1.1.11)
+  - leveldb-library (1.18.3)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - SimpleMarkdownParser (0.5.3)
 
 DEPENDENCIES:
@@ -52,16 +62,18 @@ DEPENDENCIES:
   - SimpleMarkdownParser (~> 0.5.3)
 
 SPEC CHECKSUMS:
-  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
-  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
-  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
-  FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
-  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
-  FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
-  Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
+  Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
+  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
+  FirebaseAuth: f8b07aa83de60d606b4eadd81484b3ac2097ea3e
+  FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
+  FirebaseDatabase: 4d1a10639a42cae26e094296951b53c689e5e191
+  FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
+  FirebaseStorage: 661fc1f8d4131891d256b62e82a45ace8b3f0c3b
+  Google-Mobile-Ads-SDK: a43dc8efdb566c74d00ac6934c781de969348d80
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SimpleMarkdownParser: 53ce31aa92465b11a00c1232dc88f11379fcb015
 
 PODFILE CHECKSUM: 4e9824eb71882e1ae7526d4b3d65c260750b964e

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class BubbleTableViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class BubbleTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     /*******************************************/
     //MARK:-        Properties                 //

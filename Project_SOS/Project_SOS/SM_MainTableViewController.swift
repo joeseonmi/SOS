@@ -23,7 +23,7 @@ class SM_MainTableViewController: UIViewController, UITableViewDataSource,UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        self.tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewTestCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -47,15 +47,15 @@ class SM_MainTableViewController: UIViewController, UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
+        let cell:MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewTestCell", for: indexPath) as! MainTableViewCell
         cell.getQuestionData(indexPath: indexPath.row)
         return cell
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView:BubbleTableViewController = storyboard?.instantiateViewController(withIdentifier: "BubbleTableViewController") as! BubbleTableViewController
         detailView.questionID = indexPath.row
         self.navigationController?.pushViewController(detailView, animated: true)
     }
-    
+    */
 }
