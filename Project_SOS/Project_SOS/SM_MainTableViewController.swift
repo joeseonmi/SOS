@@ -51,11 +51,11 @@ class SM_MainTableViewController: UIViewController, UITableViewDataSource,UITabl
         cell.getQuestionData(indexPath: indexPath.row)
         return cell
     }
-    /*
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailView:BubbleTableViewController = storyboard?.instantiateViewController(withIdentifier: "BubbleTableViewController") as! BubbleTableViewController
+        let detailView:SM_BubbleTableViewController = storyboard?.instantiateViewController(withIdentifier: "BubbleTableViewController") as! SM_BubbleTableViewController
         detailView.questionID = indexPath.row
         self.navigationController?.pushViewController(detailView, animated: true)
     }
-    */
+   
 }

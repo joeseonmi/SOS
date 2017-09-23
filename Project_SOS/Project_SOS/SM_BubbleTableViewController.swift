@@ -1,15 +1,15 @@
 //
-//  BubbleTableViewController.swift
+//  SM_BubbleTableViewController.swift
 //  Project_SOS
 //
-//  Created by joe on 2017. 9. 21..
+//  Created by joe on 2017. 9. 23..
 //  Copyright © 2017년 joe. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class BubbleTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     /*******************************************/
     //MARK:-        Properties                 //
@@ -22,7 +22,7 @@ class BubbleTableViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func clickedLikeBtn(_ sender: UIButton) {
         
         //좋아요누르면 Database에 저장
-        Database.database().reference().child("Like").childByAutoId()
+Database.database().reference().child("Like").childByAutoId()
             .setValue([Constants.like_QuestionId:questionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
         
     }
@@ -62,4 +62,5 @@ class BubbleTableViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
 }
+
 
