@@ -44,11 +44,28 @@ class BY_MainTableViewController: UITableViewController {
         }
     }
     
+    //네비게이션 바
+    @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
+    
+
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let realNavigationBarLogoButtonOutlet = self.navigationBarLogoButtonOutlet else {return}
+        realNavigationBarLogoButtonOutlet.isUserInteractionEnabled = false
+        
+        //테이블뷰 백그라운드 이미지
+        let tableViewBackgroundImage:UIImage = #imageLiteral(resourceName: "background")
+        let imageView:UIImageView = UIImageView(image: tableViewBackgroundImage)
+        self.tableView.backgroundView = imageView
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        //셀라인 삭제
+        self.tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +102,7 @@ class BY_MainTableViewController: UITableViewController {
                 return self.favoriteList.count //TODO: 추후 좋아요 수에 따라 조정
             }else{
                 print("전체 개수")
-                return 10 //TODO: 추후 데이터에 따라 조정
+                return 3 //TODO: 추후 데이터에 따라 조정
             }
         }else{
             print("검색 개수")
