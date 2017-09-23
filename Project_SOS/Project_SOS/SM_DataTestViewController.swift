@@ -16,7 +16,7 @@ class SM_DataTestViewController: UIViewController {
     /*******************************************/
     
     var selectedCharacterName:String = ""
-    var userUid:String = UserDefaults.standard.object(forKey: "UserUid") as! String
+    var userUid:String = UserDefaults.standard.object(forKey: Constants.userdefault_userUid) as! String
     var userCount:Int = 0
     
     @IBOutlet weak var iconBY: UIButton!
@@ -68,12 +68,12 @@ class SM_DataTestViewController: UIViewController {
     /*******************************************/
     
     func setUserWithUid(user uid:String) {
-        UserDefaults.standard.set(uid, forKey: "UserUid")
+        UserDefaults.standard.set(uid, forKey: Constants.userdefault_userUid)
     }
-    
-    func setSelectedCharacter(selectedCharacter name:String) {
-        UserDefaults.standard.set(name, forKey: "SelectedCharacter")
-    }
+//
+//    func setSelectedCharacter(selectedCharacter name:String) {
+//        UserDefaults.standard.set(name, forKey: "SelectedCharacter")
+//    }
     
     //    func makeAnonymouslyUser(completion: @escaping(_ uid:String)->Void) {
     //        Auth.auth().signInAnonymously { (user, error) in
@@ -86,12 +86,12 @@ class SM_DataTestViewController: UIViewController {
     //    }
     
     func saveAtFirebaseUser (user uid:String) {
-        Database.database().reference().child("User").observe(.value, with: { (snapshot) in
+        Database.database().reference().child(Constants.user).observe(.value, with: { (snapshot) in
             self.userCount = Int(snapshot.childrenCount)
         })
-        
+
         //User중에 uid와 일치하는 값이 있으면 등록 안되게 처리해야됨
-        Database.database().reference().child("User").child("\(self.userCount)").child("User_ID").setValue(uid)
+        Database.database().reference().child(Constants.user).child("\(self.userCount)").child(Constants.user_userId).setValue(uid)
         print("Database에 등록완료")
         
     }

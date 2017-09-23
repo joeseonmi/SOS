@@ -22,6 +22,7 @@
 		D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */; };
 		D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */; };
 		D8321BF31F6D17A2006D7506 /* SM_DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */; };
+		D862F9751F74E36A00D85971 /* SM_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862F9741F74E36A00D85971 /* SM_Constants.swift */; };
 		D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394C1F5E8C2B00D34790 /* AppDelegate.swift */; };
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
 		D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86539531F5E8C2B00D34790 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		D8321BEC1F6AB894006D7506 /* SM_DataTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataTestViewController.swift; sourceTree = "<group>"; };
 		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
 		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
+		D862F9741F74E36A00D85971 /* SM_Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM_Constants.swift; sourceTree = "<group>"; };
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86539511F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				D88019C71F73AF0900DDF7B6 /* SM_MainTableViewController.swift */,
 				D88019BF1F738B1A00DDF7B6 /* BubbleTableViewController.swift */,
 				D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */,
+				D862F9741F74E36A00D85971 /* SM_Constants.swift */,
 				D88019BA1F73899000DDF7B6 /* testNib */,
 			);
 			name = SM_DataTest;
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
+				D862F9751F74E36A00D85971 /* SM_Constants.swift in Sources */,
 				FE4FE6E91F6C24E00052AFB0 /* JS_AdMobTestViewController.swift in Sources */,
 				6A30CFD81F623B5C0076A883 /* BY_DetailCollectionViewCell.swift in Sources */,
 				D8321BED1F6AB894006D7506 /* SM_DataTestViewController.swift in Sources */,

@@ -154,7 +154,6 @@
         <!--Bubble Table View Controller-->
         <scene sceneID="lL9-rG-sdY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2qV-Bn-113" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BubbleTableViewController" id="bSZ-dW-CW9" customClass="BubbleTableViewController" customModule="Project_SOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gXB-u9-TCi"/>
@@ -187,11 +186,25 @@
                             <constraint firstItem="DcV-Fe-nAB" firstAttribute="centerX" secondItem="g9i-Ys-SkS" secondAttribute="centerX" id="dLI-8x-clv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zdY-Hq-kT8">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v8C-C0-7ti">
+                            <rect key="frame" x="147" y="9" width="81" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Like_off"/>
+                            <state key="selected" image="likeCountIcon"/>
+                            <connections>
+                                <action selector="clickedLikeBtn:" destination="bSZ-dW-CW9" eventType="touchUpInside" id="GT4-tw-Rry"/>
+                            </connections>
+                        </button>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="likeBtn" destination="v8C-C0-7ti" id="see-62-gAy"/>
                         <outlet property="tableview" destination="DcV-Fe-nAB" id="W1Z-cq-Pfh"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2qV-Bn-113" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2508" y="-38"/>
         </scene>
@@ -219,7 +232,9 @@
         <image name="BY_ON" width="47" height="48"/>
         <image name="JS_OFF" width="39" height="47"/>
         <image name="JS_ON" width="49" height="47"/>
+        <image name="Like_off" width="27" height="26"/>
         <image name="SM_OFF" width="40" height="48"/>
         <image name="SM_ON" width="50" height="48"/>
+        <image name="likeCountIcon" width="13" height="12"/>
     </resources>
 </document>

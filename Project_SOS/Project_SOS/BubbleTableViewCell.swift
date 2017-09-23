@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class BubbleTableViewCell: UITableViewCell {
 
@@ -22,6 +23,17 @@ class BubbleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func loadAnswerData(qustion id: Int) {
+        Database.database().reference().child(Constants.question).child("\(id)").observeSingleEvent(of: .value, with: { (questionData) in
+            guard let data = questionData.value as? [String:[String:Any]] else { return }
+            guard let jsAnswer = data[Constants.question_JSAnswer] as? [String:Any] else { return }
+            
+            
+        }) { (error) in
+            print("=====================error: ",error.localizedDescription)
+        }
     }
     
 }

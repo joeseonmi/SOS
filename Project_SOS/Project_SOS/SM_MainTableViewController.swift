@@ -29,7 +29,7 @@ class SM_MainTableViewController: UIViewController, UITableViewDataSource,UITabl
         
         
         //질문 갯수 받아오기
-        Database.database().reference().child("Question").observeSingleEvent(of: .value, with: { (dataSnapShot) in
+        Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (dataSnapShot) in
             self.questionCount = Int(dataSnapShot.childrenCount)
             print("===========================Count:",self.questionCount)
             self.tableView.reloadData()
@@ -54,6 +54,7 @@ class SM_MainTableViewController: UIViewController, UITableViewDataSource,UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView:BubbleTableViewController = storyboard?.instantiateViewController(withIdentifier: "BubbleTableViewController") as! BubbleTableViewController
+        detailView.questionID = indexPath.row
         self.navigationController?.pushViewController(detailView, animated: true)
     }
     

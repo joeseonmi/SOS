@@ -43,18 +43,19 @@ class MainTableViewCell: UITableViewCell {
     /*******************************************/
     
     func getQuestionData(indexPath:Int) {
-        
-        Database.database().reference().child("Question").child("\(indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:Any] else { return }
-            DispatchQueue.main.async {
-                guard let titleString = data["Question_Title"] as? String else { return }
-                self.titleLabel.text = titleString
-                guard let tagArray = data["Tag"] as? [String] else { return }
-                self.tagLabel.text = "\(tagArray[0])"
+        DispatchQueue.global(qos: .userInteractive).async {
+            Database.database().reference().child("Question").child("\(indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let data = snapshot.value as? [String:Any] else { return }
+                DispatchQueue.main.async {
+                    guard let titleString = data["Question_Title"] as? String else { return }
+                    self.titleLabel.text = titleString
+                    guard let tagArray = data["Tag"] as? [String] else { return }
+                    self.tagLabel.text = "#\(tagArray[0]), #\(tagArray[1]), #\(tagArray[2])"
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
             }
-            
-        }) { (error) in
-            print(error.localizedDescription)
         }
     }
     

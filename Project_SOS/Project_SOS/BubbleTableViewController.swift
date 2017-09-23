@@ -7,27 +7,37 @@
 //
 
 import UIKit
+import Firebase
 
 class BubbleTableViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
+    var questionID:Int?
     
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var likeBtn: UIButton!
     
+    @IBAction func clickedLikeBtn(_ sender: UIButton) {
+        
+        //좋아요누르면 Database에 저장
+        Database.database().reference().child("Like").childByAutoId()
+            .setValue([Constants.like_QuestionId:questionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
+        
+    }
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableview.register(UINib(nibName: "BubbleTableViewCell", bundle: nil), forCellReuseIdentifier: "BubbleTableViewCell")
         tableview.delegate = self
         tableview.dataSource = self
-       
+        
     }
     
     /*******************************************/
@@ -46,10 +56,10 @@ class BubbleTableViewController: UIViewController,UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension듯
+        //        return UITableViewAutomaticDimension듯
         //오토메틱으로 정할때 최소높이 정해줘야할듯
         return 200
     }
-
+    
 }
 
