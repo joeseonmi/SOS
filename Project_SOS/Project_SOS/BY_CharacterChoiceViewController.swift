@@ -39,57 +39,45 @@ class BY_CharacterChoiceViewController: UIViewController {
     
     @IBAction func selectBYButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "BY_ON"), for: .normal)
+            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
+            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
             UserDefaults.standard.set("보영", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
         }
     }
     
     @IBAction func selectSMButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "SM_ON"), for: .normal)
+            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
             UserDefaults.standard.set("선미", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
         }
     }
     
     @IBAction func selectJSButtonAction(_ sender: UIButton) {
         if sender.isSelected == false {
-            sender.setImage(#imageLiteral(resourceName: "default_Choose"), for: .normal)
-            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
-            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "JS_ON"), for: .normal)
+            self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             
             UserDefaults.standard.set("재성", forKey: "SelectedCharacter")
         }else{
-            sender.setImage(#imageLiteral(resourceName: "default_Profile"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
         }
     }
     
     @IBAction func completeButtonAction(_ sender: UIButton) {
+        guard let realCharacterString:String = UserDefaults.standard.object(forKey: "SelectedCharacter") as? String else {return}
         
-        if let realCharacterString:String = UserDefaults.standard.object(forKey: "SelectedCharacter") as? String {
-            
-            switch realCharacterString {
-            case "보영": self.dismissSelf()
-            case "선미": self.dismissSelf()
-            case "재성": self.dismissSelf()
-            default: noSelectedCharacterAlert()
-            }
-        
-        }
-    }
-    
-    
-    func selectCharacter(name:String) {
-        //TODO: 추후 각자의 이미지파일 및 설명이 추가되면, 중복되는 코드를 이 함수 하나로 묶을 생각임
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "characterSelected"), object: realCharacterString)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func noSelectedCharacterAlert() {
@@ -100,8 +88,5 @@ class BY_CharacterChoiceViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func dismissSelf() {
-        self.dismiss(animated: true, completion: nil)
-    }
     
 }

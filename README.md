@@ -1,4 +1,4 @@
-# SOS
+# SOS <img src = "https://github.com/joeseonmi/SOS/blob/DEV/Project_SOS/Project_SOS/Assets.xcassets/Navibar_logo.imageset/HamburgerMenu@2x.png?raw=true" width = 80 align = right >
 > ###### TEAM 쏘쓰의 첫 번째 Project
 
 ## Contents
