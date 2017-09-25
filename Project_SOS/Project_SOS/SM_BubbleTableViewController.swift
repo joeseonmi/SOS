@@ -20,11 +20,7 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var likeBtn: UIButton!
     
     @IBAction func clickedLikeBtn(_ sender: UIButton) {
-        
-        //좋아요누르면 Database에 저장
-Database.database().reference().child("Like").childByAutoId()
-            .setValue([Constants.like_QuestionId:questionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
-        
+     likeBtnAction()
     }
     
     /*******************************************/
@@ -33,8 +29,8 @@ Database.database().reference().child("Like").childByAutoId()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableview.register(UINib(nibName: "BubbleTableViewCell", bundle: nil), forCellReuseIdentifier: "BubbleTableViewCell")
+//
+//        self.tableview.register(UINib(nibName: "BubbleTableViewCell", bundle: nil), forCellReuseIdentifier: "BubbleTableViewCell")
         tableview.delegate = self
         tableview.dataSource = self
         
@@ -45,7 +41,7 @@ Database.database().reference().child("Like").childByAutoId()
     /*******************************************/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "BubbleTableViewCell", for: indexPath)
+        let cell = tableview.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         return cell
     }
@@ -59,6 +55,36 @@ Database.database().reference().child("Like").childByAutoId()
         //        return UITableViewAutomaticDimension듯
         //오토메틱으로 정할때 최소높이 정해줘야할듯
         return 200
+    }
+    
+    /*******************************************/
+    //MARK:-        Func                       //
+    /*******************************************/
+    
+    func likeBtnAction() {
+        guard let realQuestionID:Int = self.questionID else { return }
+        
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            guard let likeData = snapshot.value as? [String:[String:Any]] else { return }
+            print("데이터가있슴니돠아아아아ㅏ==================:", likeData)
+            let filteredData = likeData.filter({ (dic:(key:String, value:[String:Any])) -> Bool in
+                var filteredQuestionID = dic.value[Constants.like_QuestionId]
+                return realQuestionID == filteredQuestionID as! Int
+            })
+            print("필터된데이터!!!!!!!!!!!!!!:", filteredData)
+            switch filteredData.count {
+            case 0 : Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
+            case 1 :
+                Database.database().reference().child(Constants.like).child(filteredData[0].key).setValue(nil)
+            default:
+                print("error!!!!!!!!!!!!!!")
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
 }
