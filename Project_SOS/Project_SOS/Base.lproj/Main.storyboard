@@ -514,6 +514,9 @@
                             <outlet property="delegate" destination="nua-wq-kvV" id="jfh-z8-vFM"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchTableView" destination="aXe-fL-BSt" id="6TA-n7-aHX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0y-nW-9fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -674,6 +677,7 @@
                                 <segment title="All"/>
                                 <segment title="Favorites"/>
                             </segments>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sortTableContentsSegmentedControlAction:" destination="4nJ-zy-JQL" eventType="valueChanged" id="ccw-OO-oJs"/>
                             </connections>
@@ -687,7 +691,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="MRh-Jc-7fO" kind="show" id="jRt-14-Vsl"/>
+                                    <segue destination="MRh-Jc-7fO" kind="show" id="XmX-ca-eJd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

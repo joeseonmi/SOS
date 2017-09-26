@@ -47,7 +47,12 @@ class BY_DetailViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //네비게이션 바 UI 설정
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
+        self.navigationController?.navigationBar.topItem?.title = ""
         
         //테이블뷰 백그라운드 이미지
         let tableViewBackgroundImage:UIImage = #imageLiteral(resourceName: "background")

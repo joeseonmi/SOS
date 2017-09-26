@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class BY_MainTableViewController: UITableViewController {
     /*******************************************/
@@ -22,7 +23,7 @@ class BY_MainTableViewController: UITableViewController {
     //검색 관련
     var isSearchBarClicked:Bool = false
     
-    let allResults = ["태그", "Tag"]
+    var allResults:[String] = [] //TO DO: 선미야 여기에 검색한 값이 들어와야해. (질문, 태그 리스트)
     
     lazy var visibleResults:[String] = self.allResults
     
@@ -39,15 +40,15 @@ class BY_MainTableViewController: UITableViewController {
             }
             
             self.isSearchBarClicked = true
-            tableView.reloadData()
-            print("필터스트링 디드셋됨 \(visibleResults)")
+            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(allResults)")
         }
     }
+    
     
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
     
-
+    
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
@@ -66,6 +67,26 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
+        
+        //테스트(있다가 지울것)
+        Database.database().reference().child("Question").observe(.value, with: { (snapshot) in
+            guard let questionDatas:[[String:Any]] = snapshot.value as? [[String:Any]] else {return print("데이터 가드에 걸렸네영 \(snapshot.value)")}
+            
+            let questionTitles = questionDatas.map({ (dic) -> String in
+                return dic["Question_Title"] as! String
+            })
+            
+            print("클로저 안 \(questionTitles)")
+            
+            self.allResults = questionTitles
+            
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +98,10 @@ class BY_MainTableViewController: UITableViewController {
         if UserDefaults.standard.object(forKey: "SelectedCharacter") != nil {
             self.selectedCharater = UserDefaults.standard.object(forKey: "SelectedCharacter") as! String
         }
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,14 +119,14 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
                 print("좋아요 개수")
                 return self.favoriteList.count //TODO: 추후 좋아요 수에 따라 조정
             }else{
                 print("전체 개수")
-                return 3 //TODO: 추후 데이터에 따라 조정
+                return self.allResults.count //TODO: 추후 데이터에 따라 조정
             }
         }else{
             print("검색 개수")
@@ -114,6 +138,7 @@ class BY_MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
         cell.selectionStyle = .none
+        cell.titleQuestionLabel.text = self.allResults[indexPath.row]
         
         return cell
     }
