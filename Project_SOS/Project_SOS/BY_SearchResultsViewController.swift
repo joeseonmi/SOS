@@ -23,23 +23,24 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Database.database().reference().child("Question").observe(.value, with: { (snapshot) in
-            guard let questionDatas:[[String:Any]] = snapshot.value as? [[String:Any]] else {return print("데이터 가드에 걸렸네영 \(snapshot.value)")}
-            
-            let questionTitles = questionDatas.map({ (dic) -> String in
-                return dic["Question_Title"] as! String
+        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return }
+            let tempArray = data.map({ (dic) -> String in
+                return dic[Constants.question_QuestionTitle] as! String
             })
-            
-            print("클로저 안 \(questionTitles)")
-            
-            self.allResults = questionTitles
+            let tempTagArray = data.map({ (dic) -> [String] in
+                return dic[Constants.question_Tag] as! [String]
+            })
+            self.questionTagData = tempTagArray
+            self.questionTitleData = tempArray
             
             self.tableView.reloadData()
-            self.searchTableView.reloadData()
+//            self.searchTableView.reloadData()
             
         }) { (error) in
             print(error.localizedDescription)
         }
+        
         
     }
 }

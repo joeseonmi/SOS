@@ -28,24 +28,23 @@ class BY_MainTableViewController: UITableViewController {
     //검색 관련
     var isSearchBarClicked:Bool = false
     
-    var allResults:[String] = [] //TO DO: 선미야 여기에 검색한 값이 들어와야해. (질문, 태그 리스트)
-    
-    lazy var visibleResults:[String] = self.allResults
+    lazy var visibleResults:[String] = self.questionTitleData
     
     var filterString:String? = nil {
         didSet {
             if filterString == nil || filterString!.isEmpty {
-                visibleResults = allResults
+                visibleResults = questionTitleData
             }
             else {
                 // Filter the results using a predicate based on the filter string.
                 let filterPredicate = NSPredicate(format: "self contains[c] %@", argumentArray: [filterString!])
                 
-                visibleResults = allResults.filter { filterPredicate.evaluate(with: $0) }
+                visibleResults = questionTitleData.filter { filterPredicate.evaluate(with: $0) }
             }
             
             self.isSearchBarClicked = true
-            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(allResults)")
+            self.tableView.reloadData()
+            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(questionTitleData)")
         }
     }
     
@@ -70,6 +69,7 @@ class BY_MainTableViewController: UITableViewController {
             })
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
+            
             self.tableView.reloadData()
             
         }) { (error) in
@@ -89,30 +89,7 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
-<<<<<<< HEAD
         
-        //테스트(있다가 지울것)
-        Database.database().reference().child("Question").observe(.value, with: { (snapshot) in
-            guard let questionDatas:[[String:Any]] = snapshot.value as? [[String:Any]] else {return print("데이터 가드에 걸렸네영 \(snapshot.value)")}
-            
-            let questionTitles = questionDatas.map({ (dic) -> String in
-                return dic["Question_Title"] as! String
-            })
-            
-            print("클로저 안 \(questionTitles)")
-            
-            self.allResults = questionTitles
-            
-            self.tableView.reloadData()
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        
-=======
-    
->>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,37 +127,61 @@ class BY_MainTableViewController: UITableViewController {
         
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
-                print("좋아요 개수")
+                print("좋아요 개수 \(DataCenter.standard.favoriteQuestions.count)")
                 return DataCenter.standard.favoriteQuestions.count
             }else{
-                print("전체 개수")
-<<<<<<< HEAD
-                return self.allResults.count //TODO: 추후 데이터에 따라 조정
-=======
-                return questionTitleData.count
->>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
+                print("전체 개수 \(self.questionTitleData.count)")
+                return self.questionTitleData.count
             }
-        }else{
-            print("검색 개수")
+        }else if self.isSearchBarClicked == true {
+            print("검색 개수 \(self.visibleResults.count)")
             return self.visibleResults.count
+        }else{
+            print("셀개수에러")
+            return 0
         }
+        
+        //        if self.isfavoriteTableView {
+        //            print("좋아요 개수")
+        //            return DataCenter.standard.favoriteQuestions.count
+        //        }else{
+        //            print("전체 개수")
+        //            return self.questionTitleData.count
+        //        }
         
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
+
         cell.selectionStyle = .none
-<<<<<<< HEAD
-        cell.titleQuestionLabel.text = self.allResults[indexPath.row]
         
-=======
-        cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
-        cell.tagOneLabel?.text = self.questionTagData[indexPath.row][0]
-        cell.getLikeCount(question: indexPath.row)
->>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
+        if self.isSearchBarClicked == false {
+            if self.isfavoriteTableView {
+                cell.titleQuestionLabel.text = ""
+                cell.getLikeCount(question: indexPath.row)
+            }else{
+                cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
+                cell.tagOneLabel?.text = self.questionTagData[indexPath.row][0]
+                cell.getLikeCount(question: indexPath.row)
+            }
+        }else if self.isSearchBarClicked == true {
+            cell.titleQuestionLabel.text = self.visibleResults[indexPath.row]
+        }
+        
+        
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        
+//        if isSearchBarClicked == true {
+//        let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
+//        cell.selectionStyle = .none
+//        cell.titleQuestionLabel.text = self.visibleResults[indexPath.row]
+//        }
+//    }
+//    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 112
     }
@@ -193,5 +194,5 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     
-
+    
 }

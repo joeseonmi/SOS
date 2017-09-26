@@ -156,6 +156,7 @@ class BY_DetailViewController: UIViewController {
             break
         }
         
+        print("나의 아이디\(Auth.auth().currentUser?.uid)")
         likeBtnAction()
         
     }
@@ -326,7 +327,7 @@ extension BY_DetailViewController: UITableViewDelegate {
     }
     // SM Func
     func likeBtnAction() {
-        guard let realQuestionID:Int = self.questionID else { return }
+        guard let realQuestionID:Int = self.questionID else { return print("가드렛걸림")}
         
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -354,7 +355,7 @@ extension BY_DetailViewController: UITableViewDelegate {
             }
             
         }) { (error) in
-            print(error.localizedDescription)
+            print("좋아요 error: \(error.localizedDescription)")
         }
     }
     func loadData(from qusetionID:Int) {
