@@ -22,7 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9821073709980211~4294519494")
-
+        
+        
+        
+        if Auth.auth().currentUser?.uid == nil {
+            Auth.auth().signInAnonymously(completion: { (user, error) in
+                guard let newUser = user else { return }
+                if let error = error {
+                    print("error====================",error.localizedDescription)
+                    return
+                }
+            })
+        }
+        print("===========================================",Auth.auth().currentUser?.uid)
         return true
     }
 

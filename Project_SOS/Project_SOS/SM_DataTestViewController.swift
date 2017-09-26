@@ -16,9 +16,12 @@ class SM_DataTestViewController: UIViewController {
     /*******************************************/
     
     var selectedCharacterName:String = ""
-    var userUid:String = ""
     var userCount:Int = 0
     
+    @IBAction func deleteUser(_ sender: UIButton) {
+//        deleteUser()
+        
+    }
     @IBOutlet weak var iconBY: UIButton!
     @IBOutlet weak var iconJS: UIButton!
     @IBOutlet weak var iconSM: UIButton!
@@ -47,24 +50,7 @@ class SM_DataTestViewController: UIViewController {
     }
     
     @IBAction func clickedMakeUser(_ sender: UIButton) {
-        
-        //익명유저 추가요
-        makeAnonymouslyUser { (uid) in
-            self.userUid = uid
-        }
-        
-        //선택한캐릭터를 유저디폴드에저장setValue(uid, forKey: "User_ID")        setSelectedCharacter(selectedCharacter: selectedCharacterName)
- 
-        //만들어진 uid를 유저디폴트에저장
-        setUserWithUid(user: userUid)
-
-        //파베 User에 user_uid 저장
-        saveAtFirebaseUser(user: userUid)
-        
-        //TODO: - 버튼을 처음눌렀을땐 빈칸이고, 두번눌러야 값이 들어간다 왜때문이죠?
-        print("UserUid =", userUid)
-        print("Set된 UserUid =" ,UserDefaults.standard.object(forKey: "UserUid") as Any)
-        print("Set된 Character =" ,UserDefaults.standard.object(forKey: "SelectedCharacter") as Any)
+        saveUserUidAtDatabase()
     }
     
     
@@ -81,32 +67,46 @@ class SM_DataTestViewController: UIViewController {
     //MARK:-        Func                       //
     /*******************************************/
     
-    func setUserWithUid(user uid:String) {
-        UserDefaults.standard.set(uid, forKey: "UserUid")
-    }
-    
-    func setSelectedCharacter(selectedCharacter name:String) {
-        UserDefaults.standard.set(name, forKey: "SelectedCharacter")
-    }
-    
-    func makeAnonymouslyUser(completion: @escaping(_ uid:String)->Void) {
-        Auth.auth().signInAnonymously { (user, error) in
-            print("error=", error?.localizedDescription as Any)
-            print("uid=",user?.uid as Any)
-            guard let realUser = user else { return }
-            let realUserUid = realUser.uid
-            completion(realUserUid)
+    func saveUserUidAtDatabase(){
+        
+        //유저디폴트에 현재 유저uid를 셋해줌 앱델리게이트에서 해도될듯한데,일단 여기다해둠
+        UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: Constants.userdefault_userUid)
+        
+        //유저디폴트에 uid가 있는지 바인딩해줌
+        guard let realUserUid:String = UserDefaults.standard.object(forKey: Constants.userdefault_userUid) as? String else {
+            print("유아이디 없음 헤헤")
+            return
+        }
+        
+        //데이터베이스에서 해당 uid가 있는지 검색함
+        Database.database().reference().child(Constants.user).queryOrdered(byChild: Constants.user_userId).queryEqual(toValue: realUserUid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userData:[[String:String]] = snapshot.value as? [[String:String]] else {
+                print("유저가 없음 \(snapshot.value)")
+                
+                //이건 Database에 child이름을 유저숫자에 맞게 짓고싶어서 카운트 받아오려고 만든부분
+                Database.database().reference().child(Constants.user).observe(.value, with: { (snapshot) in
+                    self.userCount = Int(snapshot.childrenCount)
+                })
+                
+                //Database에 uid저장함
+                Database.database().reference().child(Constants.user).child("\(self.userCount)").child(Constants.user_userId).setValue(realUserUid)
+                print("Database에 등록완료")
+                
+                return
+            }
+            
+            print("유저가 있음 \(snapshot.value)")
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     
-    func saveAtFirebaseUser (user uid:String) {
-        Database.database().reference().child("User").observe(.value, with: { (snapshot) in
-            self.userCount = Int(snapshot.childrenCount)
-        })
-        Database.database().reference().child("User").child("\(self.userCount)").child("User_ID").setValue(uid)
-        //파베에 딕셔너리를 업로드해야됨
-    }
-   
+
+
+    
+    
 }
 
 
