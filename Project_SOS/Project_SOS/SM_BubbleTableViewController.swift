@@ -72,11 +72,20 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
                 var filteredQuestionID = dic.value[Constants.like_QuestionId]
                 return realQuestionID == filteredQuestionID as! Int
             })
+            
             print("필터된데이터!!!!!!!!!!!!!!:", filteredData)
             switch filteredData.count {
             case 0 : Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                self.getLikeCount(question:realQuestionID)
+                DataCenter.standard.favoriteQuestions.append(realQuestionID)
+                print("좋아요리스트!!!!!!!!!!!!!!!!",DataCenter.standard.favoriteQuestions)
             case 1 :
                 Database.database().reference().child(Constants.like).child(filteredData[0].key).setValue(nil)
+                self.getLikeCount(question: realQuestionID)
+                if let deleteIndex:Int = DataCenter.standard.favoriteQuestions.index(of: realQuestionID) {
+                    DataCenter.standard.favoriteQuestions.remove(at: deleteIndex)
+                }
+                print("좋아요리스트!!!!!!!!!!!!!!!!",DataCenter.standard.favoriteQuestions)
             default:
                 print("error!!!!!!!!!!!!!!")
             }
@@ -85,6 +94,17 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
             print(error.localizedDescription)
         }
         
+    }
+    
+    //질문아이디를 받아서 해당 질문에 좋아요가 몇개인지 count
+    func getLikeCount(question id:Int) {
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:[String:Any]] else { return }
+            print("아이디가 다 똑같은지 확인점~",data)
+            print("갯수염",data.count)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
 }

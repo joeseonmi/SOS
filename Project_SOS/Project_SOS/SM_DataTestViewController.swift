@@ -102,28 +102,9 @@ class SM_DataTestViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-//    func deleteUser() {
-//
-//        Database.database().reference().queryOrdered(byChild: Constants.user_userId).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//            guard let userData:[[String:String]] = snapshot.value as? [[String:String]] else { return }
-//            Database.database().reference().queryOrdered(byChild: Constants.user_userId).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//                guard let userData = snapshot.value as? [[String:String]] else { return }
-//                let childName:String = userData
-//
-//            }, withCancel: { (error) in
-//                print(error.localizedDescription)
-//            })
-//
-//        }) { (error) in
-//            print("===========error: ",error.localizedDescription)
-//        }
-//
-//        Auth.auth().currentUser?.delete(completion: { (error) in
-//            print(error?.localizedDescription)
-//            print("삭제되었습니다")
-//        })
-//    }
     
+
+
     
     
 }

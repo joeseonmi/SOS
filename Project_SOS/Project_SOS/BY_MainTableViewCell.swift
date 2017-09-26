@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import Firebase
 class BY_MainTableViewCell: UITableViewCell {
-
+    
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
@@ -32,16 +32,35 @@ class BY_MainTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-    
+        
+        
     }
     
     
     /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
+    
+    func getLikeCount(question id:Int) {
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).keepSynced(true)
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:[String:Any]] else { return }
+            self.favoriteCountLabel.text = "\(data.count)"
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .childChanged, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:[String:Any]] else { return }
+            self.favoriteCountLabel.text = "\(data.count)"
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     
 }
