@@ -16,6 +16,4 @@ pod 'Google-Mobile-Ads-SDK'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 
-pod 'XLPagerTabStrip', '~> 7.0'
-
 end
