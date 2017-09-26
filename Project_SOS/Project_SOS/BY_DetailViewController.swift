@@ -50,6 +50,9 @@ class BY_DetailViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadData(from: questionID!)
+        
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         
         //테이블뷰 백그라운드 이미지
@@ -355,7 +358,13 @@ extension BY_DetailViewController: UITableViewDelegate {
     func loadData(from quesetion_ID:Int) {
         Database.database().reference().child(Constants.question).child("\(quesetion_ID)").observe(.value, with: { (snapshot) in
             guard let data = snapshot.value as? [String:Any] else { return }
-            
+            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            guard let tagArray = data[Constants.question_Tag] as? [String] else { return }
+            self.tagTextLabel.text = tagArray[0]
+            guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
+            self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
+     
         }) { (error) in
             print(error.localizedDescription)
         }
