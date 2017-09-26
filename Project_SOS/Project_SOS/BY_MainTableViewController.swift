@@ -13,6 +13,11 @@ class BY_MainTableViewController: UITableViewController {
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
+    
+    var questionTitleData:[String] = []
+    var questionTagData:[[String]] = [[]]
+    var questionFavoriteCount:Int = 0
+    
     //선택한 캐릭터가 있는지 확인
     var selectedCharater:String?
     
@@ -55,6 +60,23 @@ class BY_MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return }
+            let tempArray = data.map({ (dic) -> String in
+                return dic[Constants.question_QuestionTitle] as! String
+            })
+            let tempTagArray = data.map({ (dic) -> [String] in
+                return dic[Constants.question_Tag] as! [String]
+            })
+            self.questionTagData = tempTagArray
+            self.questionTitleData = tempArray
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
         guard let realNavigationBarLogoButtonOutlet = self.navigationBarLogoButtonOutlet else {return}
         realNavigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         
@@ -67,6 +89,7 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
+<<<<<<< HEAD
         
         //테스트(있다가 지울것)
         Database.database().reference().child("Question").observe(.value, with: { (snapshot) in
@@ -87,10 +110,15 @@ class BY_MainTableViewController: UITableViewController {
         }
         
         
+=======
+    
+>>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        self.tableView.reloadData()
         
         tableView.register(UINib.init(nibName: "BY_MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         awakeFromNib()
@@ -123,10 +151,14 @@ class BY_MainTableViewController: UITableViewController {
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
                 print("좋아요 개수")
-                return self.favoriteList.count //TODO: 추후 좋아요 수에 따라 조정
+                return DataCenter.standard.favoriteQuestions.count
             }else{
                 print("전체 개수")
+<<<<<<< HEAD
                 return self.allResults.count //TODO: 추후 데이터에 따라 조정
+=======
+                return questionTitleData.count
+>>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
             }
         }else{
             print("검색 개수")
@@ -138,8 +170,14 @@ class BY_MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
         cell.selectionStyle = .none
+<<<<<<< HEAD
         cell.titleQuestionLabel.text = self.allResults[indexPath.row]
         
+=======
+        cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
+        cell.tagOneLabel?.text = self.questionTagData[indexPath.row][0]
+        cell.getLikeCount(question: indexPath.row)
+>>>>>>> c1b394915652e0db2073f6114f8d9d1d8b850c0f
         return cell
     }
     
@@ -149,7 +187,11 @@ class BY_MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
+        nextViewController.questionID = indexPath.row
+        //나중에 수정해야됨
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
+    
+
 }
