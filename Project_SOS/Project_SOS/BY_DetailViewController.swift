@@ -352,7 +352,12 @@ extension BY_DetailViewController: UITableViewDelegate {
             print(error.localizedDescription)
         }
     }
-    func loadData(from qusetionID:Int) {
-        
+    func loadData(from quesetion_ID:Int) {
+        Database.database().reference().child(Constants.question).child("\(quesetion_ID)").observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:Any] else { return }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 }
