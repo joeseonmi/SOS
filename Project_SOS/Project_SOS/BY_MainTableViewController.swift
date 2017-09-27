@@ -172,16 +172,7 @@ class BY_MainTableViewController: UITableViewController {
         
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        
-//        if isSearchBarClicked == true {
-//        let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
-//        cell.selectionStyle = .none
-//        cell.titleQuestionLabel.text = self.visibleResults[indexPath.row]
-//        }
-//    }
-//    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 112
     }

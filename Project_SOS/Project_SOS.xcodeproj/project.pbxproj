@@ -164,7 +164,6 @@
 		D865394B1F5E8C2B00D34790 /* Project_SOS */ = {
 			isa = PBXGroup;
 			children = (
-				D8C6EA071F766B6E00E10A17 /* GoogleService-Info.plist */,
 				D86539501F5E8C2B00D34790 /* Main.storyboard */,
 				D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */,
 				D865394C1F5E8C2B00D34790 /* AppDelegate.swift */,
@@ -181,6 +180,7 @@
 				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
+				D8C6EA071F766B6E00E10A17 /* GoogleService-Info.plist */,
 			);
 			path = Project_SOS;
 			sourceTree = "<group>";

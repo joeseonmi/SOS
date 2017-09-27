@@ -31,6 +31,7 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         searchResultsController.isSearchBarClicked = true
         
         present(searchController, animated: true, completion: nil)
+        
     }
     
     //햄버거 메뉴부분
