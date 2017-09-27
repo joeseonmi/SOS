@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z1t-zF-flc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gcg-1u-gul">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-4q-4gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.80000000000001" y="-107.49625187406298"/>
+            <point key="canvasLocation" x="724" y="-107.49625187406298"/>
         </scene>
         <!--Test Simple Mark Down Parser View Controller-->
         <scene sceneID="hdn-37-fwp">
@@ -66,43 +66,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV1-ZJ-YW3">
-                                <rect key="frame" x="16" y="28" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-dc-9ta">
-                                <rect key="frame" x="17" y="515" width="257" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Move JS_TestSendMailViewController"/>
-                                <connections>
-                                    <segue destination="sQI-Zx-f3s" kind="show" id="esn-k1-t13"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abP-rh-ztv">
-                                <rect key="frame" x="17" y="477" width="242" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Move JS_TestAdMobViewController"/>
-                                <connections>
-                                    <segue destination="HhU-jv-Nlq" kind="presentation" id="quG-EL-lGe"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6qJ-y3-lrC">
+                                <rect key="frame" x="16" y="45" width="343" height="112.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abP-rh-ztv">
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="30"/>
+                                        <state key="normal" title="Move JS_TestAdMobViewController"/>
+                                        <connections>
+                                            <segue destination="HhU-jv-Nlq" kind="show" id="quG-EL-lGe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-dc-9ta">
+                                        <rect key="frame" x="0.0" y="46" width="257" height="30"/>
+                                        <state key="normal" title="Move JS_TestSendMailViewController"/>
+                                        <connections>
+                                            <segue destination="sQI-Zx-f3s" kind="show" id="esn-k1-t13"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV1-ZJ-YW3">
+                                        <rect key="frame" x="0.0" y="92" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZV1-ZJ-YW3" firstAttribute="width" secondItem="6qJ-y3-lrC" secondAttribute="width" id="7Ni-0Z-QeO"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZV1-ZJ-YW3" firstAttribute="trailing" secondItem="evr-QJ-ND4" secondAttribute="trailingMargin" id="OtH-Fj-3p2"/>
-                            <constraint firstItem="ZV1-ZJ-YW3" firstAttribute="leading" secondItem="evr-QJ-ND4" secondAttribute="leadingMargin" id="kKz-sd-Drm"/>
-                            <constraint firstItem="ZV1-ZJ-YW3" firstAttribute="top" secondItem="TpZ-HC-0si" secondAttribute="bottom" constant="8" id="sE1-pI-DLs"/>
+                            <constraint firstAttribute="trailing" secondItem="6qJ-y3-lrC" secondAttribute="trailing" constant="16" id="Hcx-hH-aE8"/>
+                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="top" secondItem="evr-QJ-ND4" secondAttribute="top" constant="45" id="qV3-0R-y81"/>
+                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="leading" secondItem="evr-QJ-ND4" secondAttribute="leading" constant="16" id="xX1-eP-V2D"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gQn-0c-WTQ"/>
                     <connections>
                         <outlet property="uiLabelMarkdownTest" destination="ZV1-ZJ-YW3" id="4yh-OT-paR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4se-V3-J6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410.39999999999998" y="-107.49625187406298"/>
+            <point key="canvasLocation" x="-71.200000000000003" y="-107.49625187406298"/>
         </scene>
         <!--Test Send Mail View Controller-->
         <scene sceneID="beH-Tb-OLT">
@@ -123,13 +130,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNf-8E-juN">
+                                <rect key="frame" x="141" y="318" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SendMailTest"/>
+                                <connections>
+                                    <action selector="buttonSendMailActionWithSender:" destination="sQI-Zx-f3s" eventType="touchUpInside" id="DJA-XN-7Jb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRj-NP-egi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="611"/>
+            <point key="canvasLocation" x="724" y="668"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Fi-14-ArR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gcg-1u-gul" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iKp-5r-M7N">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z1t-zF-flc" kind="relationship" relationship="rootViewController" id="5UQ-jm-Olt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nd5-ZU-paZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="-107"/>
         </scene>
     </scenes>
 </document>
