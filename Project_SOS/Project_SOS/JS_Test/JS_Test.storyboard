@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6qJ-y3-lrC">
-                                <rect key="frame" x="16" y="45" width="343" height="112.5"/>
+                                <rect key="frame" x="16" y="80" width="343" height="112.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abP-rh-ztv">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="30"/>
@@ -85,6 +86,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV1-ZJ-YW3">
                                         <rect key="frame" x="0.0" y="92" width="343" height="20.5"/>
+                                        <color key="backgroundColor" red="0.92538958787918091" green="0.92554813623428345" blue="0.92537957429885864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -98,7 +100,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6qJ-y3-lrC" secondAttribute="trailing" constant="16" id="Hcx-hH-aE8"/>
-                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="top" secondItem="evr-QJ-ND4" secondAttribute="top" constant="45" id="qV3-0R-y81"/>
+                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="top" secondItem="evr-QJ-ND4" secondAttribute="topMargin" constant="16" id="qV3-0R-y81"/>
                             <constraint firstItem="6qJ-y3-lrC" firstAttribute="leading" secondItem="evr-QJ-ND4" secondAttribute="leading" constant="16" id="xX1-eP-V2D"/>
                         </constraints>
                     </view>
