@@ -223,16 +223,16 @@
                                 <rect key="frame" x="-0.5" y="60" width="375" height="126"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TitleCellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="eQ9-DH-X97">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                                        <rect key="frame" x="-0.5" y="0.0" width="375.5" height="126"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하나면 하나지 둘이겠느냐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t99-AL-90L">
-                                        <rect key="frame" x="63.5" y="38" width="248.5" height="30"/>
+                                        <rect key="frame" x="8" y="38" width="359" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하나면 하나지 둘이겠느냐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-tj-dcX">
-                                        <rect key="frame" x="63.5" y="8" width="248.5" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="359.5" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -248,13 +248,17 @@
                                 <constraints>
                                     <constraint firstItem="V6p-tj-dcX" firstAttribute="centerX" secondItem="eQ9-DH-X97" secondAttribute="centerX" id="3en-eM-BiL"/>
                                     <constraint firstItem="eQ9-DH-X97" firstAttribute="centerY" secondItem="I31-5o-XBf" secondAttribute="centerY" id="5qJ-uS-42n"/>
+                                    <constraint firstItem="t99-AL-90L" firstAttribute="leading" secondItem="I31-5o-XBf" secondAttribute="leading" constant="8" id="7mz-ve-XNm"/>
                                     <constraint firstItem="V6p-tj-dcX" firstAttribute="top" secondItem="I31-5o-XBf" secondAttribute="top" constant="8" id="DgL-g2-Bpy"/>
                                     <constraint firstItem="t99-AL-90L" firstAttribute="centerY" secondItem="eQ9-DH-X97" secondAttribute="centerY" constant="-10" id="Idc-CW-YXu"/>
                                     <constraint firstItem="9a1-Je-uGs" firstAttribute="centerX" secondItem="t99-AL-90L" secondAttribute="centerX" id="MiW-rk-40k"/>
                                     <constraint firstItem="eQ9-DH-X97" firstAttribute="width" secondItem="I31-5o-XBf" secondAttribute="width" id="cdx-s6-Vh6"/>
+                                    <constraint firstAttribute="trailing" secondItem="t99-AL-90L" secondAttribute="trailing" constant="8" id="hU4-Xn-tIg"/>
                                     <constraint firstItem="eQ9-DH-X97" firstAttribute="centerX" secondItem="I31-5o-XBf" secondAttribute="centerX" id="hgQ-BF-BXv"/>
                                     <constraint firstItem="9a1-Je-uGs" firstAttribute="top" secondItem="t99-AL-90L" secondAttribute="bottom" constant="5" id="mE8-ja-Xjr"/>
                                     <constraint firstItem="t99-AL-90L" firstAttribute="centerX" secondItem="eQ9-DH-X97" secondAttribute="centerX" id="nrI-kx-IhA"/>
+                                    <constraint firstAttribute="trailing" secondItem="V6p-tj-dcX" secondAttribute="trailing" constant="8" id="pAv-vM-Th7"/>
+                                    <constraint firstItem="V6p-tj-dcX" firstAttribute="leading" secondItem="I31-5o-XBf" secondAttribute="leading" constant="8" id="q44-ff-Kc4"/>
                                     <constraint firstAttribute="height" constant="126" id="r7k-9H-xLS"/>
                                     <constraint firstItem="eQ9-DH-X97" firstAttribute="height" secondItem="I31-5o-XBf" secondAttribute="height" id="wxs-TW-4Uv"/>
                                 </constraints>
@@ -267,14 +271,14 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SummaryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JRS-sG-bSm">
-                                            <rect key="frame" x="8" y="8" width="22" height="22"/>
+                                            <rect key="frame" x="8" y="8" width="18" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="tUn-9r-Nol"/>
+                                                <constraint firstAttribute="width" constant="18" id="tUn-9r-Nol"/>
                                                 <constraint firstAttribute="width" secondItem="JRS-sG-bSm" secondAttribute="height" multiplier="1:1" id="xSG-CR-uOM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요약해보겠습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGp-t7-HxU">
-                                            <rect key="frame" x="38" y="10" width="108.5" height="18"/>
+                                            <rect key="frame" x="34" y="8" width="108.5" height="18"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -294,7 +298,7 @@
                                             </connections>
                                         </segmentedControl>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu1-V2-x0R">
-                                            <rect key="frame" x="28" y="36" width="337" height="156"/>
+                                            <rect key="frame" x="24" y="34" width="341" height="158"/>
                                             <string key="text">● 요약해보자  ● 요약 1  ● 뿌뿌루부뿌 뿌미~ 뿌미와 같이 배워볼까 
   ㄹ라라랄라라라라라헤헤헤헤
 ● 도

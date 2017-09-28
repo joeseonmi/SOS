@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+
+
 class BY_MainTableViewCell: UITableViewCell {
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
-    
+
     //---IBOutlet
     @IBOutlet weak var titleQuestionLabel: UILabel!
     
@@ -22,7 +24,6 @@ class BY_MainTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteCountLabel: UILabel!
     
     var questionID:Int?
-    
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
