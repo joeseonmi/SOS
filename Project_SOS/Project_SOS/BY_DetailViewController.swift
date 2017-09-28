@@ -85,6 +85,9 @@ class BY_DetailViewController: UIViewController {
         
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
         NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNoti(_:)), name: Notification.Name("characterSelected"), object: nil)
+        
+        
+        print("이 디테일뷰는 \(self.questionID) 번째 질문입니다.")
 
     }
     
@@ -103,6 +106,21 @@ class BY_DetailViewController: UIViewController {
             return
         }
         selectSeugeForCharacter(nameOf: selectedCharacter)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        guard let headerView = self.detailTableView.tableHeaderView else {return}
+        
+        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+        }
+        
+        self.detailTableView.tableHeaderView = headerView
+        self.detailTableView.layoutIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,6 +193,7 @@ class BY_DetailViewController: UIViewController {
         
         likeBtnAction()
     }
+
     
     //SearchVC을 통해 Present 되었을 때 네비게이션 바 역할을 할 뷰상의 버튼 설정
     //--Back Button

@@ -15,8 +15,10 @@ class BY_MainTableViewController: UITableViewController {
     /*******************************************/
     
     var questionTitleData:[String] = []
-    var questionTagData:[[String]] = [[]]
+    var questionTagData:[String] = []
     var questionFavoriteCount:Int = 0
+    
+    var questionDataForMainVC:[[String:Any]] = []
     
     //선택한 캐릭터가 있는지 확인
     var selectedCharater:String?
@@ -44,7 +46,7 @@ class BY_MainTableViewController: UITableViewController {
             
             self.isSearchBarClicked = true
             self.tableView.reloadData()
-            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(questionTitleData)")
+//            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(questionTitleData)")
         }
     }
     
@@ -64,9 +66,15 @@ class BY_MainTableViewController: UITableViewController {
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
             })
-            let tempTagArray = data.map({ (dic) -> [String] in
-                return dic[Constants.question_Tag] as! [String]
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
             })
+            let tempQuestionIDArray = data.map({ (dic) -> Int in
+                return dic[Constants.question_QuestionId] as! Int
+            })
+            
+            
+            
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
             
@@ -140,15 +148,6 @@ class BY_MainTableViewController: UITableViewController {
             print("셀개수에러")
             return 0
         }
-        
-        //        if self.isfavoriteTableView {
-        //            print("좋아요 개수")
-        //            return DataCenter.standard.favoriteQuestions.count
-        //        }else{
-        //            print("전체 개수")
-        //            return self.questionTitleData.count
-        //        }
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -162,28 +161,30 @@ class BY_MainTableViewController: UITableViewController {
                 cell.getLikeCount(question: indexPath.row)
             }else{
                 cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
-                cell.tagOneLabel?.text = self.questionTagData[indexPath.row][0]
+                cell.tagLabel?.text = self.questionTagData[indexPath.row]
                 cell.getLikeCount(question: indexPath.row)
             }
         }else if self.isSearchBarClicked == true {
             cell.titleQuestionLabel.text = self.visibleResults[indexPath.row]
         }
-        
-        
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 112
+        return 97
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
-        nextViewController.questionID = indexPath.row
-        //나중에 수정해야됨
+        
+        if self.isfavoriteTableView == true {
+            //TO DO: (보영) 추후에 좋아요 기능 구현되면 별도의 ID를 보내줄 것
+        }else{
+            nextViewController.questionID = indexPath.row
+        }
+        
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
-    
+
     
 }

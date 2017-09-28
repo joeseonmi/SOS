@@ -18,6 +18,32 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
     
     
     /*******************************************/
+    //MARK:-        LifeCycle                  //
+    /*******************************************/
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return }
+            let tempArray = data.map({ (dic) -> String in
+                return dic[Constants.question_QuestionTitle] as! String
+            })
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
+            })
+            self.questionTagData = tempTagArray
+            self.questionTitleData = tempArray
+            
+            self.tableView.reloadData()
+            //            self.searchTableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
     func updateSearchResults(for searchController: UISearchController) {
@@ -31,7 +57,6 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
         super.tableView(self.searchTableView, didSelectRowAt: indexPath)
         
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
-        nextViewController.questionID = indexPath.row //나중에 수정해야됨
         nextViewController.isPresentedBySearchVC = true
         
         //Present를 Navigation Push(show) 처럼 보이게 설정
@@ -45,30 +70,6 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
     }
     
     
-    /*******************************************/
-    //MARK:-         Functions                 //
-    /*******************************************/
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String:Any]] else { return }
-            let tempArray = data.map({ (dic) -> String in
-                return dic[Constants.question_QuestionTitle] as! String
-            })
-            let tempTagArray = data.map({ (dic) -> [String] in
-                return dic[Constants.question_Tag] as! [String]
-            })
-            self.questionTagData = tempTagArray
-            self.questionTitleData = tempArray
-            
-            self.tableView.reloadData()
-            //            self.searchTableView.reloadData()
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
     
     
 }
