@@ -13,6 +13,9 @@ class BubbleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var roundingBG: UIView!
     @IBOutlet weak var context: UILabel!
+    @IBOutlet var characterImageView: UIImageView!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

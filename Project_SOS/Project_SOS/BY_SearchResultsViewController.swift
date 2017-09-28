@@ -70,6 +70,33 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
     }
     
     
+<<<<<<< HEAD
+=======
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return }
+            let tempArray = data.map({ (dic) -> String in
+                return dic[Constants.question_QuestionTitle] as! String
+            })
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
+            })
+            self.questionTagData = tempTagArray
+            self.questionTitleData = tempArray
+            
+            self.tableView.reloadData()
+            //            self.searchTableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+>>>>>>> f0fb4e5ccf7bb7ac58fd3b127a4deeac81134fa8
     
     
 }

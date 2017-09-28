@@ -16,6 +16,9 @@ class BY_DetailViewController: UIViewController {
     /*******************************************/
     
     var questionID:Int?
+    var byAnswer:[[String:String]] = []
+	var jsAnswer:[[String:String]] = []
+    var smAnswer:[[String:String]] = []
     
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
@@ -59,7 +62,11 @@ class BY_DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //네비게이션 바 UI 설정
+
+        self.loadData(from: questionID!)
+        self.loadBYAnswer(from: questionID!)
+                //네비게이션 바 UI 설정
+
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
@@ -108,6 +115,7 @@ class BY_DetailViewController: UIViewController {
         selectSeugeForCharacter(nameOf: selectedCharacter)
     }
     
+<<<<<<< HEAD
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -121,6 +129,13 @@ class BY_DetailViewController: UIViewController {
         
         self.detailTableView.tableHeaderView = headerView
         self.detailTableView.layoutIfNeeded()
+=======
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print("==================\n\(byAnswer)\n===============")
+        print("==================ㅇㅇ\(byAnswer[0][Constants.question_AnswerContents])ㅇㅇ===================")
+>>>>>>> f0fb4e5ccf7bb7ac58fd3b127a4deeac81134fa8
     }
     
     override func didReceiveMemoryWarning() {
@@ -266,12 +281,12 @@ extension BY_DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 //TODO: 추후에 답변 개수만큼 출력하도록 할 것
+        return byAnswer.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
-        
+        cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
         cell.selectionStyle = .none
         
         //선택된 세그에 따라 이미지 변경
@@ -282,7 +297,6 @@ extension BY_DetailViewController: UITableViewDataSource {
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
         case 0:
             cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
-            // cell.explainBubbleText.text =
             cell.explainBubbleImage.isHidden = true
             
         case 1:
@@ -390,8 +404,18 @@ extension BY_DetailViewController: UITableViewDelegate {
         self.titleTextLabel.alpha = percentage
         self.tagTextLabel.alpha = percentage
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
+    }
+    
     // SM Func
     func likeBtnAction() {
+
         guard let realQuestionID:Int = self.questionID else { return print("가드렛걸림")}
         
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -423,7 +447,28 @@ extension BY_DetailViewController: UITableViewDelegate {
             print("좋아요 error: \(error.localizedDescription)")
         }
     }
-    func loadData(from qusetionID:Int) {
-        
+    func loadData(from question_ID:Int) {
+        Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:Any] else { return }
+            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            guard let tagArray = data[Constants.question_Tag] as? String else { return }
+            self.tagTextLabel.text = tagArray
+            guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
+            self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
+     
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+
+    func loadBYAnswer(from question_ID:Int) {
+        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
+            self.byAnswer = byAnswerArray
+            self.detailTableView.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 }

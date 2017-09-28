@@ -14,6 +14,7 @@ class BY_DetailTableViewCell: UITableViewCell {
     //MARK:-        Properties                 //
     /*******************************************/
     
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var characterIconImage: UIImageView!
     @IBOutlet weak var explainBubbleText: UILabel!
     @IBOutlet weak var explainBubbleImage: UIImageView!
@@ -24,6 +25,7 @@ class BY_DetailTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.bgView.layer.cornerRadius = 10
         
     }
     
