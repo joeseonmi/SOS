@@ -22,6 +22,14 @@ class BY_DetailViewController: UIViewController {
     @IBOutlet weak var shareButtonOutlet: UIButton!
     @IBOutlet weak var favoriteButtonOutlet: UIButton!
     
+    //SearchVC을 통해 Present 되었을 때 NavigationBar 역할할 View
+    @IBOutlet weak var navigationView: UIView!
+    @IBOutlet weak var navigationViewBackButtonOutlet: UIButton!
+    @IBOutlet weak var navigationViewLogoTitleButtonOutlet: UIButton!
+    @IBOutlet weak var navigationViewShareButtonOutlet: UIButton!
+    @IBOutlet weak var navigationViewFavoriteButtonOutlet: UIButton!
+    var isPresentedBySearchVC:Bool = false
+    
     //타이틀뷰
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var tagTextLabel: UILabel!
@@ -50,7 +58,20 @@ class BY_DetailViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //네비게이션 바 UI 설정
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
+        //SearchVC을 통해 Present 되었을 때 NavigationBar 역할할 View 설정
+        if self.isPresentedBySearchVC == true {
+            self.navigationView.isHidden = false
+            self.navigationViewLogoTitleButtonOutlet.isUserInteractionEnabled = false
+        }else{
+            self.navigationView.isHidden = true
+        }
         
         //테이블뷰 백그라운드 이미지
         let tableViewBackgroundImage:UIImage = #imageLiteral(resourceName: "background")
@@ -64,6 +85,7 @@ class BY_DetailViewController: UIViewController {
         
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
         NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNoti(_:)), name: Notification.Name("characterSelected"), object: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,8 +174,38 @@ class BY_DetailViewController: UIViewController {
         }
         
         likeBtnAction()
-        
     }
+    
+    //SearchVC을 통해 Present 되었을 때 네비게이션 바 역할을 할 뷰상의 버튼 설정
+    //--Back Button
+    @IBAction func navigationViewBackButtonAction(_ sender: UIButton) {
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //--Share Button
+    //TODO: (재성님!)여기에 공유에 대한 기능을 구현해주세요 / 기존 NavigationBar 상의 버튼에 구현했던 것과 동일
+    @IBAction func navigationViewShareButtonAction(_ sender: UIButton) {
+    }
+    
+    //--Like Button
+    //TODO: (선미님!)여기에 즐겨찾기에 대한 기능을 구현해주세요 / 기존 NavigationBar 상의 버튼에 구현했던 것과 동일 + Firebase Database와 연동되어야 함
+    @IBAction func navigationViewFavoriteButtonAction(_ sender: UIButton) {
+        guard let realFavoriteButtonImage = self.navigationViewFavoriteButtonOutlet.image(for: .normal) else {return}
+        
+        switch realFavoriteButtonImage {
+        case #imageLiteral(resourceName: "Like_off"): self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+        case #imageLiteral(resourceName: "likeCountIcon"): self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+        default:
+            break
+        }
+    }
+    
     
     //선택한 캐릭터가 있다면, 해당 캐릭터 Segue가 띄워져 있도록 설정
     func selectSeugeForCharacter(nameOf:String) {
@@ -321,7 +373,7 @@ extension BY_DetailViewController: UITableViewDelegate {
     }
     // SM Func
     func likeBtnAction() {
-        guard let realQuestionID:Int = self.questionID else { return }
+        guard let realQuestionID:Int = self.questionID else { return print("가드렛걸림")}
         
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -349,7 +401,7 @@ extension BY_DetailViewController: UITableViewDelegate {
             }
             
         }) { (error) in
-            print(error.localizedDescription)
+            print("좋아요 error: \(error.localizedDescription)")
         }
     }
     func loadData(from qusetionID:Int) {

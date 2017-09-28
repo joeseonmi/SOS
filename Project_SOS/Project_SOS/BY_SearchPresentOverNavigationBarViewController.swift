@@ -28,8 +28,10 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = searchResultsController
         searchController.hidesNavigationBarDuringPresentation = false
+        searchResultsController.isSearchBarClicked = true
         
         present(searchController, animated: true, completion: nil)
+        
     }
     
     //햄버거 메뉴부분
