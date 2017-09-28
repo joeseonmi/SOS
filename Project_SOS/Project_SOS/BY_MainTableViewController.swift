@@ -15,7 +15,7 @@ class BY_MainTableViewController: UITableViewController {
     /*******************************************/
     
     var questionTitleData:[String] = []
-    var questionTagData:[[String]] = [[]]
+    var questionTagData:[String] = []
     var questionFavoriteCount:Int = 0
     
     //선택한 캐릭터가 있는지 확인
@@ -65,8 +65,8 @@ class BY_MainTableViewController: UITableViewController {
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
             })
-            let tempTagArray = data.map({ (dic) -> [String] in
-                return dic[Constants.question_Tag] as! [String]
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
             })
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
@@ -141,7 +141,7 @@ class BY_MainTableViewController: UITableViewController {
         let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
         cell.selectionStyle = .none
         cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
-        cell.tagOneLabel?.text = self.questionTagData[indexPath.row][0]
+        cell.tagOneLabel?.text = self.questionTagData[indexPath.row]
         cell.getLikeCount(question: indexPath.row)
         return cell
     }

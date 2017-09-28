@@ -267,20 +267,20 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SummaryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JRS-sG-bSm">
-                                            <rect key="frame" x="10" y="10" width="42" height="42"/>
+                                            <rect key="frame" x="10" y="10" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="Ctn-8j-wUn"/>
+                                                <constraint firstAttribute="width" constant="20" id="Ctn-8j-wUn"/>
                                                 <constraint firstAttribute="width" secondItem="JRS-sG-bSm" secondAttribute="height" multiplier="1:1" id="sYI-We-Wx1"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요약해 볼까욧!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGp-t7-HxU">
-                                            <rect key="frame" x="62" y="21" width="99" height="21"/>
+                                            <rect key="frame" x="38" y="10" width="99" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 요약해보자  - 요약 1  - 뿌뿌루부뿌 뿌미~ 뿌미와 같이 배워볼까 ㄹ라라랄라라라라라헤헤헤헤" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu1-V2-x0R">
-                                            <rect key="frame" x="32" y="62" width="313" height="123"/>
+                                            <rect key="frame" x="8" y="40" width="337" height="145"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -303,7 +303,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="5LN-v8-n0z" firstAttribute="top" secondItem="Mu1-V2-x0R" secondAttribute="bottom" constant="5" id="2hP-Z4-2tY"/>
-                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="leading" secondItem="JRS-sG-bSm" secondAttribute="trailing" constant="10" id="2sn-YR-DRL"/>
+                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="leading" secondItem="JRS-sG-bSm" secondAttribute="trailing" constant="8" id="2sn-YR-DRL"/>
                                         <constraint firstItem="Mu1-V2-x0R" firstAttribute="top" secondItem="JRS-sG-bSm" secondAttribute="bottom" constant="10" id="7hn-dN-QJb"/>
                                         <constraint firstItem="Mu1-V2-x0R" firstAttribute="leading" secondItem="MGp-t7-HxU" secondAttribute="leading" constant="-30" id="GRD-km-Boo"/>
                                         <constraint firstAttribute="bottom" secondItem="5LN-v8-n0z" secondAttribute="bottom" constant="10" id="HbC-lg-XhU"/>
