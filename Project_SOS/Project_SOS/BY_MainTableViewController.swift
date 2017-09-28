@@ -152,7 +152,6 @@ class BY_MainTableViewController: UITableViewController {
 
         cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
         cell.tagLabel?.text = self.questionTagData[indexPath.row]
-        cell.getLikeCount(question: indexPath.row)
         
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {

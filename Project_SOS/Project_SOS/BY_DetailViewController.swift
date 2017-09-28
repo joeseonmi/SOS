@@ -62,8 +62,7 @@ class BY_DetailViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         self.loadData(from: questionID!)
         self.loadAnswer(from: questionID!)
         //네비게이션 바 UI 설정
@@ -202,12 +201,12 @@ class BY_DetailViewController: UIViewController {
         
         switch realFavoriteButtonImage {
         case #imageLiteral(resourceName: "Like_off"):
-            self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
-            self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+            self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
+            self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
             saveFavoriteAtDB()
             guard let questionID = self.questionID else { return }
             DataCenter.standard.favoriteQuestions.append(questionID)
-        case #imageLiteral(resourceName: "likeCountIcon"):
+        case #imageLiteral(resourceName: "Star_on"):
             self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
             self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
             deleteFavoriteAtDB()
@@ -245,11 +244,11 @@ class BY_DetailViewController: UIViewController {
         
         switch realFavoriteButtonImage {
         case #imageLiteral(resourceName: "Like_off"):
-            self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+            self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
             saveFavoriteAtDB()
             guard let questionID = self.questionID else { return }
             DataCenter.standard.favoriteQuestions.append(questionID)
-        case #imageLiteral(resourceName: "likeCountIcon"):
+        case #imageLiteral(resourceName: "Star_on"):
             self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
             deleteFavoriteAtDB()
             guard let questionID = self.questionID else { return }
@@ -587,8 +586,8 @@ extension BY_DetailViewController: UITableViewDelegate {
                 return filteredID == question_ID
             })
             if filteredData.count == 1 {
-                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
-                self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
+                self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
             }else{
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)

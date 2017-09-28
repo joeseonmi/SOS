@@ -318,7 +318,6 @@
                                         <constraint firstItem="JRS-sG-bSm" firstAttribute="top" secondItem="hbK-pc-rqV" secondAttribute="top" constant="8" id="efi-x6-1id"/>
                                         <constraint firstItem="Mu1-V2-x0R" firstAttribute="top" secondItem="MGp-t7-HxU" secondAttribute="bottom" constant="8" id="fbd-cX-3O7"/>
                                         <constraint firstItem="JRS-sG-bSm" firstAttribute="leading" secondItem="hbK-pc-rqV" secondAttribute="leading" constant="8" id="m0E-mL-QKQ"/>
-
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="9Zy-Zr-9Dm">
