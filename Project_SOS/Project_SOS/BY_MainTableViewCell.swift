@@ -16,12 +16,16 @@ class BY_MainTableViewCell: UITableViewCell {
     
     //---IBOutlet
     @IBOutlet weak var titleQuestionLabel: UILabel!
-    
     @IBOutlet weak var tagLabel: UILabel?
-    
     @IBOutlet weak var favoriteCountLabel: UILabel!
+    @IBOutlet weak var arrowImageButtonOutlet: UIButton!
     
-    var questionID:Int?
+    var questionID:Int? {
+        didSet{
+            guard let realQuestionID = questionID as? Int else {return}
+            print("진짜 아이디: \(realQuestionID)")
+        }
+    }
     
     
     /*******************************************/
@@ -30,6 +34,7 @@ class BY_MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.arrowImageButtonOutlet.isUserInteractionEnabled = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,7 +42,13 @@ class BY_MainTableViewCell: UITableViewCell {
         
         guard let realQuestionTitleText:String = self.titleQuestionLabel.text as? String else {return print("퀘스쳔타이틀 가드문에 걸림")}
         self.getQuestionIDForQuestion(title: realQuestionTitleText) { (int) in
-            self.questionID = int
+            self.arrowImageButtonOutlet.setTitle(String(int), for: .normal)
+            
+            guard let realTitleLabel = self.arrowImageButtonOutlet.titleLabel,
+                let RealTextString = realTitleLabel.text,
+                let questionID = Int(RealTextString) else {return print("아이디가 없습니다.")}
+            
+            self.questionID = questionID
         }
         
     }

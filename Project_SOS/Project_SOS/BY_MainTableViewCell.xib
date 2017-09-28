@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메인 질문이 들어갑니다?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSx-Ki-m8L">
-                        <rect key="frame" x="8" y="10" width="345" height="27.5"/>
+                        <rect key="frame" x="8" y="10" width="362" height="27.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -52,32 +52,35 @@
                             <constraint firstAttribute="height" constant="0.5" id="Dop-0v-yXo"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackButton" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-I0-gNS">
-                        <rect key="frame" x="373" y="35" width="26" height="26"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx7-lZ-AEv">
+                        <rect key="frame" x="380" y="36" width="15" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="26" id="4qh-h2-Hd6"/>
-                            <constraint firstAttribute="width" secondItem="NYb-I0-gNS" secondAttribute="height" multiplier="1:1" id="h3F-1K-3SA"/>
+                            <constraint firstAttribute="width" constant="15" id="PRT-d8-tWP"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="BackButton">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="xx7-lZ-AEv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0dO-mL-aEE"/>
                     <constraint firstItem="j8u-Cu-Vo8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Bi-jR-zD9"/>
                     <constraint firstItem="OSx-Ki-m8L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2Da-nX-IA5"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="NYb-I0-gNS" secondAttribute="trailing" constant="8" id="32j-c6-guQ"/>
                     <constraint firstItem="axd-Px-Qfc" firstAttribute="centerY" secondItem="PXi-f9-pBA" secondAttribute="centerY" constant="1" id="4Bi-SL-G3a"/>
                     <constraint firstAttribute="trailing" secondItem="ePN-0s-7cH" secondAttribute="trailing" id="5Ak-wi-WOl"/>
-                    <constraint firstItem="NYb-I0-gNS" firstAttribute="leading" secondItem="OSx-Ki-m8L" secondAttribute="trailing" constant="20" id="EsW-w2-ihV"/>
+                    <constraint firstAttribute="trailing" secondItem="xx7-lZ-AEv" secondAttribute="trailing" constant="20" id="B7y-3P-qXB"/>
                     <constraint firstItem="PXi-f9-pBA" firstAttribute="top" secondItem="j8u-Cu-Vo8" secondAttribute="bottom" constant="5" id="G5R-ob-BTs"/>
                     <constraint firstItem="j8u-Cu-Vo8" firstAttribute="top" secondItem="OSx-Ki-m8L" secondAttribute="bottom" constant="2" id="SfI-47-ZD8"/>
+                    <constraint firstItem="xx7-lZ-AEv" firstAttribute="leading" secondItem="OSx-Ki-m8L" secondAttribute="trailing" constant="10" id="XN5-VI-n6a"/>
                     <constraint firstItem="PXi-f9-pBA" firstAttribute="leading" secondItem="j8u-Cu-Vo8" secondAttribute="leading" id="YMJ-cd-Wiu"/>
                     <constraint firstItem="j8u-Cu-Vo8" firstAttribute="leading" secondItem="OSx-Ki-m8L" secondAttribute="leading" id="Zdt-kG-wP5"/>
-                    <constraint firstItem="NYb-I0-gNS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hTG-Ng-bAM"/>
                     <constraint firstAttribute="bottom" secondItem="ePN-0s-7cH" secondAttribute="bottom" id="jFc-zB-oMv"/>
                     <constraint firstItem="ePN-0s-7cH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="s6K-ed-KDU"/>
                     <constraint firstItem="axd-Px-Qfc" firstAttribute="leading" secondItem="PXi-f9-pBA" secondAttribute="trailing" constant="5" id="wpO-qQ-15t"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="arrowImageButtonOutlet" destination="xx7-lZ-AEv" id="eum-aH-i5r"/>
                 <outlet property="favoriteCountLabel" destination="axd-Px-Qfc" id="D8f-Wc-kT1"/>
                 <outlet property="tagLabel" destination="j8u-Cu-Vo8" id="1ub-f1-564"/>
                 <outlet property="titleQuestionLabel" destination="OSx-Ki-m8L" id="15M-cp-w9f"/>
