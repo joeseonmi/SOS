@@ -56,8 +56,8 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
             })
-            let tempTagArray = data.map({ (dic) -> [String] in
-                return dic[Constants.question_Tag] as! [String]
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
             })
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
