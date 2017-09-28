@@ -267,28 +267,22 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SummaryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JRS-sG-bSm">
-                                            <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                            <rect key="frame" x="8" y="8" width="22" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="Ctn-8j-wUn"/>
-                                                <constraint firstAttribute="width" secondItem="JRS-sG-bSm" secondAttribute="height" multiplier="1:1" id="sYI-We-Wx1"/>
+                                                <constraint firstAttribute="width" constant="22" id="tUn-9r-Nol"/>
+                                                <constraint firstAttribute="width" secondItem="JRS-sG-bSm" secondAttribute="height" multiplier="1:1" id="xSG-CR-uOM"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요약해 볼까욧!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGp-t7-HxU">
-                                            <rect key="frame" x="38" y="10" width="99" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 요약해보자  - 요약 1  - 뿌뿌루부뿌 뿌미~ 뿌미와 같이 배워볼까 ㄹ라라랄라라라라라헤헤헤헤" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu1-V2-x0R">
-                                            <rect key="frame" x="8" y="40" width="337" height="145"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요약해보겠습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGp-t7-HxU">
+                                            <rect key="frame" x="38" y="10" width="108.5" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5LN-v8-n0z">
-                                            <rect key="frame" x="10" y="190" width="355" height="29"/>
+                                            <rect key="frame" x="0.0" y="200" width="375" height="29"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="0LN-0K-wTV"/>
+                                                <constraint firstAttribute="height" constant="28" id="uOZ-Zv-Sys"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="보영"/>
@@ -299,20 +293,32 @@
                                                 <action selector="characterSelectSegmentControlAction:" destination="MRh-Jc-7fO" eventType="valueChanged" id="nik-6p-x61"/>
                                             </connections>
                                         </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu1-V2-x0R">
+                                            <rect key="frame" x="28" y="36" width="337" height="156"/>
+                                            <string key="text">● 요약해보자  ● 요약 1  ● 뿌뿌루부뿌 뿌미~ 뿌미와 같이 배워볼까 
+  ㄹ라라랄라라라라라헤헤헤헤
+● 도
+● 倒● 도 
+● 倒</string>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="5LN-v8-n0z" firstAttribute="top" secondItem="Mu1-V2-x0R" secondAttribute="bottom" constant="5" id="2hP-Z4-2tY"/>
-                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="leading" secondItem="JRS-sG-bSm" secondAttribute="trailing" constant="8" id="2sn-YR-DRL"/>
-                                        <constraint firstItem="Mu1-V2-x0R" firstAttribute="top" secondItem="JRS-sG-bSm" secondAttribute="bottom" constant="10" id="7hn-dN-QJb"/>
-                                        <constraint firstItem="Mu1-V2-x0R" firstAttribute="leading" secondItem="MGp-t7-HxU" secondAttribute="leading" constant="-30" id="GRD-km-Boo"/>
-                                        <constraint firstAttribute="bottom" secondItem="5LN-v8-n0z" secondAttribute="bottom" constant="10" id="HbC-lg-XhU"/>
-                                        <constraint firstItem="5LN-v8-n0z" firstAttribute="leading" secondItem="hbK-pc-rqV" secondAttribute="leading" constant="10" id="OT5-QX-6dl"/>
-                                        <constraint firstItem="JRS-sG-bSm" firstAttribute="top" secondItem="hbK-pc-rqV" secondAttribute="top" constant="10" id="fmi-D2-jTD"/>
-                                        <constraint firstAttribute="trailing" secondItem="Mu1-V2-x0R" secondAttribute="trailing" constant="30" id="fyc-jg-G3m"/>
-                                        <constraint firstItem="JRS-sG-bSm" firstAttribute="leading" secondItem="hbK-pc-rqV" secondAttribute="leading" constant="10" id="mYr-KC-wjj"/>
-                                        <constraint firstAttribute="trailing" secondItem="5LN-v8-n0z" secondAttribute="trailing" constant="10" id="wuJ-Yt-8Wf"/>
-                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="centerY" secondItem="JRS-sG-bSm" secondAttribute="centerY" id="zCB-XK-kqI"/>
+                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="leading" secondItem="JRS-sG-bSm" secondAttribute="trailing" constant="8" id="0Ku-F1-4L5"/>
+                                        <constraint firstAttribute="bottom" secondItem="5LN-v8-n0z" secondAttribute="bottom" id="2uH-x0-Yte"/>
+                                        <constraint firstItem="5LN-v8-n0z" firstAttribute="top" secondItem="Mu1-V2-x0R" secondAttribute="bottom" constant="8" id="3CV-qi-RaP"/>
+                                        <constraint firstAttribute="trailing" secondItem="5LN-v8-n0z" secondAttribute="trailing" id="5l8-X6-req"/>
+                                        <constraint firstItem="MGp-t7-HxU" firstAttribute="centerY" secondItem="JRS-sG-bSm" secondAttribute="centerY" id="7mQ-50-v0B"/>
+                                        <constraint firstItem="5LN-v8-n0z" firstAttribute="leading" secondItem="hbK-pc-rqV" secondAttribute="leading" id="FgO-s4-WXg"/>
+                                        <constraint firstItem="Mu1-V2-x0R" firstAttribute="leading" secondItem="MGp-t7-HxU" secondAttribute="leading" constant="-10" id="GAi-Dw-tNd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mu1-V2-x0R" secondAttribute="trailing" constant="10" id="QDf-Vo-9pA"/>
+                                        <constraint firstItem="JRS-sG-bSm" firstAttribute="top" secondItem="hbK-pc-rqV" secondAttribute="top" constant="8" id="efi-x6-1id"/>
+                                        <constraint firstItem="Mu1-V2-x0R" firstAttribute="top" secondItem="MGp-t7-HxU" secondAttribute="bottom" constant="8" id="fbd-cX-3O7"/>
+                                        <constraint firstItem="JRS-sG-bSm" firstAttribute="leading" secondItem="hbK-pc-rqV" secondAttribute="leading" constant="8" id="m0E-mL-QKQ"/>
+
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="9Zy-Zr-9Dm">
@@ -545,7 +551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXB-wO-179" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3113" y="36"/>
+            <point key="canvasLocation" x="3112.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="ply-k9-hcE">
@@ -726,12 +732,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="AfK-NQ-63X">
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="AfK-NQ-63X">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="All"/>
-                                <segment title="Favorites"/>
+                                <segment title="ALL"/>
+                                <segment title="FAVORITES"/>
                             </segments>
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

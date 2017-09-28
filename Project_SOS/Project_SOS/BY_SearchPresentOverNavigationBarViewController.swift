@@ -17,6 +17,12 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     
     
     /*******************************************/
+    //MARK:-        LifeCycle                  //
+    /*******************************************/
+    
+    
+    
+    /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
     @IBAction func searchButtonClicked(_ button: UIBarButtonItem) {
