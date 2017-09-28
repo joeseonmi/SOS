@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class JS_AdMobTestViewController: UIViewController {
+class JS_TestAdMobViewController: UIViewController {
     
     @IBOutlet var uiViewAdmobBannerBackgroundView:UIView!
     // 스토리보드에서 UIView를 화면 최하단에 삽입하고, 오토레이아웃의 높이는 50으로 설정합니다.
