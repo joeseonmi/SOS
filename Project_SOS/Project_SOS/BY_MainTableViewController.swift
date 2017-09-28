@@ -68,15 +68,7 @@ class BY_MainTableViewController: UITableViewController {
             })
             let tempTagArray = data.map({ (dic) -> String in
                 return dic[Constants.question_Tag] as! String
-<<<<<<< HEAD
-            })
-            let tempQuestionIDArray = data.map({ (dic) -> Int in
-                return dic[Constants.question_QuestionId] as! Int
-=======
->>>>>>> f0fb4e5ccf7bb7ac58fd3b127a4deeac81134fa8
-            })
-            
-            
+            }) 
             
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
@@ -159,7 +151,7 @@ class BY_MainTableViewController: UITableViewController {
         cell.selectionStyle = .none
 
         cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
-        cell.tagOneLabel?.text = self.questionTagData[indexPath.row]
+        cell.tagLabel?.text = self.questionTagData[indexPath.row]
         cell.getLikeCount(question: indexPath.row)
         
         if self.isSearchBarClicked == false {
@@ -168,11 +160,7 @@ class BY_MainTableViewController: UITableViewController {
                 cell.getLikeCount(question: indexPath.row)
             }else{
                 cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
-<<<<<<< HEAD
                 cell.tagLabel?.text = self.questionTagData[indexPath.row]
-=======
-                cell.tagOneLabel?.text = self.questionTagData[indexPath.row]
->>>>>>> f0fb4e5ccf7bb7ac58fd3b127a4deeac81134fa8
                 cell.getLikeCount(question: indexPath.row)
             }
         }else if self.isSearchBarClicked == true {

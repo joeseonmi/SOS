@@ -115,7 +115,6 @@ class BY_DetailViewController: UIViewController {
         selectSeugeForCharacter(nameOf: selectedCharacter)
     }
     
-<<<<<<< HEAD
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -129,13 +128,12 @@ class BY_DetailViewController: UIViewController {
         
         self.detailTableView.tableHeaderView = headerView
         self.detailTableView.layoutIfNeeded()
-=======
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         print("==================\n\(byAnswer)\n===============")
         print("==================ㅇㅇ\(byAnswer[0][Constants.question_AnswerContents])ㅇㅇ===================")
->>>>>>> f0fb4e5ccf7bb7ac58fd3b127a4deeac81134fa8
     }
     
     override func didReceiveMemoryWarning() {
