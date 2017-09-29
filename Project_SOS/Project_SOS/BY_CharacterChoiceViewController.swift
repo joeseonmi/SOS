@@ -27,8 +27,7 @@ class BY_CharacterChoiceViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,6 +85,17 @@ class BY_CharacterChoiceViewController: UIViewController {
         guard let realCharacterString:String = UserDefaults.standard.object(forKey: "SelectedCharacter") as? String else {return}
         
         saveUserUidAtDatabase()
+        
+        //캐릭터 설정창에서 완료버튼을 눌렀을 때, 어떤 캐릭터를 설정했는지 파이어베이스에 이벤트로 저장
+        switch realCharacterString {
+        case "보영":
+            Analytics.logEvent("BY_Selected", parameters: ["id":realCharacterString])
+        case "선미":
+            Analytics.logEvent("SM_Selected", parameters: ["id":realCharacterString])
+        case "재성":
+            Analytics.logEvent("JS_Selected", parameters: ["id":realCharacterString])
+        default: break
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "characterSelected"), object: realCharacterString)
         self.dismiss(animated: true, completion: nil)

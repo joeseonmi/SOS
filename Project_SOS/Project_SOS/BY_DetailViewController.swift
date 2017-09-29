@@ -17,7 +17,7 @@ class BY_DetailViewController: UIViewController {
     
     var questionID:Int?
     var byAnswer:[[String:String]] = []
-	var jsAnswer:[[String:String]] = []
+    var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
     
     //네비게이션 바
@@ -47,7 +47,7 @@ class BY_DetailViewController: UIViewController {
     
     //테이블뷰
     @IBOutlet weak var detailTableView: UITableView!
-
+    
     //테이블뷰 헤더
     @IBOutlet weak var summaryTextLabel: UILabel!
     @IBOutlet weak var characterSelectSegmentedControl: UISegmentedControl!
@@ -62,12 +62,12 @@ class BY_DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //네비게이션 바 UI 설정
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
         self.navigationController?.navigationBar.topItem?.title = ""
+        
         
         //SearchVC을 통해 Present 되었을 때 NavigationBar 역할할 View 설정
         if self.isPresentedBySearchVC == true {
@@ -90,11 +90,12 @@ class BY_DetailViewController: UIViewController {
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
         NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNotiForCharacter(_:)), name: Notification.Name("characterSelected"), object: nil)
         
-        self.loadData(from: questionID!)
-        self.loadBYAnswer(from: questionID!)
+        //데이터 핸들링
+        guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         
-        print("이 디테일뷰는 \(self.questionID) 번째 질문입니다.")
-
+        self.loadData(from: realQuestionID)
+        self.loadBYAnswer(from: realQuestionID)
+        self.loadLikeData(questionID: realQuestionID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,11 +113,12 @@ class BY_DetailViewController: UIViewController {
             return
         }
         selectSeugeForCharacter(nameOf: selectedCharacter)
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         guard let headerView = self.detailTableView.tableHeaderView else {return}
         
         let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
@@ -160,12 +162,15 @@ class BY_DetailViewController: UIViewController {
         case 0:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "BYFace")
             self.mailingCharacterTextLabel.text = "보영에게\n메일링"
+            Analytics.logEvent("BY_Tapped", parameters: ["id":"보영"])
         case 1:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "SMFace")
             self.mailingCharacterTextLabel.text = "선미에게\n메일링"
+            Analytics.logEvent("SM_Tapped", parameters: ["id":"선미"])
         case 2:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "JSFace")
             self.mailingCharacterTextLabel.text = "재성에게\n메일링"
+            Analytics.logEvent("JS_Tapped", parameters: ["id":"재성"])
         default:
             break
         }
@@ -192,24 +197,16 @@ class BY_DetailViewController: UIViewController {
     @IBAction func shareButtonAction(_ sender: UIButton) {
     }
     
-    //TODO: (선미님!)여기에 즐겨찾기에 대한 기능을 구현해주세요
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        guard let realFavoriteButtonImage = self.favoriteButtonOutlet.image(for: .normal) else {return}
-        
-        switch realFavoriteButtonImage {
-        case #imageLiteral(resourceName: "Like_off"): self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
-        case #imageLiteral(resourceName: "likeCountIcon"): self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-        default:
-            break
-        }
-        
-        likeBtnAction()
+        self.likeButtonAction()
     }
-
+    
     
     //SearchVC을 통해 Present 되었을 때 네비게이션 바 역할을 할 뷰상의 버튼 설정
     //--Back Button
     @IBAction func navigationViewBackButtonAction(_ sender: UIButton) {
+        
+        //네비게이션 효과
         let transition = CATransition()
         transition.duration = 0.3
         transition.type = kCATransitionPush
@@ -225,18 +222,9 @@ class BY_DetailViewController: UIViewController {
     }
     
     //--Like Button
-    //TODO: (선미님!)여기에 즐겨찾기에 대한 기능을 구현해주세요 / 기존 NavigationBar 상의 버튼에 구현했던 것과 동일 + Firebase Database와 연동되어야 함
     @IBAction func navigationViewFavoriteButtonAction(_ sender: UIButton) {
-        guard let realFavoriteButtonImage = self.navigationViewFavoriteButtonOutlet.image(for: .normal) else {return}
-        
-        switch realFavoriteButtonImage {
-        case #imageLiteral(resourceName: "Like_off"): self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
-        case #imageLiteral(resourceName: "likeCountIcon"): self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-        default:
-            break
-        }
+        self.likeButtonAction()
     }
-    
     
     //선택한 캐릭터가 있다면, 해당 캐릭터 Segue가 띄워져 있도록 설정
     func selectSeugeForCharacter(nameOf:String) {
@@ -266,6 +254,97 @@ class BY_DetailViewController: UIViewController {
     func callNotiForCharacter(_ sender:Notification) {
         guard let realSelectedCharacterName:String = sender.object as? String else {return}
         self.selectSeugeForCharacter(nameOf: realSelectedCharacterName)
+    }
+    
+    // 데이터 영역
+    
+    // BY Func: 좋아요 구현 부분 테스트
+    // --- BY: 해당 질문의 좋아요 여부
+    func loadLikeData(questionID:Int) {
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴 \(snapshot.value)")}
+            
+            let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
+                let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
+                return questionNumber == questionID
+            })
+            
+            switch filteredLikeData.count {
+            case 0:
+                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+                self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+                print("안찍히나오")
+            case 1:
+                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+            default:
+                print("좋아요 이미지 에러: \(filteredLikeData)")
+            }
+        }, withCancel: { (error) in
+            print("좋아요 불러오는 에러입니다", error.localizedDescription)
+        })
+    }
+    
+    // --- BY: 좋아요 버튼 액션. 별표(좋아요)를 누를 때마다 데이터 및 UI를 반영하여 나타냅니다.
+    func likeButtonAction() {
+        guard let realQuestionID = self.questionID else {return}
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.childrenCount != 0 {
+                guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴 \(snapshot.value)")}
+                
+                let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
+                    let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
+                    return questionNumber == realQuestionID
+                })
+                
+                switch filteredLikeData.count {
+                case 0:
+                    self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                    self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                    Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
+                                                                                                    Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                case 1:
+                    self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+                    self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+                    Database.database().reference().child(Constants.like).child(filteredLikeData[0].key).setValue(nil)
+                default:
+                    print("좋아요 버튼액션에러: \(filteredLikeData)")
+                }
+            }else{
+                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
+                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
+                                                                                                Constants.like_User_Id:Auth.auth().currentUser?.uid])
+            }
+        }) { (error) in
+            print("좋아요 액션 에러", error.localizedDescription)
+        }
+    }
+    
+    func loadData(from question_ID:Int) {
+        Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [String:Any] else { return }
+            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            guard let tagArray = data[Constants.question_Tag] as? String else { return }
+            self.tagTextLabel.text = tagArray
+            guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
+            self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loadBYAnswer(from question_ID:Int) {
+        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
+            self.byAnswer = byAnswerArray
+            self.detailTableView.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
 }
@@ -410,62 +489,4 @@ extension BY_DetailViewController: UITableViewDelegate {
         return 72
     }
     
-    // SM Func
-    func likeBtnAction() {
-
-        guard let realQuestionID:Int = self.questionID else { return print("가드렛걸림")}
-        
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let likeData = snapshot.value as? [String:[String:Any]] else { return }
-            print("데이터가있슴니돠아아아아ㅏ==================:", likeData)
-            let filteredData = likeData.filter({ (dic:(key:String, value:[String:Any])) -> Bool in
-                var filteredQuestionID = dic.value[Constants.like_QuestionId]
-                return realQuestionID == filteredQuestionID as! Int
-            })
-            print("필터된데이터!!!!!!!!!!!!!!:", filteredData)
-            switch filteredData.count {
-            case 0 : Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
-//            self.getLikeCount(question:realQuestionID)
-            DataCenter.standard.favoriteQuestions.append(realQuestionID)
-            print("좋아요리스트!!!!!!!!!!!!!!!!",DataCenter.standard.favoriteQuestions)
-            case 1 :
-                Database.database().reference().child(Constants.like).child(filteredData[0].key).setValue(nil)
-//                self.getLikeCount(question: realQuestionID)
-                if let deleteIndex:Int = DataCenter.standard.favoriteQuestions.index(of: realQuestionID) {
-                    DataCenter.standard.favoriteQuestions.remove(at: deleteIndex)
-                }
-                print("좋아요리스트!!!!!!!!!!!!!!!!",DataCenter.standard.favoriteQuestions)
-            default:
-                print("error!!!!!!!!!!!!!!")
-            }
-            
-        }) { (error) in
-            print("좋아요 error: \(error.localizedDescription)")
-        }
-    }
-    func loadData(from question_ID:Int) {
-        Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:Any] else { return }
-            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
-            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
-            guard let tagArray = data[Constants.question_Tag] as? String else { return }
-            self.tagTextLabel.text = tagArray
-            guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
-            self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
-     
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-
-    func loadBYAnswer(from question_ID:Int) {
-        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
-            self.byAnswer = byAnswerArray
-            self.detailTableView.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
 }

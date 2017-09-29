@@ -49,8 +49,6 @@ class BY_MainTableViewController: UITableViewController {
         }
     }
 
-    
-    
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
     
@@ -94,14 +92,12 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         self.tableView.reloadData()
-        
         tableView.register(UINib.init(nibName: "BY_MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         awakeFromNib()
         
@@ -154,16 +150,14 @@ class BY_MainTableViewController: UITableViewController {
 
         cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
         cell.tagLabel?.text = self.questionTagData[indexPath.row]
-        cell.getLikeCount(question: indexPath.row)
+        cell.loadLikeDatafor(questionID: indexPath.row)
         
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
                 cell.titleQuestionLabel.text = ""
-                cell.getLikeCount(question: indexPath.row)
             }else{
                 cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
                 cell.tagLabel?.text = self.questionTagData[indexPath.row]
-                cell.getLikeCount(question: indexPath.row)
             }
         }else if self.isSearchBarClicked == true {
             cell.titleQuestionLabel.text = self.visibleResults[indexPath.row]
@@ -182,18 +176,5 @@ class BY_MainTableViewController: UITableViewController {
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
         nextViewController.questionID = self.selectedQuestionID
         self.navigationController?.pushViewController(nextViewController, animated: true)
-    }
-
-}
-
-//가져온 QuestionTitle 어레이와 QuetionID 어레이를 [QuetionTitle:QuestionID] 딕셔너리로 만들도록 해주는 Extension
-extension Dictionary {
-    public init(keys:[Key], values:[Value]) {
-        precondition(keys.count == values.count)
-        
-        self.init()
-        for (index, key) in keys.enumerated() {
-            self[key] = values[index]
-        }
     }
 }
