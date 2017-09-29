@@ -39,6 +39,7 @@
 		FE0E3E971F7C0F4A00FCBCCD /* JS_TestAdMobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */; };
 		FE0E3E981F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */; };
 		FE0E3E9A1F7C184900FCBCCD /* JS_TestWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */; };
+		FEA1675C1F7E264E00C6E9BA /* JS_TestShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestAdMobViewController.swift; path = JS_Test/JS_TestAdMobViewController.swift; sourceTree = "<group>"; };
 		FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestSendMailViewController.swift; path = JS_Test/JS_TestSendMailViewController.swift; sourceTree = "<group>"; };
 		FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestWebViewViewController.swift; path = JS_Test/JS_TestWebViewViewController.swift; sourceTree = "<group>"; };
+		FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestShareViewController.swift; path = JS_Test/JS_TestShareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */,
 				FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */,
 				FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */,
+				FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */,
 			);
 			name = JS_Test;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A15CBCC1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift in Sources */,
+				FEA1675C1F7E264E00C6E9BA /* JS_TestShareViewController.swift in Sources */,
 				FE0E3E981F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift in Sources */,
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
 				FE0E3E971F7C0F4A00FCBCCD /* JS_TestAdMobViewController.swift in Sources */,
