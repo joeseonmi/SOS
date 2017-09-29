@@ -871,6 +871,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                     </navigationItem>
                     <connections>
                         <outlet property="navigationBarLogoButtonOutlet" destination="sPp-1z-Y9W" id="76d-po-jU2"/>
+                        <outlet property="sortTableContentsSegmentedControlOutlet" destination="AfK-NQ-63X" id="iHb-E2-ZUb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Uj-gb-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -917,7 +918,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
         <image name="TitleCellBackground" width="375" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bl2-S5-sXv"/>
+        <segue reference="XmX-ca-eJd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
