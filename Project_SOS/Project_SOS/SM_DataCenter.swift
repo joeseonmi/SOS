@@ -14,7 +14,9 @@ class DataCenter {
     static let standard = DataCenter()
     
     var favoriteQuestions:[Int] = []
-
+    
+    //보영: QuestionID 받아오려고 기존의 DataCenter 좀 건드려보겠음
+    var selectedQuestionID:[Int] = []
     
 }
 

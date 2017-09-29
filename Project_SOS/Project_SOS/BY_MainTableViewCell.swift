@@ -18,12 +18,11 @@ class BY_MainTableViewCell: UITableViewCell {
     @IBOutlet weak var titleQuestionLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel?
     @IBOutlet weak var favoriteCountLabel: UILabel!
-    @IBOutlet weak var arrowImageButtonOutlet: UIButton!
     
     var questionID:Int? {
         didSet{
-            guard let realQuestionID = questionID as? Int else {return}
-            print("진짜 아이디: \(realQuestionID)")
+            guard let realQuestionID = questionID else {return}
+            questionID = realQuestionID
         }
     }
     
@@ -34,21 +33,14 @@ class BY_MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.arrowImageButtonOutlet.isUserInteractionEnabled = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        guard let realQuestionTitleText:String = self.titleQuestionLabel.text as? String else {return print("퀘스쳔타이틀 가드문에 걸림")}
+        guard let realQuestionTitleText:String = self.titleQuestionLabel.text else {return print("퀘스쳔타이틀 가드문에 걸림")}
         self.getQuestionIDForQuestion(title: realQuestionTitleText) { (int) in
-            self.arrowImageButtonOutlet.setTitle(String(int), for: .normal)
-            
-            guard let realTitleLabel = self.arrowImageButtonOutlet.titleLabel,
-                let RealTextString = realTitleLabel.text,
-                let questionID = Int(RealTextString) else {return print("아이디가 없습니다.")}
-            
-            self.questionID = questionID
+            self.questionID = int
         }
         
     }
@@ -72,7 +64,7 @@ class BY_MainTableViewCell: UITableViewCell {
             self.favoriteCountLabel.text = "\(data.count)"
             
         }) { (error) in
-            print("좋아요 에러", error.localizedDescription ?? "no data")
+            print("좋아요 에러", error.localizedDescription)
         }
         
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .childRemoved, with: { (snapshot) in

@@ -59,8 +59,11 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
         nextViewController.isPresentedBySearchVC = true
         
-        print("이게모양?\(self.questionTitleData[indexPath.row])")
-        nextViewController.questionID = self.questionDataForMainVC[self.questionTitleData[indexPath.row]] as! Int
+        //선택한 셀의 아이디 값을 전달
+        let currentCell = tableView.cellForRow(at: indexPath) as! BY_MainTableViewCell
+        self.selectedQuestionID = currentCell.questionID!
+        nextViewController.questionID = self.selectedQuestionID
+
         
         //Present를 Navigation Push(show) 처럼 보이게 설정
         let transition = CATransition()

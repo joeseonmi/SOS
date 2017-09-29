@@ -17,9 +17,7 @@ class BY_MainTableViewController: UITableViewController {
     var questionTitleData:[String] = []
     var questionTagData:[String] = []
     var questionFavoriteCount:Int = 0
-    var questionIDData:[Int] = []
-    
-    var questionDataForMainVC:[String:Any] = [:]
+    var selectedQuestionID:Int?
     
     //선택한 캐릭터가 있는지 확인
     var selectedCharater:String?
@@ -75,13 +73,8 @@ class BY_MainTableViewController: UITableViewController {
                 return dic[Constants.question_QuestionId] as! Int
             })
             
-            let tempQuestionData = Dictionary.init(keys:tempArray ,values:tempIDArray)
-            
-            print("이거시되는거시요잉 \(tempQuestionData)")
-            
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
-            self.questionDataForMainVC = tempQuestionData
 
             self.tableView.reloadData()
             
@@ -139,14 +132,14 @@ class BY_MainTableViewController: UITableViewController {
         
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
-                print("좋아요 개수 \(DataCenter.standard.favoriteQuestions.count)")
+//                print("좋아요 개수 \(DataCenter.standard.favoriteQuestions.count)")
                 return DataCenter.standard.favoriteQuestions.count
             }else{
-                print("전체 개수 \(self.questionTitleData.count)")
+//                print("전체 개수 \(self.questionTitleData.count)")
                 return self.questionTitleData.count
             }
         }else if self.isSearchBarClicked == true {
-            print("검색 개수 \(self.visibleResults.count)")
+//            print("검색 개수 \(self.visibleResults.count)")
             return self.visibleResults.count
         }else{
             print("셀개수에러")
@@ -183,14 +176,11 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
+        let currentCell = tableView.cellForRow(at: indexPath) as! BY_MainTableViewCell
+        self.selectedQuestionID = currentCell.questionID
         
-        if self.isfavoriteTableView != true {
-            nextViewController.questionID = indexPath.row
-        }else{
-            print("이게모양?\(self.questionTitleData[indexPath.row])")
-            nextViewController.questionID = self.questionDataForMainVC[self.questionTitleData[indexPath.row]] as! Int
-        }
+        let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
+        nextViewController.questionID = self.selectedQuestionID
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 
