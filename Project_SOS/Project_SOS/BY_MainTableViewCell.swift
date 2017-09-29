@@ -8,16 +8,12 @@
 
 import UIKit
 import Firebase
+
 class BY_MainTableViewCell: UITableViewCell {
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
-    
-    //---IBOutlet
-    @IBOutlet weak var titleQuestionLabel: UILabel!
-    @IBOutlet weak var tagLabel: UILabel?
-    @IBOutlet weak var favoriteCountLabel: UILabel!
     
     var questionID:Int? {
         didSet{
@@ -26,13 +22,17 @@ class BY_MainTableViewCell: UITableViewCell {
         }
     }
     
+    //---IBOutlet
+    @IBOutlet weak var titleQuestionLabel: UILabel!
+    @IBOutlet weak var tagLabel: UILabel?
+    @IBOutlet weak var favoriteCountLabel: UILabel!
+
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,7 +42,6 @@ class BY_MainTableViewCell: UITableViewCell {
         self.getQuestionIDForQuestion(title: realQuestionTitleText) { (int) in
             self.questionID = int
         }
-        
     }
     
     
@@ -50,37 +49,29 @@ class BY_MainTableViewCell: UITableViewCell {
     //MARK:-         Functions                 //
     /*******************************************/
     
-    func getLikeCount(question id:Int) {
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).keepSynced(true)
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:[String:Any]] else { return }
-            self.favoriteCountLabel.text = "\(data.count)"
+    //보영: 특정 질문에 대한 좋아요 데이터 가져오는 부분
+    func loadLikeDatafor(questionID:Int) {
+        DispatchQueue.global(qos: .default).async {
+            Database.database().reference().child(Constants.like).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.childrenCount != 0 {
+                    guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return}
+                    
+                    let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
+                        var exhibitionID:Int = dic.value[Constants.like_QuestionId] as! Int
+                        return exhibitionID == questionID
+                    })
+                    
+                    DispatchQueue.main.async {
+                        self.favoriteCountLabel.text = "\(filteredLikeData.count)"
+                    }
+                }else{
+                    guard let json = snapshot.value as? [String:Any] else {return}
+                    print("좋아요 없어요")
+                }
+            }, withCancel: { (error) in
+                print(error.localizedDescription)
+            })
             
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .childChanged, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:[String:Any]] else { return }
-            self.favoriteCountLabel.text = "\(data.count)"
-            
-        }) { (error) in
-            print("좋아요 에러", error.localizedDescription)
-        }
-        
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .childRemoved, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:[String:Any]] else { return }
-            self.favoriteCountLabel.text = "\(data.count)"
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_QuestionId).queryEqual(toValue: id).observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:[String:Any]] else { return }
-            self.favoriteCountLabel.text = "\(data.count)"
-            
-        }) { (error) in
-            print(error.localizedDescription)
         }
     }
     
@@ -107,7 +98,5 @@ class BY_MainTableViewCell: UITableViewCell {
         }
         
     }
-    
-    
     
 }

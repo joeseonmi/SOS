@@ -42,6 +42,12 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        print("써치뷰가 사라질것임")
+    }
+    
     
     /*******************************************/
     //MARK:-         Functions                 //
@@ -64,6 +70,8 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
         self.selectedQuestionID = currentCell.questionID!
         nextViewController.questionID = self.selectedQuestionID
 
+        //좋아요 갯수 연동
+        currentCell.loadLikeDatafor(questionID: indexPath.row)
         
         //Present를 Navigation Push(show) 처럼 보이게 설정
         let transition = CATransition()
