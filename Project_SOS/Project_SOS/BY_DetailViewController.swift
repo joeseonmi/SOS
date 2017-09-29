@@ -160,12 +160,15 @@ class BY_DetailViewController: UIViewController {
         case 0:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "BYFace")
             self.mailingCharacterTextLabel.text = "보영에게\n메일링"
+            Analytics.logEvent("BY_Tapped", parameters: ["id":"보영"])
         case 1:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "SMFace")
             self.mailingCharacterTextLabel.text = "선미에게\n메일링"
+            Analytics.logEvent("SM_Tapped", parameters: ["id":"선미"])
         case 2:
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "JSFace")
             self.mailingCharacterTextLabel.text = "재성에게\n메일링"
+            Analytics.logEvent("JS_Tapped", parameters: ["id":"재성"])
         default:
             break
         }
