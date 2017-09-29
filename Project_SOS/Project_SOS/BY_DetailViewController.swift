@@ -273,7 +273,6 @@ class BY_DetailViewController: UIViewController {
             case 0:
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-                print("안찍히나오")
             case 1:
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "likeCountIcon"), for: .normal)
