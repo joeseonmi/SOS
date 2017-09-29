@@ -62,11 +62,8 @@ class BY_DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        self.loadData(from: questionID!)
-        self.loadBYAnswer(from: questionID!)
-                //네비게이션 바 UI 설정
-
+        
+        //네비게이션 바 UI 설정
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
@@ -91,8 +88,10 @@ class BY_DetailViewController: UIViewController {
         self.detailTableView.separatorStyle = .none
         
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
-        NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNoti(_:)), name: Notification.Name("characterSelected"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNotiForCharacter(_:)), name: Notification.Name("characterSelected"), object: nil)
         
+        self.loadData(from: questionID!)
+        self.loadBYAnswer(from: questionID!)
         
         print("이 디테일뷰는 \(self.questionID) 번째 질문입니다.")
 
@@ -264,7 +263,7 @@ class BY_DetailViewController: UIViewController {
     }
     
     //노티피케이션 구현 함수
-    func callNoti(_ sender:Notification) {
+    func callNotiForCharacter(_ sender:Notification) {
         guard let realSelectedCharacterName:String = sender.object as? String else {return}
         self.selectSeugeForCharacter(nameOf: realSelectedCharacterName)
     }

@@ -17,8 +17,7 @@ class BY_MainTableViewController: UITableViewController {
     var questionTitleData:[String] = []
     var questionTagData:[String] = []
     var questionFavoriteCount:Int = 0
-    
-    var questionDataForMainVC:[[String:Any]] = []
+    var selectedQuestionID:Int?
     
     //선택한 캐릭터가 있는지 확인
     var selectedCharater:String?
@@ -46,9 +45,10 @@ class BY_MainTableViewController: UITableViewController {
             
             self.isSearchBarClicked = true
             self.tableView.reloadData()
-//            print("필터스트링 디드셋됨 \n visibleResult: \(visibleResults)\n allResults: \(questionTitleData)")
+            
         }
     }
+
     
     
     //네비게이션 바
@@ -69,16 +69,18 @@ class BY_MainTableViewController: UITableViewController {
             let tempTagArray = data.map({ (dic) -> String in
                 return dic[Constants.question_Tag] as! String
             }) 
+            let tempIDArray = data.map({ (dic) -> Int in
+                return dic[Constants.question_QuestionId] as! Int
+            })
             
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
-            
+
             self.tableView.reloadData()
             
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         
         guard let realNavigationBarLogoButtonOutlet = self.navigationBarLogoButtonOutlet else {return}
         realNavigationBarLogoButtonOutlet.isUserInteractionEnabled = false
@@ -130,14 +132,14 @@ class BY_MainTableViewController: UITableViewController {
         
         if self.isSearchBarClicked == false {
             if self.isfavoriteTableView {
-                print("좋아요 개수 \(DataCenter.standard.favoriteQuestions.count)")
+//                print("좋아요 개수 \(DataCenter.standard.favoriteQuestions.count)")
                 return DataCenter.standard.favoriteQuestions.count
             }else{
-                print("전체 개수 \(self.questionTitleData.count)")
+//                print("전체 개수 \(self.questionTitleData.count)")
                 return self.questionTitleData.count
             }
         }else if self.isSearchBarClicked == true {
-            print("검색 개수 \(self.visibleResults.count)")
+//            print("검색 개수 \(self.visibleResults.count)")
             return self.visibleResults.count
         }else{
             print("셀개수에러")
@@ -174,16 +176,24 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! BY_MainTableViewCell
+        self.selectedQuestionID = currentCell.questionID
+        
         let nextViewController:BY_DetailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! BY_DetailViewController
-        
-        if self.isfavoriteTableView == true {
-            //TO DO: (보영) 추후에 좋아요 기능 구현되면 별도의 ID를 보내줄 것
-        }else{
-            nextViewController.questionID = indexPath.row
-        }
-        
+        nextViewController.questionID = self.selectedQuestionID
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 
-    
+}
+
+//가져온 QuestionTitle 어레이와 QuetionID 어레이를 [QuetionTitle:QuestionID] 딕셔너리로 만들도록 해주는 Extension
+extension Dictionary {
+    public init(keys:[Key], values:[Value]) {
+        precondition(keys.count == values.count)
+        
+        self.init()
+        for (index, key) in keys.enumerated() {
+            self[key] = values[index]
+        }
+    }
 }

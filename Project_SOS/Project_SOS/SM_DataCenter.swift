@@ -14,7 +14,6 @@ class DataCenter {
     static let standard = DataCenter()
     
     var favoriteQuestions:[Int] = []
-
     
 }
 

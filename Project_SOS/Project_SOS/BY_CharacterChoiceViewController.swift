@@ -18,6 +18,7 @@ class BY_CharacterChoiceViewController: UIViewController {
     @IBOutlet weak var normalBYButtonOutlet: UIButton!
     @IBOutlet weak var normalSMButtonOutlet: UIButton!
     @IBOutlet weak var normalJSButtonOutlet: UIButton!
+    @IBOutlet weak var completeButtonOutlet: UIButton!
     
     var userCount:Int = 0
     
@@ -45,9 +46,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("보영! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("보영", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
@@ -57,9 +60,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
             self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("선미! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("선미", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
@@ -69,9 +74,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
             self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("재성! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("재성", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
