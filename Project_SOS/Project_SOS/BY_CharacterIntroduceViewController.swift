@@ -12,6 +12,7 @@ class BY_CharacterIntroduceViewController: UIViewController {
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
+    @IBOutlet weak var dismissBtn: UIButton!
     @IBOutlet weak var introduceBYLabel: UILabel!
     @IBOutlet weak var introduceJSLabel: UILabel!
     @IBOutlet weak var introduceSMLabel: UILabel!

@@ -14,10 +14,12 @@ class BY_CharacterChoiceViewController: UIViewController {
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
+    @IBOutlet weak var bgView: UIView!
     
     @IBOutlet weak var normalBYButtonOutlet: UIButton!
     @IBOutlet weak var normalSMButtonOutlet: UIButton!
     @IBOutlet weak var normalJSButtonOutlet: UIButton!
+    @IBOutlet weak var completeButtonOutlet: UIButton!
     
     var userCount:Int = 0
     
@@ -26,8 +28,9 @@ class BY_CharacterChoiceViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+    
+        self.bgView.layer.cornerRadius = 10
+        self.bgView.clipsToBounds = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,9 +48,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("보영! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("보영", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
@@ -57,9 +62,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
             self.normalJSButtonOutlet.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("선미! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("선미", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
@@ -69,9 +76,11 @@ class BY_CharacterChoiceViewController: UIViewController {
             self.normalBYButtonOutlet.setImage(#imageLiteral(resourceName: "BY_OFF"), for: .normal)
             self.normalSMButtonOutlet.setImage(#imageLiteral(resourceName: "SM_OFF"), for: .normal)
             
+            self.completeButtonOutlet.setTitle("재성! 너로 정했다!", for: .normal)
             UserDefaults.standard.set("재성", forKey: "SelectedCharacter")
         }else{
             sender.setImage(#imageLiteral(resourceName: "JS_OFF"), for: .normal)
+            self.completeButtonOutlet.setTitle("선택해주세요!", for: .normal)
         }
     }
     
@@ -79,6 +88,17 @@ class BY_CharacterChoiceViewController: UIViewController {
         guard let realCharacterString:String = UserDefaults.standard.object(forKey: "SelectedCharacter") as? String else {return}
         
         saveUserUidAtDatabase()
+        
+        //캐릭터 설정창에서 완료버튼을 눌렀을 때, 어떤 캐릭터를 설정했는지 파이어베이스에 이벤트로 저장
+        switch realCharacterString {
+        case "보영":
+            Analytics.logEvent("BY_Selected", parameters: ["id":realCharacterString])
+        case "선미":
+            Analytics.logEvent("SM_Selected", parameters: ["id":realCharacterString])
+        case "재성":
+            Analytics.logEvent("JS_Selected", parameters: ["id":realCharacterString])
+        default: break
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "characterSelected"), object: realCharacterString)
         self.dismiss(animated: true, completion: nil)

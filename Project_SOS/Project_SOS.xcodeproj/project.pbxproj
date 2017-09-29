@@ -26,7 +26,6 @@
 		D862F9751F74E36A00D85971 /* SM_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862F9741F74E36A00D85971 /* SM_Constants.swift */; };
 		D865394D1F5E8C2B00D34790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865394C1F5E8C2B00D34790 /* AppDelegate.swift */; };
 		D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539501F5E8C2B00D34790 /* Main.storyboard */; };
-		D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86539531F5E8C2B00D34790 /* Assets.xcassets */; };
 		D86539571F5E8C2B00D34790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */; };
 		D88019BD1F7389C800DDF7B6 /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88019BB1F7389C800DDF7B6 /* BubbleTableViewCell.swift */; };
 		D88019C41F73AAD900DDF7B6 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D88019C21F73AAD900DDF7B6 /* MainTableViewCell.xib */; };
@@ -39,6 +38,7 @@
 		FE0E3E971F7C0F4A00FCBCCD /* JS_TestAdMobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */; };
 		FE0E3E981F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */; };
 		FE0E3E9A1F7C184900FCBCCD /* JS_TestWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */; };
+		FEA1675C1F7E264E00C6E9BA /* JS_TestShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,9 +63,9 @@
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86539511F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D86539531F5E8C2B00D34790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D86539561F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D86539581F5E8C2B00D34790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D86CA8821F7EB9EB009B732C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D88019BB1F7389C800DDF7B6 /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
 		D88019BC1F7389C800DDF7B6 /* BubbleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BubbleTableViewCell.xib; sourceTree = "<group>"; };
 		D88019C11F73AAD900DDF7B6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 		FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestAdMobViewController.swift; path = JS_Test/JS_TestAdMobViewController.swift; sourceTree = "<group>"; };
 		FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestSendMailViewController.swift; path = JS_Test/JS_TestSendMailViewController.swift; sourceTree = "<group>"; };
 		FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestWebViewViewController.swift; path = JS_Test/JS_TestWebViewViewController.swift; sourceTree = "<group>"; };
+		FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestShareViewController.swift; path = JS_Test/JS_TestShareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +179,10 @@
 				6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */,
 				6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */,
 				6A33C85D1F614A89005FC0A8 /* BY_IntroduceDevelopersViewController.swift */,
+				D86CA8821F7EB9EB009B732C /* Assets.xcassets */,
 				FE4FE6E71F6C24B00052AFB0 /* JS_Test */,
 				6AD85B371F78ACBC008DB11B /* BY_ViewPager */,
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
-				D86539531F5E8C2B00D34790 /* Assets.xcassets */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
 				D8C6EA071F766B6E00E10A17 /* GoogleService-Info.plist */,
@@ -204,6 +205,7 @@
 				FE0E3E941F7C0F4900FCBCCD /* JS_TestAdMobViewController.swift */,
 				FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */,
 				FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */,
+				FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */,
 			);
 			name = JS_Test;
 			sourceTree = "<group>";
@@ -277,7 +279,6 @@
 				D8321BEF1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard in Resources */,
 				FE0E3E921F7C0F0800FCBCCD /* JS_Test.storyboard in Resources */,
 				D88019C41F73AAD900DDF7B6 /* MainTableViewCell.xib in Resources */,
-				D86539541F5E8C2B00D34790 /* Assets.xcassets in Resources */,
 				6AFBF1201F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib in Resources */,
 				D86539521F5E8C2B00D34790 /* Main.storyboard in Resources */,
 			);
@@ -349,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A15CBCC1F72B20200F74B1A /* BY_SearchPresentOverNavigationBarViewController.swift in Sources */,
+				FEA1675C1F7E264E00C6E9BA /* JS_TestShareViewController.swift in Sources */,
 				FE0E3E981F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift in Sources */,
 				6A33C85C1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift in Sources */,
 				FE0E3E971F7C0F4A00FCBCCD /* JS_TestAdMobViewController.swift in Sources */,

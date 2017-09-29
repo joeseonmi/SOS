@@ -1,0 +1,1035 @@
+{
+  "Like": [
+    {
+      "Question_ID": 0,
+      "User_ID": 0
+    }
+  ],
+  "User": [
+    {
+      "User_ID": "uid"
+    }
+  ],
+  "Question": [
+    {
+      "Question_ID": "0",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "1",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "동기 vs. 비동기, 차이점은?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "2",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "ARC 를 설명해주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "3",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "MVC 를 설명해주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "4",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "RxSwift 는 무엇인가요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "5",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "오토레이아웃은 왜 필요한가요? \n구현 방법은 어떤 것들이 있나요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "6",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "TDD 가 무엇인지 설명하고, 간단한 구현 방법을 알려주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "7",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "객체 지향 프로그래밍이란 무엇인가요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "8",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "함수형 프로그래밍은 무엇인가요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "Array 와 LinkedList 를 설명해주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "웹 통신의 큰 흐름을 OSI 7계층을 통해 설명해주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "HTTP 와 HTTPS 는 어떤 차이점이 있나요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "React Native 에 대해 들어봤나요? 무엇인가요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "TestFlight 를 사용해봤나요? 왜 필요한가요?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "JS_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Question_Title": "Android 와 iOS 의 차이점을 설명해주세요.",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        [
+          {
+            "Type": "text"
+          },
+          {
+            "Contents": "으아아아아아아아아"
+          }
+        ],
+        [
+          {
+            "Type": "image"
+          },
+          {
+            "Contents": "imageURL"
+          }
+        ]
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    }
+  ]
+}

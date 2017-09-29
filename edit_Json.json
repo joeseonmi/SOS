@@ -1,0 +1,675 @@
+{
+  "Like": [
+    {
+      "Question_ID": 0,
+      "User_ID": 0
+    }
+  ],
+  "User": [
+    {
+      "User_ID": "uid"
+    }
+  ],
+  "Question": [
+    {
+      "Question_ID": "0",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "1",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "2",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "3",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "4",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "5",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "6",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "7",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "8",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "9",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "10",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "11",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "12",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "13",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    },
+    {
+      "Question_ID": "14",
+      "BY_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "JS_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Question_Title": "앱 생명 주기 그리고 AppDelegate란?",
+      "Summary": [
+        "앱델리게이트란",
+        "이런거시다",
+        "여기에 이미지는 다메요"
+      ],
+      "SM_Answer": [
+        {
+          "Type": "text",
+          "Contents": "아 진자루다가 싫다 이거"
+        },
+        {
+          "Type": "image",
+          "Contents": "URL"
+        }
+      ],
+      "Tag": [
+        "델리게이트",
+        "앱 상태변환",
+        "생명주기"
+      ]
+    }
+  ]
+}
