@@ -106,7 +106,7 @@ class BY_MainTableViewController: UITableViewController {
             self.selectedCharater = UserDefaults.standard.object(forKey: "SelectedCharacter") as! String
         }
         
-        //FAVOTRITE 데이터 가져오기
+        //FAVORITE 데이터 가져오기
         if Auth.auth().currentUser?.uid != nil {
             Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
