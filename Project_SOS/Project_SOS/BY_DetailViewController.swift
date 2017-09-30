@@ -213,7 +213,7 @@ class BY_DetailViewController: UIViewController {
         transition.subtype = kCATransitionFromLeft
         view.window!.layer.add(transition, forKey: kCATransition)
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     //--Share Button
@@ -257,7 +257,6 @@ class BY_DetailViewController: UIViewController {
     }
     
     // 데이터 영역
-    
     // BY Func: 좋아요 구현 부분 테스트
     // --- BY: 해당 질문의 좋아요 여부
     func loadLikeData(questionID:Int) {
@@ -323,9 +322,10 @@ class BY_DetailViewController: UIViewController {
     
     func loadData(from question_ID:Int) {
         Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:Any] else { return }
-            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
-            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            guard let data = snapshot.value as? [String:Any],
+                let titleValue = data[Constants.question_QuestionTitle] as? String else { return }
+            self.titleTextLabel.text = titleValue
+            self.hiddenTitleTextLabel.text = titleValue
             guard let tagArray = data[Constants.question_Tag] as? String else { return }
             self.tagTextLabel.text = tagArray
             guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
