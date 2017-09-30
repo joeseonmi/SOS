@@ -9,19 +9,20 @@
 import UIKit
 import Firebase
 
+
 class BY_MainTableViewCell: UITableViewCell {
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
-    
+
     var questionID:Int? {
         didSet{
             guard let realQuestionID = questionID else {return}
             questionID = realQuestionID
         }
     }
-    
+
     //---IBOutlet
     @IBOutlet weak var titleQuestionLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel?
@@ -49,6 +50,7 @@ class BY_MainTableViewCell: UITableViewCell {
     //MARK:-         Functions                 //
     /*******************************************/
     
+
     //보영: 특정 질문에 대한 좋아요 데이터 가져오는 부분
     func loadLikeDatafor(questionID:Int) {
         DispatchQueue.global(qos: .default).async {
@@ -71,6 +73,7 @@ class BY_MainTableViewCell: UITableViewCell {
             }, withCancel: { (error) in
                 print(error.localizedDescription)
             })
+
             
         }
     }

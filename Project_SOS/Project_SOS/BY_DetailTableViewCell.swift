@@ -26,7 +26,8 @@ class BY_DetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bgView.layer.cornerRadius = 10
-        
+        self.explainBubbleImage.layer.cornerRadius = 10
+        self.explainBubbleImage.clipsToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
