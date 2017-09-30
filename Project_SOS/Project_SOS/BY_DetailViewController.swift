@@ -59,13 +59,13 @@ class BY_DetailViewController: UIViewController {
     @IBOutlet weak var mailingCharacterImageView: UIImageView!
     @IBOutlet weak var mailingCharacterTextLabel: UILabel!
     
+    
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         //네비게이션 바 UI 설정
         self.navigationBarLogoButtonOutlet.isUserInteractionEnabled = false
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "BackButton")
@@ -93,14 +93,13 @@ class BY_DetailViewController: UIViewController {
         
         //노티: 캐릭터선택VC에서 어떤 캐릭터를 선택하냐에 따라서, 해당 캐릭터의 설명이 우선적으로 나올 수 있도록 SegmentController를 조정하는 역할을 할 것입니다.
         NotificationCenter.default.addObserver(self, selector: #selector(BY_DetailViewController.callNotiForCharacter(_:)), name: Notification.Name("characterSelected"), object: nil)
-
+        
         //데이터 핸들링
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         
         self.loadData(from: realQuestionID)
-        self.loadAnswer(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,8 +118,13 @@ class BY_DetailViewController: UIViewController {
         }
         selectSeugeForCharacter(nameOf: selectedCharacter)
         
+        guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
+        self.loadAnswer(from: realQuestionID)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -182,7 +186,7 @@ class BY_DetailViewController: UIViewController {
     //TODO: (재성님!)여기에 메일/구글링/네이버링에 대한 각각의 액션을 구현해주세요.
     @IBAction func mailingButtonAction(_ sender: UIButton) {
         print("메일 버튼이 눌렸습니다")
-       
+        
     }
     
     @IBAction func googlingButtonAction(_ sender: UIButton) {
@@ -201,7 +205,7 @@ class BY_DetailViewController: UIViewController {
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
         self.likeButtonAction()
-
+        
     }
     
     
@@ -216,7 +220,7 @@ class BY_DetailViewController: UIViewController {
         transition.subtype = kCATransitionFromLeft
         view.window!.layer.add(transition, forKey: kCATransition)
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     //--Share Button
@@ -260,7 +264,6 @@ class BY_DetailViewController: UIViewController {
     }
     
     // 데이터 영역
-    
     // BY Func: 좋아요 구현 부분 테스트
     // --- BY: 해당 질문의 좋아요 여부
     func loadLikeData(questionID:Int) {
@@ -326,9 +329,10 @@ class BY_DetailViewController: UIViewController {
     
     func loadData(from question_ID:Int) {
         Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [String:Any] else { return }
-            self.titleTextLabel.text = data[Constants.question_QuestionTitle] as! String
-            self.hiddenTitleTextLabel.text = data[Constants.question_QuestionTitle] as! String
+            guard let data = snapshot.value as? [String:Any],
+                let titleValue = data[Constants.question_QuestionTitle] as? String else { return }
+            self.titleTextLabel.text = titleValue
+            self.hiddenTitleTextLabel.text = titleValue
             guard let tagArray = data[Constants.question_Tag] as? String else { return }
             self.tagTextLabel.text = tagArray
             guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
@@ -339,13 +343,27 @@ class BY_DetailViewController: UIViewController {
         }
     }
     
-    func loadBYAnswer(from question_ID:Int) {
+    func loadAnswer(from question_ID:Int) {
         Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.byAnswer = byAnswerArray
             self.detailTableView.reloadData()
         }) { (error) in
             print(error.localizedDescription)
+        }
+        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_JSAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let jsAnswerArray = snapshot.value as? [[String:String]] else { return }
+            self.jsAnswer = jsAnswerArray
+            self.detailTableView.reloadData()
+        }) { (error) in
+            print("error: ",error.localizedDescription)
+        }
+        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_SMAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let smAnswerArray = snapshot.value as? [[String:String]] else { return }
+            self.smAnswer = smAnswerArray
+            self.detailTableView.reloadData()
+        }) { (error) in
+            print("error: ",error.localizedDescription)
         }
     }
     
@@ -359,7 +377,16 @@ extension BY_DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return byAnswer.count
+        switch self.characterSelectSegmentedControl.selectedSegmentIndex {
+        case 0: //"보영 선택시"
+            return self.byAnswer.count
+        case 1: //"선미 선택시"
+            return self.smAnswer.count
+        case 2: //"재성 선택시"
+            return self.jsAnswer.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -379,7 +406,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
             
             if byAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
                 cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
             }else{
                 cell.explainBubbleText.isHidden = true
@@ -388,7 +416,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                     let realData = try Data(contentsOf: imageURL)
                     cell.explainBubbleImage.image = UIImage(data:realData)
                 }catch{
-                   
+                    
                 }
             }
             
@@ -396,7 +424,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "SMFace")
             if smAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = smAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
                 cell.explainBubbleText.isHidden = true
@@ -412,7 +441,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = jsAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
@@ -531,33 +561,6 @@ extension BY_DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
-    }
-    
-
-    
-    func loadAnswer(from question_ID:Int) {
-        
-        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
-            self.byAnswer = byAnswerArray
-            self.detailTableView.reloadData()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_JSAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let jsAnswerArray = snapshot.value as? [[String:String]] else { return }
-            self.jsAnswer = jsAnswerArray
-             self.detailTableView.reloadData()
-        }) { (error) in
-            print("error: ",error.localizedDescription)
-        }
-        Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_SMAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let smAnswerArray = snapshot.value as? [[String:String]] else { return }
-            self.smAnswer = smAnswerArray
-             self.detailTableView.reloadData()
-        }) { (error) in
-            print("error: ",error.localizedDescription)
-        }
     }
     
 }
