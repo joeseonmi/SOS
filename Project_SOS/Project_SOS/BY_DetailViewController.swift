@@ -118,12 +118,12 @@ class BY_DetailViewController: UIViewController {
         }
         selectSeugeForCharacter(nameOf: selectedCharacter)
         
+        guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
+        self.loadAnswer(from: realQuestionID)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
-        self.loadAnswer(from: realQuestionID)
     }
     
     override func viewDidLayoutSubviews() {
@@ -377,7 +377,16 @@ extension BY_DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return byAnswer.count
+        switch self.characterSelectSegmentedControl.selectedSegmentIndex {
+        case 0: //"보영 선택시"
+            return self.byAnswer.count
+        case 1: //"선미 선택시"
+            return self.smAnswer.count
+        case 2: //"재성 선택시"
+            return self.jsAnswer.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -397,7 +406,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
             
             if byAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
                 cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
             }else{
                 cell.explainBubbleText.isHidden = true
@@ -414,7 +424,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "SMFace")
             if smAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = smAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
                 cell.explainBubbleText.isHidden = true
@@ -430,7 +441,8 @@ extension BY_DetailViewController: UITableViewDataSource {
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = jsAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.isHidden = true
+                cell.explainBubbleImage.image = nil
+                cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
