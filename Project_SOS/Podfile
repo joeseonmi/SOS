@@ -16,7 +16,7 @@ pod 'Google-Mobile-Ads-SDK'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 
-#AppIcon 문제 해결용이라지만 해결 안됨
+pod 'SDWebImage', '~> 4.0'
 
 post_install do |installer|
     copy_pods_resources_path = "/Users/B.Park/SOS/Project_SOS/Pods/Target\ Support\ Files/Pods-Project_SOS/Pods-Project_SOS-resources.sh"

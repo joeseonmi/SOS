@@ -50,6 +50,9 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
   - SimpleMarkdownParser (0.5.4)
 
 DEPENDENCIES:
@@ -58,6 +61,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
+  - SDWebImage (~> 4.0)
   - SimpleMarkdownParser (~> 0.5.3)
 
 SPEC CHECKSUMS:
@@ -73,8 +77,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SimpleMarkdownParser: ffe7fc0106c15662f752f9e9e3d33d011d4aff92
 
-PODFILE CHECKSUM: e7d03d31a465a1a54710e94c5fbe77f781240019
+PODFILE CHECKSUM: 546c63f9bff6801b42f46d7617bd50685d382f1b
 
 COCOAPODS: 1.3.1

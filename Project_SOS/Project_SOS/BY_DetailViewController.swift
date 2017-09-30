@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MessageUI
 import SafariServices
+import SDWebImage
 
 class BY_DetailViewController: UIViewController {
     
@@ -268,7 +269,10 @@ class BY_DetailViewController: UIViewController {
     // --- BY: 해당 질문의 좋아요 여부
     func loadLikeData(questionID:Int) {
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴 \(snapshot.value)")}
+            guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {
+                self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
+                return print("못불러옴 \(snapshot.value)")
+            }
             
             let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
                 let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
@@ -412,12 +416,15 @@ extension BY_DetailViewController: UITableViewDataSource {
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
-                do {
-                    let realData = try Data(contentsOf: imageURL)
-                    cell.explainBubbleImage.image = UIImage(data:realData)
-                }catch{
-                    
-                }
+                //                do {
+                //                    let realData = try Data(contentsOf: imageURL)
+                //                    cell.explainBubbleImage.image = UIImage(data:realData)
+                //                }catch{
+                //
+                //                }
+                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
+                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "defaultImg"), options: .delayPlaceholder, progress: nil, completed: nil)
+                
             }
             
         case 1:
@@ -428,14 +435,15 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
-                cell.explainBubbleText.isHidden = true
-                guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
-                do {
-                    let realData = try Data(contentsOf: imageURL)
-                    cell.explainBubbleImage.image = UIImage(data:realData)
-                }catch{
-                    
-                }
+                guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                //                do {
+                //                    let realData = try Data(contentsOf: imageURL)
+                //                    cell.explainBubbleImage.image = UIImage(data:realData)
+                //                }catch{
+                //
+                //                }
+                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
+                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "SMFace")) //보영: 여기서 with는 불러오고 싶은 이미지 주소, placeholderImage는 이미지를 불러오기 전까지 띄우고 싶은 defaultImage를 의미함. 사실 여기에 선미가 만들어놓은 defaultImage 를 넣고 싶은데, 역시 이미지 문제로 그 이미지 넣으면 뻑이남.
             }
         case 2:
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
@@ -445,13 +453,19 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
-                guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
-                do {
-                    let realData = try Data(contentsOf: imageURL)
-                    cell.explainBubbleImage.image = UIImage(data:realData)
-                }catch{
-                    
-                }
+                guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                //                do {
+                //                    let realData = try Data(contentsOf: imageURL)
+                //                    cell.explainBubbleImage.image = UIImage(data:realData)
+                //                }catch{
+                //
+                //                }
+                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
+                cell.explainBubbleImage.sd_setIndicatorStyle(.whiteLarge)
+                cell.explainBubbleImage.sd_addActivityIndicator()
+                cell.explainBubbleImage.sd_showActivityIndicatorView()
+                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "JSFace"))
+                
             }
         default:
             break
