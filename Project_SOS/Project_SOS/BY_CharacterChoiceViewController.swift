@@ -14,6 +14,7 @@ class BY_CharacterChoiceViewController: UIViewController {
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
+    @IBOutlet weak var bgView: UIView!
     
     @IBOutlet weak var normalBYButtonOutlet: UIButton!
     @IBOutlet weak var normalSMButtonOutlet: UIButton!
@@ -27,7 +28,9 @@ class BY_CharacterChoiceViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        self.bgView.layer.cornerRadius = 10
+        self.bgView.clipsToBounds = true
     }
     
     override func didReceiveMemoryWarning() {

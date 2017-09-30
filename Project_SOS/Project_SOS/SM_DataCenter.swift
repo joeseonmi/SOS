@@ -13,8 +13,7 @@ class DataCenter {
     
     static let standard = DataCenter()
     
-    var favoriteQuestions:[Int] = []
-    
+    var favoriteQuestions:[Int] = []    
 }
 
 //struct QuestionData {

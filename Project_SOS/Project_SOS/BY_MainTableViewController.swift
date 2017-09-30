@@ -177,6 +177,7 @@ class BY_MainTableViewController: UITableViewController {
         let cell:BY_MainTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! BY_MainTableViewCell
         
         cell.selectionStyle = .none
+
         
         //ALL 이냐 FAVORITE 냐
         if isfavoriteTableView == false {

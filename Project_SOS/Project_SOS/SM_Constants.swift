@@ -21,6 +21,8 @@ struct Constants {
     static let question_JSAnswer:String = "JS_Answer"
     static let question_SMAnswer:String = "SM_Answer"
     static let question_AnswerType:String = "Type"
+    static let answerType_TEXT = "text"
+    static let answerType_IMG = "image"
     static let question_AnswerContents:String = "Contents"
     static let question_QuestionId:String = "Question_ID"
     static let question_QuestionTitle:String = "Question_Title"
