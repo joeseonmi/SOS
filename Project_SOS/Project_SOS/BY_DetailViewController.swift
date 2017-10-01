@@ -187,26 +187,47 @@ class BY_DetailViewController: UIViewController {
     //TODO: (재성님!)여기에 메일/구글링/네이버링에 대한 각각의 액션을 구현해주세요.
     @IBAction func mailingButtonAction(_ sender: UIButton) {
         print("메일 버튼이 눌렸습니다")
+        switch self.characterSelectSegmentedControl.selectedSegmentIndex {
+        case 0:
+            let byEmail:String = "fimuxd@gmail.com"
+            sendEmailTo(emailAddress: byEmail)
+        case 1:
+            let smEmail:String = "jemma3136@gmail.com"
+            sendEmailTo(emailAddress: smEmail)
+        case 2:
+            let jsEmail:String = "blackturtle2@gmail.com"
+            sendEmailTo(emailAddress: jsEmail)
+        default:
+            break
+        }
         
     }
-    
+    //TODO:- 구글만 공백을 허용하지않는것인지? 우리는 타이틀기준 검색을 할것인지 tag기준 검색을 할것인지?
     @IBAction func googlingButtonAction(_ sender: UIButton) {
-        print("구글 버튼이 눌렸습니다")
+        let keyword:String = "생명주기" //키워드는 공백을 허용하지 않습니다.
+        guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return } // 한글 키워드를 그냥 넣으면, URL로 인코딩을 하지 못해서 웹뷰로 연결되지 않습니다.
+        
+        openSafariViewOf(url: "https://www.google.co.kr/search?q=swift+\(realKeyword)")
         
     }
     
     @IBAction func naveringButtonAction(_ sender: UIButton) {
-        print("네이버 버튼이 눌렸습니다")
+        let keyword:String = "생명주기"
+        guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return }
+        
+        openSafariViewOf(url: "http://search.naver.com/search.naver?query=swift+\(realKeyword)")
     }
     
     
     //TODO: (재성님!)여기에 공유에 대한 기능을 구현해주세요
+    //이부분도 공유하는내용을 어떻게쓸지 고민..........
     @IBAction func shareButtonAction(_ sender: UIButton) {
+        let text = "Hello Swift"
+        shareTextOf(text: text)
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
         self.likeButtonAction()
-        
     }
     
     
@@ -404,8 +425,7 @@ extension BY_DetailViewController: UITableViewDataSource {
         self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
-            
-        //TODO:- 조선미할거: 이미지 못불러왔을때 디폴트이미지 넣기
+
         case 0:
             cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
             
@@ -577,4 +597,67 @@ extension BY_DetailViewController: UITableViewDelegate {
         return 72
     }
     
+    //MARK: - 재성님 email
+    // MARK: 메일 보내기 function 정의
+    // [주의] `MessageUI` import가 필요합니다!
+    func sendEmailTo(emailAddress email:String) {
+        let userSystemVersion = UIDevice.current.systemVersion // 현재 사용자 iOS 버전
+        let userAppVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String // 현재 사용자 SOS 앱 버전
+        
+        // 메일 쓰는 뷰컨트롤러 선언
+        let mailComposeViewController = configuredMailComposeViewController(emailAddress: email, systemVersion: userSystemVersion, appVersion: userAppVersion!)
+        
+        //사용자의 아이폰에 메일 주소가 세팅되어 있을 경우에만 mailComposeViewController()를 태웁니다.
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } // else일 경우, iOS 에서 자체적으로 메일 주소를 세팅하라는 메시지를 띄웁니다.
+    }
+    
+    // MARK: 메일 보내는 뷰컨트롤러 속성 세팅
+    func configuredMailComposeViewController(emailAddress:String, systemVersion:String, appVersion:String) -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // 메일 보내기 Finish 이후의 액션 정의를 위한 Delegate 초기화.
+        
+        mailComposerVC.setToRecipients([emailAddress]) // 받는 사람 설정
+        mailComposerVC.setSubject("[SOS] 사용자로부터 도착한 편지") // 메일 제목 설정
+        mailComposerVC.setMessageBody("* iOS Version: \(systemVersion) / App Version: \(appVersion)\n** 고맙습니다. 무엇이 궁금하신가요? :D", isHTML: false) // 메일 내용 설정
+        
+        return mailComposerVC
+    }
+    
+    //MARK:- 재성님 웹뷰부분
+    // 인앱웹뷰 열기 function 정의
+    // `SafariServices`의 import가 필요합니다.
+    func openSafariViewOf(url:String) {
+        guard let realURL = URL(string: url) else { return }
+        
+        // iOS 9부터 지원하는 `SFSafariViewController`를 이용합니다.
+        let safariViewController = SFSafariViewController(url: realURL)
+        safariViewController.delegate = self // 사파리 뷰에서 `Done` 버튼을 눌렀을 때의 액션 정의를 위한 Delegate 초기화입니다.
+        self.present(safariViewController, animated: true, completion: nil)
+    }
+
+    // MARK: 텍스트 공유 기능 function 정의
+    func shareTextOf(text: String) {
+        let activityVC = UIActivityViewController(activityItems: [text], applicationActivities: nil) // 액티비티 뷰 컨트롤러 설정
+        activityVC.popoverPresentationController?.sourceView = self.view // 아이패드에서 작동하도록 pop over로 설정
+        activityVC.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll ] // 제외 타입 설정
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+}
+// MARK: Extension - MFMailComposeViewControllerDelegate
+extension BY_DetailViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+extension BY_DetailViewController: SFSafariViewControllerDelegate {
+    
+    // SFSafariViewController에서 Done 버튼을 눌렀을 때의 액션을 정의합니다.
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

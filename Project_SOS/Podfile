@@ -16,6 +16,7 @@ pod 'Google-Mobile-Ads-SDK'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 
+<<<<<<< HEAD
 
 pod 'SDWebImage'
 
@@ -30,4 +31,6 @@ post_install do |installer|
     File.open(copy_pods_resources_path, "w") {|file| file.puts new_contents }
 
 end
+=======
+>>>>>>> 43983f24c089afae33c0c36b3089a0f50e3315c1
 end
