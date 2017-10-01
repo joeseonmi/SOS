@@ -859,17 +859,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                     <constraint firstItem="EKx-eH-RzB" firstAttribute="top" secondItem="50B-X7-Hdf" secondAttribute="top" id="oFs-xe-8ev"/>
                                     <constraint firstAttribute="bottom" secondItem="EKx-eH-RzB" secondAttribute="bottom" id="ozX-Az-Spo"/>
                                 </constraints>
-<<<<<<< HEAD
-                                <state key="normal" image="dismissBtn">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissViewButtonAction:" destination="xZM-tY-LQK" eventType="touchUpInside" id="mBv-6L-jNl"/>
-                                </connections>
-                            </button>
-=======
                             </scrollView>
->>>>>>> 43983f24c089afae33c0c36b3089a0f50e3315c1
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -996,11 +986,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
         <image name="ShareBtn" width="20" height="26"/>
         <image name="SummaryIcon" width="16" height="17"/>
         <image name="TitleCellBackground" width="375" height="125"/>
-<<<<<<< HEAD
-        <image name="dismissBtn" width="18" height="18"/>
-=======
         <image name="closeSketch" width="30" height="31"/>
->>>>>>> 43983f24c089afae33c0c36b3089a0f50e3315c1
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XmX-ca-eJd"/>
