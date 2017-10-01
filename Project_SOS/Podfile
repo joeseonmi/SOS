@@ -16,7 +16,10 @@ pod 'Google-Mobile-Ads-SDK'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 
-pod 'SDWebImage', '~> 4.0'
+
+pod 'SDWebImage'
+
+
 
 post_install do |installer|
     copy_pods_resources_path = "/Users/B.Park/SOS/Project_SOS/Pods/Target\ Support\ Files/Pods-Project_SOS/Pods-Project_SOS-resources.sh"
