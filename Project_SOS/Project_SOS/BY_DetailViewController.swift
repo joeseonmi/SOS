@@ -463,7 +463,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                 //
                 //                }
                 //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
-                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "SMFace")) //보영: 여기서 with는 불러오고 싶은 이미지 주소, placeholderImage는 이미지를 불러오기 전까지 띄우고 싶은 defaultImage를 의미함. 사실 여기에 선미가 만들어놓은 defaultImage 를 넣고 싶은데, 역시 이미지 문제로 그 이미지 넣으면 뻑이남.
+                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "defaultImg"))
             }
         case 2:
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
@@ -484,7 +484,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleImage.sd_setIndicatorStyle(.whiteLarge)
                 cell.explainBubbleImage.sd_addActivityIndicator()
                 cell.explainBubbleImage.sd_showActivityIndicatorView()
-                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "JSFace"))
+                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "defaultImg"))
                 
             }
         default:
