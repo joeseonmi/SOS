@@ -826,6 +826,10 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                                     <constraint firstAttribute="width" secondItem="pTQ-J4-5DE" secondAttribute="height" multiplier="1:1" id="2Ao-SX-0UU"/>
                                                     <constraint firstAttribute="width" constant="40" id="BJd-PZ-IeR"/>
                                                 </constraints>
+<<<<<<< HEAD
+=======
+                                                <state key="normal" image="dismissButton"/>
+>>>>>>> fd1bfdeb237f0a6f3c08a43b12a617cd9d372923
                                                 <connections>
                                                     <action selector="dismissViewButtonAction:" destination="xZM-tY-LQK" eventType="touchUpInside" id="mBv-6L-jNl"/>
                                                 </connections>
@@ -985,6 +989,10 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
         <image name="ShareBtn" width="20" height="26"/>
         <image name="SummaryIcon" width="16" height="17"/>
         <image name="TitleCellBackground" width="375" height="125"/>
+<<<<<<< HEAD
+=======
+        <image name="dismissButton" width="18" height="18"/>
+>>>>>>> fd1bfdeb237f0a6f3c08a43b12a617cd9d372923
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XmX-ca-eJd"/>
