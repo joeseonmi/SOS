@@ -59,7 +59,7 @@ class BY_MainTableViewCell: UITableViewCell {
                     guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return}
                     
                     let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
-                        var exhibitionID:Int = dic.value[Constants.like_QuestionId] as! Int
+                        let exhibitionID:Int = dic.value[Constants.like_QuestionId] as! Int
                         return exhibitionID == questionID
                     })
                     

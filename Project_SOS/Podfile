@@ -16,6 +16,6 @@ pod 'Google-Mobile-Ads-SDK'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 
-pod 'SDWebImage'
+pod 'Kingfisher', '~> 4.1'
 
 end

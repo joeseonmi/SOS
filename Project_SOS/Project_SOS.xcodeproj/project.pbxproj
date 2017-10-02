@@ -110,15 +110,6 @@
 			name = "BY_Search Controllers";
 			sourceTree = "<group>";
 		};
-		6AD85B371F78ACBC008DB11B /* BY_ViewPager */ = {
-			isa = PBXGroup;
-			children = (
-				6AFBF11D1F74E3D600C0F2D1 /* BY_DetailTableViewCell.swift */,
-				6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */,
-			);
-			name = BY_ViewPager;
-			sourceTree = "<group>";
-		};
 		886DD1A360487A28B9FE895F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,11 +166,12 @@
 				6A33C8621F614D19005FC0A8 /* BY_MainTableViewCell.swift */,
 				6A33C8631F614D19005FC0A8 /* BY_MainTableViewCell.xib */,
 				6AFBF1231F74F97A00C0F2D1 /* BY_DetailViewController.swift */,
+				6AFBF11D1F74E3D600C0F2D1 /* BY_DetailTableViewCell.swift */,
+				6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */,
 				6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */,
 				6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */,
 				6AC2A4281F81097A00138FCA /* Assets.xcassets */,
 				FE4FE6E71F6C24B00052AFB0 /* JS_Test */,
-				6AD85B371F78ACBC008DB11B /* BY_ViewPager */,
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
 				D86539581F5E8C2B00D34790 /* Info.plist */,
@@ -295,7 +287,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleMarkdownParser/SimpleMarkdownParser.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -304,7 +296,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleMarkdownParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
