@@ -27,6 +27,7 @@ class BY_CharacterIntroduceViewController: UIViewController {
     /*******************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissBtn.setImage(UIImage(named: "test.png"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
