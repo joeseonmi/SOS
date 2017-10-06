@@ -10,7 +10,23 @@ import UIKit
 import Firebase
 import MessageUI
 import SafariServices
-import SDWebImage
+import Kingfisher
+
+//이미지 띄워지기 전 보여질 Indicator
+struct BY_Indicator: Indicator {
+    let view: UIView = UIView()
+    
+    func startAnimatingView() {
+        view.isHidden = false
+    }
+    func stopAnimatingView() {
+        view.isHidden = true
+    }
+    
+    init() {
+        view.backgroundColor = .red
+    }
+}
 
 class BY_DetailViewController: UIViewController {
     
@@ -23,6 +39,9 @@ class BY_DetailViewController: UIViewController {
     var byAnswer:[[String:String]] = []
     var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
+    
+    //인디케이터
+    let imageLoadingIndicator = BY_Indicator()
     
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
@@ -73,7 +92,6 @@ class BY_DetailViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "BackButton")
         self.navigationController?.navigationBar.topItem?.title = ""
         
-        
         //SearchVC을 통해 Present 되었을 때 NavigationBar 역할할 View 설정
         if self.isPresentedBySearchVC == true {
             self.navigationView.isHidden = false
@@ -97,10 +115,8 @@ class BY_DetailViewController: UIViewController {
         
         //데이터 핸들링
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
-        
         self.loadData(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,10 +137,17 @@ class BY_DetailViewController: UIViewController {
         
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadAnswer(from: realQuestionID)
+        
+        self.detailTableView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        print("뷰윌레이아웃/ 퀘스천아이디 \(self.questionID)")
+        if self.byAnswer.count == 0 || self.smAnswer.count == 0 || self.jsAnswer.count == 0 {
+            guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
+            loadAnswer(from: realQuestionID)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,7 +167,6 @@ class BY_DetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -272,8 +294,7 @@ class BY_DetailViewController: UIViewController {
             self.mailingCharacterImageView.image = #imageLiteral(resourceName: "JSFace")
             self.mailingCharacterTextLabel.text = "재성에게\n메일링"
         default:
-            print("캐릭터를 선택해주세요")
-            self.characterSelectSegmentedControl.selectedSegmentIndex = 0
+            break
         }
         
         self.detailTableView.reloadData()
@@ -281,7 +302,7 @@ class BY_DetailViewController: UIViewController {
     
     //노티피케이션 구현 함수
     func callNotiForCharacter(_ sender:Notification) {
-        guard let realSelectedCharacterName:String = sender.object as? String else {return}
+        guard let realSelectedCharacterName:String = sender.object as? String else {return print("선택한 캐릭터가 없습니다. \(sender.object)")}
         self.selectSeugeForCharacter(nameOf: realSelectedCharacterName)
     }
     
@@ -363,6 +384,8 @@ class BY_DetailViewController: UIViewController {
             guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
             self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
             
+            self.detailTableView.reloadData()
+            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -404,13 +427,17 @@ extension BY_DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
         case 0: //"보영 선택시"
+            print("보영 \(self.byAnswer.count)")
             return self.byAnswer.count
         case 1: //"선미 선택시"
+            print("선미 \(self.smAnswer.count)")
             return self.smAnswer.count
         case 2: //"재성 선택시"
+            print("재성 \(self.jsAnswer.count)")
             return self.jsAnswer.count
         default:
-            return 0
+            print("값 없음")
+            return self.byAnswer.count
         }
     }
     
@@ -436,14 +463,10 @@ extension BY_DetailViewController: UITableViewDataSource {
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
-                //                do {
-                //                    let realData = try Data(contentsOf: imageURL)
-                //                    cell.explainBubbleImage.image = UIImage(data:realData)
-                //                }catch{
-                //
-                //                }
-                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
-                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "defaultImg"), options: .delayPlaceholder, progress: nil, completed: nil)
+                cell.explainBubbleImage.kf.indicatorType = .activity
+                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
+                    cell.reloadInputViews()
+                })
                 
             }
             
@@ -456,14 +479,11 @@ extension BY_DetailViewController: UITableViewDataSource {
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
-                //                do {
-                //                    let realData = try Data(contentsOf: imageURL)
-                //                    cell.explainBubbleImage.image = UIImage(data:realData)
-                //                }catch{
-                //
-                //                }
-                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
-                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "defaultImg"))
+                let processor = RoundCornerImageProcessor(cornerRadius: 20)
+                cell.explainBubbleImage.kf.indicatorType = .activity
+                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
+                    
+                })
             }
         case 2:
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
@@ -474,18 +494,10 @@ extension BY_DetailViewController: UITableViewDataSource {
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
-                //                do {
-                //                    let realData = try Data(contentsOf: imageURL)
-                //                    cell.explainBubbleImage.image = UIImage(data:realData)
-                //                }catch{
-                //
-                //                }
-                //보영: 상기 부분을 SDWebImage 라는 오픈소스로 아래와 같이 해결할 수 있음
-                cell.explainBubbleImage.sd_setIndicatorStyle(.whiteLarge)
-                cell.explainBubbleImage.sd_addActivityIndicator()
-                cell.explainBubbleImage.sd_showActivityIndicatorView()
-                cell.explainBubbleImage.sd_setImage(with: imageURL, placeholderImage:#imageLiteral(resourceName: "defaultImg"))
-                
+                cell.explainBubbleImage.kf.indicatorType = .activity
+                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
+                    
+                })
             }
         default:
             break
