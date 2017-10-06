@@ -80,11 +80,11 @@ class BY_MainTableViewCell: UITableViewCell {
     
     func getQuestionIDForQuestion(title:String, completion:@escaping (_ info:Int) -> Void) {
         Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let tempQuestionDatas = snapshot.value as? [[String:Any]] else {return print("질문데이터가 없습니다. \(snapshot.value)")}
+            guard let tempQuestionDatas = snapshot.value as? [[String:Any]] else {return print("질문데이터가 없습니다.: ", snapshot.value ?? "(no data)")}
             
             let tempSelectedQuestionData = tempQuestionDatas.filter({ (dic) -> Bool in
                 guard let selectedQuestionTitle = dic[Constants.question_QuestionTitle] as? String else {
-                    print("질문타이틀이 없습니다. \(dic[Constants.question_QuestionTitle])")
+                    print("질문타이틀이 없습니다.: ", dic[Constants.question_QuestionTitle] ?? "(no data)")
                     return false}
                 
                 return selectedQuestionTitle == title

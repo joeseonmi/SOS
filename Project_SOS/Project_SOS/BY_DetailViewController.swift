@@ -143,7 +143,7 @@ class BY_DetailViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("뷰윌레이아웃/ 퀘스천아이디 \(self.questionID)")
+        print("뷰윌레이아웃/ 퀘스천아이디: ", self.questionID ?? "(no data)")
         if self.byAnswer.count == 0 || self.smAnswer.count == 0 || self.jsAnswer.count == 0 {
             guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
             loadAnswer(from: realQuestionID)
@@ -181,9 +181,10 @@ class BY_DetailViewController: UIViewController {
     
     @IBAction func characterSelectSegmentControlAction(_ sender: UISegmentedControl) {
         
-        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
+//        재성 - unused 되는 코드여서 주석 처리합니다.
+//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -302,7 +303,7 @@ class BY_DetailViewController: UIViewController {
     
     //노티피케이션 구현 함수
     func callNotiForCharacter(_ sender:Notification) {
-        guard let realSelectedCharacterName:String = sender.object as? String else {return print("선택한 캐릭터가 없습니다. \(sender.object)")}
+        guard let realSelectedCharacterName:String = sender.object as? String else {return print("선택한 캐릭터가 없습니다.", sender.object ?? "(no data)")}
         self.selectSeugeForCharacter(nameOf: realSelectedCharacterName)
     }
     
@@ -313,7 +314,7 @@ class BY_DetailViewController: UIViewController {
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-                return print("못불러옴 \(snapshot.value)")
+                return print("못불러옴: ", snapshot.value ?? "(no data)")
             }
             
             let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
@@ -342,7 +343,8 @@ class BY_DetailViewController: UIViewController {
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if snapshot.childrenCount != 0 {
-                guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴 \(snapshot.value)")}
+                guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴: ", snapshot.value ?? "(no data)")}
+                guard let realUid = Auth.auth().currentUser?.uid else { return }
                 
                 let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
                     let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
@@ -353,8 +355,7 @@ class BY_DetailViewController: UIViewController {
                 case 0:
                     self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
                     self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
-                    Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
-                                                                                                    Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                    Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
                 case 1:
                     self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                     self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
@@ -365,8 +366,9 @@ class BY_DetailViewController: UIViewController {
             }else{
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
-                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
-                                                                                                Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                
+                guard let realUid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
             }
         }) { (error) in
             print("좋아요 액션 에러", error.localizedDescription)
@@ -447,9 +449,10 @@ extension BY_DetailViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         //선택된 세그에 따라 이미지 변경
-        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
+//        재성 - unused 되는 코드여서 주석 처리합니다.
+//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
 
