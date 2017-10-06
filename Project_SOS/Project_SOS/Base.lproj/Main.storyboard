@@ -598,6 +598,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1xn-iQ-pJt">
                                     <rect key="frame" x="332" y="9" width="27" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="Like_off"/>
                                     <connections>
                                         <action selector="favoriteButtonAction:" destination="MRh-Jc-7fO" eventType="touchUpInside" id="oJW-lL-rm5"/>
@@ -606,8 +607,9 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                             </barButtonItem>
                             <barButtonItem style="plain" id="kX1-b8-wFh">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tqj-JX-6g5">
-                                    <rect key="frame" x="304" y="9" width="20" height="26"/>
+                                    <rect key="frame" x="304" y="9" width="27" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                     <state key="normal" image="ShareBtn"/>
                                     <connections>
                                         <action selector="shareButtonAction:" destination="MRh-Jc-7fO" eventType="touchUpInside" id="eK6-Dj-lMm"/>
@@ -642,7 +644,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXB-wO-179" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3112.5" y="34.859154929577464"/>
+            <point key="canvasLocation" x="3096" y="50"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="ply-k9-hcE">
