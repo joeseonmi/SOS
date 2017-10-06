@@ -11,6 +11,7 @@ import Firebase
 import MessageUI
 import SafariServices
 import Kingfisher
+import GoogleMobileAds
 
 //이미지 띄워지기 전 보여질 Indicator
 struct BY_Indicator: Indicator {
@@ -79,6 +80,9 @@ class BY_DetailViewController: UIViewController {
     @IBOutlet weak var mailingCharacterImageView: UIImageView!
     @IBOutlet weak var mailingCharacterTextLabel: UILabel!
     
+    //구글 애드센스 ( by 재성 )
+    @IBOutlet weak var admobBannerBackgroundView:UIView!
+    var bannerView: GADBannerView!
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
@@ -117,6 +121,9 @@ class BY_DetailViewController: UIViewController {
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadData(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
+        
+        //애드몹 광고 불러오는 function 호출 ( by 재성 )
+        self.addAdMobView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -659,6 +666,21 @@ extension BY_DetailViewController: UITableViewDelegate {
         activityVC.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll ] // 제외 타입 설정
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    // MARK: AdMob, UIView 추가 function 정의 ( by 재성 )
+    func addAdMobView() {
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        // adSize에는 6가지 종류가 있고, 가장 보편적인 사이즈는 '320*50'입니다.
+        // 쏘쓰에는 아이폰의 종류에 따라 광고 사이즈가 변하는 SmartBanner를 선택했습니다.
+        // 참고: https://developers.google.com/admob/ios/banner?hl=ko
+        
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트 adUnitID
+        bannerView.adUnitID = "ca-app-pub-9821073709980211/5330955915" // 실제 사용 adUnitID
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        self.admobBannerBackgroundView.addSubview(bannerView)
     }
     
 }
