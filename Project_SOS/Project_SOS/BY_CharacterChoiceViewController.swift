@@ -129,8 +129,8 @@ class BY_CharacterChoiceViewController: UIViewController {
         //데이터베이스에서 해당 uid가 있는지 검색함
         Database.database().reference().child(Constants.user).queryOrdered(byChild: Constants.user_userId).queryEqual(toValue: realUserUid).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let userData:[[String:String]] = snapshot.value as? [[String:String]] else {
-                print("유저가 없음 \(snapshot.value)")
+            guard let _:[[String:String]] = snapshot.value as? [[String:String]] else {
+                print("유저가 없음: ", snapshot.value ?? "(no data)")
                 
                 //이건 Database에 child이름을 유저숫자에 맞게 짓고싶어서 카운트 받아오려고 만든부분
                 Database.database().reference().child(Constants.user).observe(.value, with: { (snapshot) in
@@ -144,7 +144,7 @@ class BY_CharacterChoiceViewController: UIViewController {
                 return
             }
             
-            print("유저가 있음 \(snapshot.value)")
+            print("유저가 있음: ", snapshot.value ?? "(no data)")
             
         }) { (error) in
             print(error.localizedDescription)

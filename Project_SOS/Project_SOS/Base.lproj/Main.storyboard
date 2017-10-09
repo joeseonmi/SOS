@@ -295,6 +295,9 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                     <constraint firstAttribute="height" constant="50" id="Xn1-KU-TqI"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHT-yj-7Ma">
+                                <rect key="frame" x="0.0" y="650" width="320" height="50"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I31-5o-XBf">
                                 <rect key="frame" x="0.0" y="60" width="320" height="126"/>
                                 <subviews>
@@ -565,15 +568,19 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                         <constraints>
                             <constraint firstItem="L8B-FN-6jE" firstAttribute="top" secondItem="CNC-XL-q8D" secondAttribute="bottom" id="3zH-ru-USW"/>
                             <constraint firstItem="I31-5o-XBf" firstAttribute="centerX" secondItem="Mk1-qL-aq4" secondAttribute="centerX" id="6nU-c1-mZT"/>
+                            <constraint firstItem="aHT-yj-7Ma" firstAttribute="centerX" secondItem="L8B-FN-6jE" secondAttribute="centerX" id="BbR-xg-iE0"/>
                             <constraint firstItem="K1i-14-BfJ" firstAttribute="width" secondItem="Mk1-qL-aq4" secondAttribute="width" id="C1q-KO-sJH"/>
                             <constraint firstItem="L8B-FN-6jE" firstAttribute="width" secondItem="Mk1-qL-aq4" secondAttribute="width" id="CYs-9f-hh6"/>
                             <constraint firstItem="w0w-HA-aJu" firstAttribute="top" secondItem="L8B-FN-6jE" secondAttribute="bottom" id="Cxz-Ha-3E0"/>
                             <constraint firstItem="I31-5o-XBf" firstAttribute="width" secondItem="Mk1-qL-aq4" secondAttribute="width" id="HdE-ju-yBh"/>
                             <constraint firstAttribute="trailing" secondItem="K1i-14-BfJ" secondAttribute="trailing" id="IFm-Cc-LPC"/>
                             <constraint firstItem="CNC-XL-q8D" firstAttribute="top" secondItem="I31-5o-XBf" secondAttribute="bottom" id="MhE-tZ-Doy"/>
+                            <constraint firstItem="aHT-yj-7Ma" firstAttribute="centerY" secondItem="L8B-FN-6jE" secondAttribute="centerY" id="Nyz-AV-6UE"/>
+                            <constraint firstItem="aHT-yj-7Ma" firstAttribute="height" secondItem="L8B-FN-6jE" secondAttribute="height" id="Wxa-mz-5sd"/>
                             <constraint firstItem="L8B-FN-6jE" firstAttribute="centerX" secondItem="Mk1-qL-aq4" secondAttribute="centerX" id="YJ3-pM-6Ln"/>
                             <constraint firstItem="I31-5o-XBf" firstAttribute="top" secondItem="K1i-14-BfJ" secondAttribute="bottom" id="avh-3z-4Ak"/>
                             <constraint firstAttribute="trailing" secondItem="CNC-XL-q8D" secondAttribute="trailing" id="eZC-l8-zEV"/>
+                            <constraint firstItem="aHT-yj-7Ma" firstAttribute="width" secondItem="L8B-FN-6jE" secondAttribute="width" id="lfI-7O-9Ko"/>
                             <constraint firstItem="K1i-14-BfJ" firstAttribute="top" secondItem="Mk1-qL-aq4" secondAttribute="top" id="mIM-N3-WhK"/>
                             <constraint firstItem="K1i-14-BfJ" firstAttribute="leading" secondItem="Mk1-qL-aq4" secondAttribute="leading" id="tDe-9k-oES"/>
                             <constraint firstItem="CNC-XL-q8D" firstAttribute="leading" secondItem="Mk1-qL-aq4" secondAttribute="leading" id="tri-vT-aLI"/>
@@ -591,6 +598,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1xn-iQ-pJt">
                                     <rect key="frame" x="332" y="9" width="27" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="Like_off"/>
                                     <connections>
                                         <action selector="favoriteButtonAction:" destination="MRh-Jc-7fO" eventType="touchUpInside" id="oJW-lL-rm5"/>
@@ -599,8 +607,9 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                             </barButtonItem>
                             <barButtonItem style="plain" id="kX1-b8-wFh">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tqj-JX-6g5">
-                                    <rect key="frame" x="304" y="9" width="20" height="26"/>
+                                    <rect key="frame" x="304" y="9" width="27" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                     <state key="normal" image="ShareBtn"/>
                                     <connections>
                                         <action selector="shareButtonAction:" destination="MRh-Jc-7fO" eventType="touchUpInside" id="eK6-Dj-lMm"/>
@@ -612,6 +621,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                     <nil key="simulatedTopBarMetrics"/>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
+                        <outlet property="admobBannerBackgroundView" destination="aHT-yj-7Ma" id="ASf-Ei-H0e"/>
                         <outlet property="characterSelectSegmentedControl" destination="5LN-v8-n0z" id="hIl-jp-BZb"/>
                         <outlet property="detailTableView" destination="CNC-XL-q8D" id="6Lu-oT-FeF"/>
                         <outlet property="favoriteButtonOutlet" destination="1xn-iQ-pJt" id="Kcv-bf-3CE"/>
@@ -634,7 +644,7 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXB-wO-179" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3112.5" y="34.859154929577464"/>
+            <point key="canvasLocation" x="3096" y="50"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="ply-k9-hcE">

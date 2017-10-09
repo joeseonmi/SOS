@@ -7,12 +7,12 @@ target 'Project_SOS' do
 
   # Pods for Project_SOS
 
-pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'Firebase/Storage'
+pod 'Firebase/Core', '~> 4.2.0'
+pod 'Firebase/Database', '~> 4.2.0'
+pod 'Firebase/Auth', '~> 4.2.0'
+pod 'Firebase/Storage', '~> 4.2.0'
 
-pod 'Google-Mobile-Ads-SDK'
+pod 'Google-Mobile-Ads-SDK', '~> 7.24.1'
 
 pod "SimpleMarkdownParser", '~> 0.5.3'
 

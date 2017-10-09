@@ -20,7 +20,7 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var likeBtn: UIButton!
     
     @IBAction func clickedLikeBtn(_ sender: UIButton) {
-     likeBtnAction()
+        likeBtnAction()
     }
     
     /*******************************************/
@@ -29,8 +29,8 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//        self.tableview.register(UINib(nibName: "BubbleTableViewCell", bundle: nil), forCellReuseIdentifier: "BubbleTableViewCell")
+        //
+        //        self.tableview.register(UINib(nibName: "BubbleTableViewCell", bundle: nil), forCellReuseIdentifier: "BubbleTableViewCell")
         tableview.delegate = self
         tableview.dataSource = self
         
@@ -65,17 +65,19 @@ class SM_BubbleTableViewController: UIViewController, UITableViewDataSource, UIT
         guard let realQuestionID:Int = self.questionID else { return }
         
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-        
+            
             guard let likeData = snapshot.value as? [String:[String:Any]] else { return }
             print("데이터가있슴니돠아아아아ㅏ==================:", likeData)
             let filteredData = likeData.filter({ (dic:(key:String, value:[String:Any])) -> Bool in
-                var filteredQuestionID = dic.value[Constants.like_QuestionId]
+                let filteredQuestionID = dic.value[Constants.like_QuestionId]
                 return realQuestionID == filteredQuestionID as! Int
             })
             
             print("필터된데이터!!!!!!!!!!!!!!:", filteredData)
             switch filteredData.count {
-            case 0 : Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:Auth.auth().currentUser?.uid])
+            case 0 :
+                guard let realUid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
                 self.getLikeCount(question:realQuestionID)
                 DataCenter.standard.favoriteQuestions.append(realQuestionID)
                 print("좋아요리스트!!!!!!!!!!!!!!!!",DataCenter.standard.favoriteQuestions)

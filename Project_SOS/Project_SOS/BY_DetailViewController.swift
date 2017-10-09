@@ -11,6 +11,7 @@ import Firebase
 import MessageUI
 import SafariServices
 import Kingfisher
+import GoogleMobileAds
 
 //이미지 띄워지기 전 보여질 Indicator
 struct BY_Indicator: Indicator {
@@ -79,6 +80,12 @@ class BY_DetailViewController: UIViewController {
     @IBOutlet weak var mailingCharacterImageView: UIImageView!
     @IBOutlet weak var mailingCharacterTextLabel: UILabel!
     
+    //구글 애드센스 ( by 재성 )
+    @IBOutlet weak var admobBannerBackgroundView: UIView!
+    var bannerView: GADBannerView!
+    
+    //공유 기능을 위한 변수 ( by 재성 )
+    var contentSharingTitle: String?
     
     /*******************************************/
     //MARK:-        LifeCycle                  //
@@ -117,6 +124,9 @@ class BY_DetailViewController: UIViewController {
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadData(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
+        
+        //애드몹 광고 불러오는 function 호출 ( by 재성 )
+        self.addAdMobView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,7 +153,7 @@ class BY_DetailViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("뷰윌레이아웃/ 퀘스천아이디 \(self.questionID)")
+        print("뷰윌레이아웃/ 퀘스천아이디: ", self.questionID ?? "(no data)")
         if self.byAnswer.count == 0 || self.smAnswer.count == 0 || self.jsAnswer.count == 0 {
             guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
             loadAnswer(from: realQuestionID)
@@ -181,9 +191,10 @@ class BY_DetailViewController: UIViewController {
     
     @IBAction func characterSelectSegmentControlAction(_ sender: UISegmentedControl) {
         
-        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
+//        재성 - unused 되는 코드여서 주석 처리합니다.
+//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -206,7 +217,7 @@ class BY_DetailViewController: UIViewController {
         
     }
     
-    //TODO: (재성님!)여기에 메일/구글링/네이버링에 대한 각각의 액션을 구현해주세요.
+    //MARK: 메일 버튼 액션 정의 - by 재성
     @IBAction func mailingButtonAction(_ sender: UIButton) {
         print("메일 버튼이 눌렸습니다")
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
@@ -224,7 +235,9 @@ class BY_DetailViewController: UIViewController {
         }
         
     }
+    
     //TODO:- 구글만 공백을 허용하지않는것인지? 우리는 타이틀기준 검색을 할것인지 tag기준 검색을 할것인지?
+    //MARK: 구글링 / 네이버링 버튼 액션 정의 - by 재성
     @IBAction func googlingButtonAction(_ sender: UIButton) {
         let keyword:String = "생명주기" //키워드는 공백을 허용하지 않습니다.
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return } // 한글 키워드를 그냥 넣으면, URL로 인코딩을 하지 못해서 웹뷰로 연결되지 않습니다.
@@ -241,13 +254,47 @@ class BY_DetailViewController: UIViewController {
     }
     
     
-    //TODO: (재성님!)여기에 공유에 대한 기능을 구현해주세요
-    //이부분도 공유하는내용을 어떻게쓸지 고민..........
+    //MARK: 공유하기 버튼 액션 정의 - by 재성
     @IBAction func shareButtonAction(_ sender: UIButton) {
-        let text = "Hello Swift"
-        shareTextOf(text: text)
+        var sharingText = ""
+        
+        switch self.characterSelectSegmentedControl.selectedSegmentIndex {
+        case 0: //"보영 선택시"
+            print("///// shareButtonAction: 보영 \(self.byAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.byAnswer) )
+            
+        case 1: //"선미 선택시"
+            print("///// shareButtonAction: 선미 \(self.smAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.smAnswer) )
+            
+        case 2: //"재성 선택시"
+            print("///// shareButtonAction: 재성 \(self.jsAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.jsAnswer) )
+            
+        default:
+            print("///// shareButtonAction: no data")
+        }
+        
+        shareTextOf(text: sharingText)
     }
     
+    // answer 데이터를 받아서 텍스트 값만 String 형태로 리턴하는 함수입니다.
+    func findSharingAnswerTextsOnlyOf(answer:[[String:String]]) -> String {
+        let answerMapping = answer.map({ (item) -> String in
+            // Type을 파악해서 Text 값일 때만 String Array로 반환합니다.
+            if item[Constants.question_AnswerType] == Constants.answerType_TEXT {
+                return item[Constants.question_AnswerContents] ?? ""
+            }else {
+                return ""
+            }
+        })
+        // String Array를 String으로 join합니다.
+        let result:String = answerMapping.joined(separator: "\n\n")
+        
+        return result
+    }
+    
+    //MARK: 즐겨찾기 버튼 액션 정의
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
         self.likeButtonAction()
     }
@@ -302,7 +349,7 @@ class BY_DetailViewController: UIViewController {
     
     //노티피케이션 구현 함수
     func callNotiForCharacter(_ sender:Notification) {
-        guard let realSelectedCharacterName:String = sender.object as? String else {return print("선택한 캐릭터가 없습니다. \(sender.object)")}
+        guard let realSelectedCharacterName:String = sender.object as? String else {return print("선택한 캐릭터가 없습니다.", sender.object ?? "(no data)")}
         self.selectSeugeForCharacter(nameOf: realSelectedCharacterName)
     }
     
@@ -313,7 +360,7 @@ class BY_DetailViewController: UIViewController {
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-                return print("못불러옴 \(snapshot.value)")
+                return print("못불러옴: ", snapshot.value ?? "(no data)")
             }
             
             let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
@@ -342,7 +389,8 @@ class BY_DetailViewController: UIViewController {
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if snapshot.childrenCount != 0 {
-                guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴 \(snapshot.value)")}
+                guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴: ", snapshot.value ?? "(no data)")}
+                guard let realUid = Auth.auth().currentUser?.uid else { return }
                 
                 let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
                     let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
@@ -366,8 +414,9 @@ class BY_DetailViewController: UIViewController {
             }else{
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
-                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
-                                                                                                Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                
+                guard let realUid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
             }
         }) { (error) in
             print("좋아요 액션 에러", error.localizedDescription)
@@ -380,8 +429,11 @@ class BY_DetailViewController: UIViewController {
                 let titleValue = data[Constants.question_QuestionTitle] as? String else { return }
             self.titleTextLabel.text = titleValue
             self.hiddenTitleTextLabel.text = titleValue
+            self.contentSharingTitle = titleValue //공유 기능을 위한 타이틀 전역 변수입니다. ( by 재성 )
+            
             guard let tagArray = data[Constants.question_Tag] as? String else { return }
             self.tagTextLabel.text = tagArray
+            
             guard let summaryArray = data[Constants.question_Summary] as? [String] else { return }
             self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
             
@@ -448,9 +500,10 @@ extension BY_DetailViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         //선택된 세그에 따라 이미지 변경
-        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
+//        재성 - unused 되는 코드여서 주석 처리합니다.
+//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
+//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
 
@@ -610,8 +663,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         return 72
     }
     
-    //MARK: - 재성님 email
-    // MARK: 메일 보내기 function 정의
+    //MARK: - 재성님 email 보내기 function 정의
     // [주의] `MessageUI` import가 필요합니다!
     func sendEmailTo(emailAddress email:String) {
         let userSystemVersion = UIDevice.current.systemVersion // 현재 사용자 iOS 버전
@@ -657,6 +709,21 @@ extension BY_DetailViewController: UITableViewDelegate {
         activityVC.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll ] // 제외 타입 설정
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    // MARK: AdMob, UIView 추가 function 정의 - by 재성
+    func addAdMobView() {
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        // adSize에는 6가지 종류가 있고, 가장 보편적인 사이즈는 '320*50'입니다.
+        // 쏘쓰에는 아이폰의 종류에 따라 광고 사이즈가 변하는 SmartBanner를 선택했습니다.
+        // 참고: https://developers.google.com/admob/ios/banner?hl=ko
+        
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트 adUnitID
+        bannerView.adUnitID = "ca-app-pub-9821073709980211/5330955915" // 실제 사용 adUnitID
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        self.admobBannerBackgroundView.addSubview(bannerView)
     }
     
 }
