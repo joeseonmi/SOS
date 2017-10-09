@@ -60,26 +60,7 @@ class BY_MainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //ALL 데이터 가져오기
-        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String:Any]] else { return }
-            let tempArray = data.map({ (dic) -> String in
-                return dic[Constants.question_QuestionTitle] as! String
-            })
-            let tempTagArray = data.map({ (dic) -> String in
-                return dic[Constants.question_Tag] as! String
-            }) 
-            let tempIDArray = data.map({ (dic) -> Int in
-                return dic[Constants.question_QuestionId] as! Int
-            })
-            
-            self.questionTagData = tempTagArray
-            self.questionTitleData = tempArray
-            
-            self.tableView.reloadData()
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        requestAllQuestionData()
         
         guard let realNavigationBarLogoButtonOutlet = self.navigationBarLogoButtonOutlet else {return}
         realNavigationBarLogoButtonOutlet.isUserInteractionEnabled = false
@@ -93,6 +74,8 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
+        
+        print("메인뷰디드로드")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +90,46 @@ class BY_MainTableViewController: UITableViewController {
         }
         
         //FAVORITE 데이터 가져오기
+        requestFavoriateQuestionData()
+        
+        self.tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    /*******************************************/
+    //MARK:-         Functions                 //
+    /*******************************************/
+    
+    //ALL 데이터 가져오기
+    func requestAllQuestionData() {
+        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return }
+            let tempArray = data.map({ (dic) -> String in
+                return dic[Constants.question_QuestionTitle] as! String
+            })
+            let tempTagArray = data.map({ (dic) -> String in
+                return dic[Constants.question_Tag] as! String
+            })
+            let tempIDArray = data.map({ (dic) -> Int in
+                return dic[Constants.question_QuestionId] as! Int
+            })
+            
+            self.questionTagData = tempTagArray
+            self.questionTitleData = tempArray
+            
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    //FAVORITE 데이터 가져오기
+    func requestFavoriateQuestionData() {
         if Auth.auth().currentUser?.uid != nil {
             Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
@@ -119,23 +142,9 @@ class BY_MainTableViewController: UITableViewController {
                 print("즐겨찾기 데이터 에러", error.localizedDescription)
             })
         }
-        self.tableView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    /*******************************************/
-    //MARK:-         Functions                 //
-    /*******************************************/
-    
-    //Firebase 데이터 가져오는 부분
+    //Firebase 좋아요개수 데이터 가져오는 부분
     func requestFavoriteQuestionDataFor(questionID:Int, completion:@escaping (_ info:[[String:String]]) -> Void) {
         Database.database().reference().child(Constants.question).queryOrdered(byChild: Constants.question_QuestionId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempQuestionData = snapshot.value as? [[String:Any]] else {return print("좋아요테스트: 여기서 안됨 \(snapshot.value)")}
@@ -181,10 +190,12 @@ class BY_MainTableViewController: UITableViewController {
         
         //ALL 이냐 FAVORITE 냐
         if isfavoriteTableView == false {
+            print("ALL 셀을 부릅니다")
             cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
             cell.tagLabel?.text = self.questionTagData[indexPath.row]
             cell.loadLikeDatafor(questionID: indexPath.row)
         }else{
+            print("FAVORITE 셀을 부릅니다.")
             var index:Int = self.favoriteQuestionIDs[indexPath.row]
             self.requestFavoriteQuestionDataFor(questionID: index, completion: { (dic) in
                 cell.titleQuestionLabel.text = dic[index]["QuestionTitle"]

@@ -42,13 +42,6 @@ class BY_SearchResultsViewController: BY_MainTableViewController, UISearchResult
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        print("써치뷰가 사라질것임")
-    }
-    
-    
     /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/

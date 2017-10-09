@@ -50,7 +50,6 @@ class BY_MainTableViewCell: UITableViewCell {
     //MARK:-         Functions                 //
     /*******************************************/
     
-
     //보영: 특정 질문에 대한 좋아요 데이터 가져오는 부분
     func loadLikeDatafor(questionID:Int) {
         DispatchQueue.global(qos: .default).async {
@@ -62,6 +61,7 @@ class BY_MainTableViewCell: UITableViewCell {
                         let exhibitionID:Int = dic.value[Constants.like_QuestionId] as! Int
                         return exhibitionID == questionID
                     })
+                    self.favoriteCountLabel.text = "0"
                     
                     DispatchQueue.main.async {
                         self.favoriteCountLabel.text = "\(filteredLikeData.count)"
@@ -73,8 +73,6 @@ class BY_MainTableViewCell: UITableViewCell {
             }, withCancel: { (error) in
                 print(error.localizedDescription)
             })
-
-            
         }
     }
     
