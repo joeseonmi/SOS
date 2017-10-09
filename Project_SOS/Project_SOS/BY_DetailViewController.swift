@@ -401,14 +401,16 @@ class BY_DetailViewController: UIViewController {
                 case 0:
                     self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
                     self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
-                    Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
-                case 1:
+                    Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,
+                                                                                                    Constants.like_User_Id:Auth.auth().currentUser?.uid])
+                default:
                     self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                     self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
-                    Database.database().reference().child(Constants.like).child(filteredLikeData[0].key).setValue(nil)
-                default:
-                    print("좋아요 버튼액션에러: \(filteredLikeData)")
+                    for i in 0..<filteredLikeData.count {
+                    Database.database().reference().child(Constants.like).child(filteredLikeData[i].key).setValue(nil)
+                    }
                 }
+                
             }else{
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)
                 self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Star_on"), for: .normal)

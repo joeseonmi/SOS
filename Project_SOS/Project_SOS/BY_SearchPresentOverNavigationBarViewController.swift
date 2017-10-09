@@ -25,6 +25,7 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        
         self.sortTableContentsSegmentedControlOutlet.titleForSegment(at: 0) == "All"
         self.sortTableContentsSegmentedControlOutlet.selectedSegmentIndex = 0
         self.isfavoriteTableView = false
@@ -37,8 +38,6 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     /*******************************************/
     @IBAction func searchButtonClicked(_ button: UIBarButtonItem) {
         
-        self.isfavoriteTableView = false
-        
         UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
 
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewController") as! BY_SearchResultsViewController
@@ -48,7 +47,10 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         searchController.hidesNavigationBarDuringPresentation = false
         searchResultsController.isSearchBarClicked = true
         
+        
         present(searchController, animated: true, completion: nil)
+        
+        self.searchController.delegate = self
         
     }
     
@@ -108,11 +110,22 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     
     //세그(전체/좋아요) 선택부분
     func selectSegment() {
-        if self.isfavoriteTableView == true {
+        print("세그를 눌렀습니다")
+        if self.sortTableContentsSegmentedControlOutlet.selectedSegmentIndex == 0 {
             self.isfavoriteTableView = false
+            print("ALL")
         }else{
             self.isfavoriteTableView = true
+            print("FAVORITE")
         }
+        tableView.reloadData()
+    }
+}
+
+extension BY_SearchPresentOverNavigationBarViewController:UISearchControllerDelegate {
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        requestFavoriateQuestionData()
         tableView.reloadData()
     }
 }
