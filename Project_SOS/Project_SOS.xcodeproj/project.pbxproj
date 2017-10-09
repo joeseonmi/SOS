@@ -61,6 +61,8 @@
 		D8321BEE1F6BBD81006D7506 /* SM_DataTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SM_DataTestStoryboard.storyboard; sourceTree = "<group>"; };
 		D8321BF21F6D17A2006D7506 /* SM_DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SM_DataCenter.swift; sourceTree = "<group>"; };
 		D862F9741F74E36A00D85971 /* SM_Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SM_Constants.swift; sourceTree = "<group>"; };
+		D86416351F80C4AF00AB5B01 /* closeBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeBtn.png; sourceTree = "<group>"; };
+		D86416361F80C5CA00AB5B01 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D86539491F5E8C2B00D34790 /* Project_SOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_SOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865394C1F5E8C2B00D34790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86539511F5E8C2B00D34790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,7 +172,13 @@
 				6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */,
 				6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */,
 				6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */,
+<<<<<<< HEAD
+				D86CA8821F7EB9EB009B732C /* Assets.xcassets */,
+				D86416361F80C5CA00AB5B01 /* test.png */,
+				D86416351F80C4AF00AB5B01 /* closeBtn.png */,
+=======
 				6AC2A4281F81097A00138FCA /* Assets.xcassets */,
+>>>>>>> fd1bfdeb237f0a6f3c08a43b12a617cd9d372923
 				FE4FE6E71F6C24B00052AFB0 /* JS_Test */,
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,
