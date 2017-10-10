@@ -113,10 +113,10 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         print("세그를 눌렀습니다")
         if self.sortTableContentsSegmentedControlOutlet.selectedSegmentIndex == 0 {
             self.isfavoriteTableView = false
-            print("ALL")
+            print("전부세그: \(self.favoriteQuestionIDs)")
         }else{
             self.isfavoriteTableView = true
-            print("FAVORITE")
+            print("좋아요세그: \(self.favoriteQuestionIDs)")
         }
         tableView.reloadData()
     }

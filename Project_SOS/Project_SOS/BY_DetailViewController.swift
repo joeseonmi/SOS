@@ -471,7 +471,7 @@ class BY_DetailViewController: UIViewController {
 }
 
 
-//테이블뷰 DataSource 설정 부분
+//MARK: UITableViewDataSource 설정 부분 by 보영
 extension BY_DetailViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -518,10 +518,9 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
                 cell.explainBubbleImage.kf.indicatorType = .activity
-                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
-                    cell.reloadInputViews()
+                let processor = RoundCornerImageProcessor(cornerRadius: 20)
+                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
                 })
-                
             }
             
         case 1:
@@ -533,12 +532,13 @@ extension BY_DetailViewController: UITableViewDataSource {
             }else{
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
-                let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 cell.explainBubbleImage.kf.indicatorType = .activity
+                let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-                    
+                    cell.explainBubbleImage.anchor(top: cell.bgView.topAnchor, left: cell.bgView.leftAnchor, right: cell.bgView.rightAnchor, bottom: cell.bgView.bottomAnchor, topConstant: 8, leftConstant: 8, rightConstant: 8, bottomConstant: 8, width: 0, height: 0, centerX: nil, centerY: nil, contentMode:UIViewContentMode.scaleAspectFit)
                 })
             }
+            
         case 2:
             cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
@@ -549,7 +549,8 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = true
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 cell.explainBubbleImage.kf.indicatorType = .activity
-                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
+                let processor = RoundCornerImageProcessor(cornerRadius: 20)
+                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
                     
                 })
             }
@@ -559,10 +560,9 @@ extension BY_DetailViewController: UITableViewDataSource {
         
         return cell
     }
-    
 }
 
-//헤더 높이 조절을 위한 TableView Delegate 설정 부분
+//MARK: UITableViewDelegate 설정 부분 by 보영
 extension BY_DetailViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
