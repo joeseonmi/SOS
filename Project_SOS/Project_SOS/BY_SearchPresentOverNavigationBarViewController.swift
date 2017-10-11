@@ -110,13 +110,10 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     
     //세그(전체/좋아요) 선택부분
     func selectSegment() {
-        print("세그를 눌렀습니다")
         if self.sortTableContentsSegmentedControlOutlet.selectedSegmentIndex == 0 {
             self.isfavoriteTableView = false
-            print("전부세그: \(self.favoriteQuestionIDs)")
         }else{
             self.isfavoriteTableView = true
-            print("좋아요세그: \(self.favoriteQuestionIDs)")
         }
         tableView.reloadData()
     }

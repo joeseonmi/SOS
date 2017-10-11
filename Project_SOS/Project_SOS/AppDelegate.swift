@@ -22,19 +22,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9821073709980211~4294519494")
-        
-        
-        
+
+        // 최초 가입시 currentUser 값이 없다면 익명 유저로 가입시킵니다.
         if Auth.auth().currentUser?.uid == nil {
             Auth.auth().signInAnonymously(completion: { (user, error) in
                 guard let newUser = user else { return }
+                Database.database().reference().child(Constants.user).childByAutoId().setValue([Constants.user_userId:Auth.auth().currentUser?.uid])
                 if let error = error {
                     print("error====================",error.localizedDescription)
                     return
                 }
             })
         }
-        print("===========================================",Auth.auth().currentUser?.uid)
+        
+        // 해당 유저가 DB.child(User)에 기록되었는지 확인하고 추가합니다.
+        Database.database().reference().child(Constants.user).queryOrdered(byChild: Constants.user_userId).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.childrenCount == 0 {
+                Database.database().reference().child(Constants.user).childByAutoId().setValue([Constants.user_userId:Auth.auth().currentUser?.uid])
+                UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: Constants.userdefault_userUid)
+            } else if snapshot.exists() == false {
+                Auth.auth().signInAnonymously(completion: { (user, error) in
+                    guard let newUser = user else { return }
+                    Database.database().reference().child(Constants.user).childByAutoId().setValue([Constants.user_userId:Auth.auth().currentUser?.uid])
+                    if let error = error {
+                        print("error====================",error.localizedDescription)
+                        return
+                    }
+                })
+                
+                UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: Constants.userdefault_userUid)
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        print("======================================",Auth.auth().currentUser?.uid)
         return true
     }
 

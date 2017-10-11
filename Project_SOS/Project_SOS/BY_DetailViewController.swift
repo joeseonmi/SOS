@@ -519,8 +519,19 @@ extension BY_DetailViewController: UITableViewDataSource {
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
+//                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
+//                })
+                
+                let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
+                    print("///// data 456: ", data ?? "no data")
+                    print("///// res 456: ", res ?? "no data")
+                    print("///// error 456: ", err ?? "no data")
+                    guard let realData = data else { return }
+                    DispatchQueue.main.async {
+                        cell.explainBubbleImage.image = UIImage(data: realData)
+                    }
                 })
+                task.resume()
             }
             
         case 1:
@@ -534,9 +545,19 @@ extension BY_DetailViewController: UITableViewDataSource {
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-                    cell.explainBubbleImage.anchor(top: cell.bgView.topAnchor, left: cell.bgView.leftAnchor, right: cell.bgView.rightAnchor, bottom: cell.bgView.bottomAnchor, topConstant: 8, leftConstant: 8, rightConstant: 8, bottomConstant: 8, width: 0, height: 0, centerX: nil, centerY: nil, contentMode:UIViewContentMode.scaleAspectFit)
+                //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
+                //                })
+                
+                let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
+                    print("///// data 456: ", data ?? "no data")
+                    print("///// res 456: ", res ?? "no data")
+                    print("///// error 456: ", err ?? "no data")
+                    guard let realData = data else { return }
+                    DispatchQueue.main.async {
+                        cell.explainBubbleImage.image = UIImage(data: realData)
+                    }
                 })
+                task.resume()
             }
             
         case 2:
@@ -550,9 +571,19 @@ extension BY_DetailViewController: UITableViewDataSource {
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-                    
+                //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
+                //                })
+                
+                let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
+                    print("///// data 456: ", data ?? "no data")
+                    print("///// res 456: ", res ?? "no data")
+                    print("///// error 456: ", err ?? "no data")
+                    guard let realData = data else { return }
+                    DispatchQueue.main.async {
+                        cell.explainBubbleImage.image = UIImage(data: realData)
+                    }
                 })
+                task.resume()
             }
         default:
             break
