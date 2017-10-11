@@ -32,18 +32,26 @@
                         <rect key="frame" x="77" y="12" width="264" height="192.66666666666666"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-4G-6Vs">
-                                <rect key="frame" x="8" y="8" width="248" height="176.66666666666666"/>
+                                <rect key="frame" x="8" y="9.3333333333333286" width="248" height="174"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="441" id="0gX-0X-sft"/>
+                                    <constraint firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="height" multiplier="4:3" constant="16" id="ELB-gu-nGp"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-UX-mTQ">
+                                <rect key="frame" x="8" y="9" width="248" height="174"/>
+                                <state key="normal" title="image"/>
+                                <connections>
+                                    <action selector="clickedImageBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qi9-V6-0zT"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-Yf-qcX">
                                 <rect key="frame" x="8" y="8" width="248" height="176.66666666666666"/>
                                 <string key="text">이 기상과 이 맘으로 충성을 다하여 
 괴로우나 즐거우나 나라 사랑하세 
 무궁화 삼천리 화려강산 
 대한 사람 대한으로 길이 보전하세</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -53,13 +61,14 @@
                             <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerY" secondItem="D8d-jh-6Be" secondAttribute="centerY" id="0zb-yD-Hl5"/>
                             <constraint firstAttribute="bottom" secondItem="3SW-Yf-qcX" secondAttribute="bottom" constant="8" id="KuZ-Xh-tGe"/>
                             <constraint firstItem="3SW-Yf-qcX" firstAttribute="leading" secondItem="D8d-jh-6Be" secondAttribute="leading" constant="8" id="Qxb-Lq-9O0"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DhP-4G-6Vs" secondAttribute="trailing" priority="750" constant="8" id="TqQ-b1-d4P"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerY" secondItem="DhP-4G-6Vs" secondAttribute="centerY" id="RnA-Gq-Mdx"/>
                             <constraint firstAttribute="trailing" secondItem="3SW-Yf-qcX" secondAttribute="trailing" constant="8" id="ULr-XZ-jh4"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="height" secondItem="DhP-4G-6Vs" secondAttribute="height" id="WmT-wn-kCh"/>
                             <constraint firstItem="3SW-Yf-qcX" firstAttribute="top" secondItem="D8d-jh-6Be" secondAttribute="top" constant="8" id="Yi0-Du-mZS"/>
-                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="top" relation="lessThanOrEqual" secondItem="D8d-jh-6Be" secondAttribute="top" constant="8" id="Zm9-vg-T6H"/>
                             <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerX" secondItem="D8d-jh-6Be" secondAttribute="centerX" id="eJS-Od-0cE"/>
-                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="leading" secondItem="D8d-jh-6Be" secondAttribute="leading" priority="750" constant="8" id="h3A-Ek-TEV"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DhP-4G-6Vs" secondAttribute="bottom" priority="750" constant="8" id="yKA-NA-Ki6"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="width" secondItem="D8d-jh-6Be" secondAttribute="width" constant="-16" id="eJt-q7-5dX"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerX" secondItem="DhP-4G-6Vs" secondAttribute="centerX" id="ji3-hU-MIq"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="width" id="szF-k4-3Zl"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bubletail" translatesAutoresizingMaskIntoConstraints="NO" id="J4q-yG-fmr">
@@ -86,6 +95,7 @@
             <connections>
                 <outlet property="bgView" destination="D8d-jh-6Be" id="nEe-KA-4wh"/>
                 <outlet property="characterIconImage" destination="IkZ-tr-mti" id="os0-JS-cA4"/>
+                <outlet property="clickedImageOutlet" destination="E1S-UX-mTQ" id="kom-or-XM5"/>
                 <outlet property="explainBubbleImage" destination="DhP-4G-6Vs" id="Y3x-4L-hfb"/>
                 <outlet property="explainBubbleText" destination="3SW-Yf-qcX" id="DAF-bt-GA4"/>
             </connections>

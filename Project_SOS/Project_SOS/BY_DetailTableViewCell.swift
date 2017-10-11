@@ -14,11 +14,15 @@ class BY_DetailTableViewCell: UITableViewCell {
     //MARK:-        Properties                 //
     /*******************************************/
     
+    @IBOutlet weak var clickedImageOutlet: UIButton!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var characterIconImage: UIImageView!
     @IBOutlet weak var explainBubbleText: UILabel!
     @IBOutlet weak var explainBubbleImage: UIImageView!
     
+    @IBAction func clickedImageBtn(_ sender: UIButton) {
+        
+    }
     /*******************************************/
     //MARK:-        LifeCycle                  //
     /*******************************************/

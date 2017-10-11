@@ -172,13 +172,10 @@
 				6AFBF11E1F74E3D600C0F2D1 /* BY_DetailTableViewCell.xib */,
 				6A33C85B1F6149C1005FC0A8 /* BY_CharacterChoiceViewController.swift */,
 				6A15CBC31F72806800F74B1A /* BY_CharacterIntroduceViewController.swift */,
-<<<<<<< HEAD
 				D86CA8821F7EB9EB009B732C /* Assets.xcassets */,
 				D86416361F80C5CA00AB5B01 /* test.png */,
 				D86416351F80C4AF00AB5B01 /* closeBtn.png */,
-=======
 				6AC2A4281F81097A00138FCA /* Assets.xcassets */,
->>>>>>> fd1bfdeb237f0a6f3c08a43b12a617cd9d372923
 				FE4FE6E71F6C24B00052AFB0 /* JS_Test */,
 				6A33C8661F617226005FC0A8 /* BY_Search Controllers */,
 				D8321BEB1F6AB85F006D7506 /* SM_DataTest */,

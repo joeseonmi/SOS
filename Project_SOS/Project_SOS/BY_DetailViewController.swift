@@ -496,7 +496,6 @@ extension BY_DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
-        
         cell.selectionStyle = .none
         
         //선택된 세그에 따라 이미지 변경
@@ -512,10 +511,12 @@ extension BY_DetailViewController: UITableViewDataSource {
             
             if byAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
                 cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
@@ -529,9 +530,11 @@ extension BY_DetailViewController: UITableViewDataSource {
             if smAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = smAnswer[indexPath.row][Constants.question_AnswerContents]
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 cell.explainBubbleImage.kf.indicatorType = .activity
@@ -544,9 +547,11 @@ extension BY_DetailViewController: UITableViewDataSource {
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = jsAnswer[indexPath.row][Constants.question_AnswerContents]
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), completionHandler: {(image, error, cacheType, imageUrl) in
