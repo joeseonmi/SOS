@@ -74,8 +74,6 @@ class BY_MainTableViewController: UITableViewController {
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
-        
-        print("메인뷰디드로드")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,12 +188,10 @@ class BY_MainTableViewController: UITableViewController {
         
         //ALL 이냐 FAVORITE 냐
         if isfavoriteTableView == false {
-            print("ALL 셀을 부릅니다")
             cell.titleQuestionLabel.text = self.questionTitleData[indexPath.row]
             cell.tagLabel?.text = self.questionTagData[indexPath.row]
             cell.loadLikeDatafor(questionID: indexPath.row)
         }else{
-            print("FAVORITE 셀을 부릅니다.")
             var index:Int = self.favoriteQuestionIDs[indexPath.row]
             self.requestFavoriteQuestionDataFor(questionID: index, completion: { (dic) in
                 cell.titleQuestionLabel.text = dic[index]["QuestionTitle"]
@@ -220,7 +216,7 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 97
+        return 90
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -237,4 +233,39 @@ class BY_MainTableViewController: UITableViewController {
         nextViewController.questionID = self.selectedQuestionID
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if self.isfavoriteTableView == true {
+            return true
+        }
+        return false
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete && self.isfavoriteTableView == true {
+            Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.childrenCount != 0 {
+                    guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {return print("못불러옴: ", snapshot.value ?? "(no data)")}
+                    guard let realUid = Auth.auth().currentUser?.uid else { return }
+                    
+                    let filteredLikeData = tempLikeDatas.filter({ (dic:(key: String, value: [String : Any])) -> Bool in
+                        let questionNumber:Int = dic.value[Constants.like_QuestionId] as! Int
+                        return questionNumber == self.favoriteQuestionIDs[indexPath.row]
+                    })
+                    
+                    for i in 0..<filteredLikeData.count {
+                        Database.database().reference().child(Constants.like).child(filteredLikeData[i].key).setValue(nil)
+                    }
+                    self.favoriteQuestionIDs.remove(at: indexPath.row)
+                    
+                    tableView.reloadData()
+                }
+                
+            }) { (error) in
+                print("좋아요 액션 에러", error.localizedDescription)
+            }
+        }
+    }
 }
+

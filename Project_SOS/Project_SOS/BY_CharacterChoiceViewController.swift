@@ -87,7 +87,7 @@ class BY_CharacterChoiceViewController: UIViewController {
     @IBAction func completeButtonAction(_ sender: UIButton) {
         guard let realCharacterString:String = UserDefaults.standard.object(forKey: "SelectedCharacter") as? String else {return}
         
-        saveUserUidAtDatabase()
+//        saveUserUidAtDatabase()
         
         //캐릭터 설정창에서 완료버튼을 눌렀을 때, 어떤 캐릭터를 설정했는지 파이어베이스에 이벤트로 저장
         switch realCharacterString {
@@ -113,7 +113,7 @@ class BY_CharacterChoiceViewController: UIViewController {
     }
     
     
-    
+    /* MARK: 해당 내용 AppDelegate에 구현해서 주석처리함 by 보영
     //SM func
     func saveUserUidAtDatabase(){
         
@@ -150,4 +150,5 @@ class BY_CharacterChoiceViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+ */
 }
