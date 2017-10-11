@@ -255,6 +255,7 @@ class BY_DetailViewController: UIViewController {
     
     
     //MARK: 공유하기 버튼 액션 정의 - by 재성
+    // 검색 > 디테일 화면으로 들어왔을 때, 표시되는 커스텀 내비게이션 바에도 같은 내용 구현하기 ( '공유하기 버튼(커스텀 내비게이션 바) 액션 정의'로 주석 처리 )
     @IBAction func shareButtonAction(_ sender: UIButton) {
         var sharingText = ""
         
@@ -315,8 +316,28 @@ class BY_DetailViewController: UIViewController {
     }
     
     //--Share Button
-    //TODO: (재성님!)여기에 공유에 대한 기능을 구현해주세요 / 기존 NavigationBar 상의 버튼에 구현했던 것과 동일
+    //MARK: 공유하기 버튼(커스텀 내비게이션 바) 액션 정의
     @IBAction func navigationViewShareButtonAction(_ sender: UIButton) {
+        var sharingText = ""
+        
+        switch self.characterSelectSegmentedControl.selectedSegmentIndex {
+        case 0: //"보영 선택시"
+            print("///// shareButtonAction: 보영 \(self.byAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.byAnswer) )
+            
+        case 1: //"선미 선택시"
+            print("///// shareButtonAction: 선미 \(self.smAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.smAnswer) )
+            
+        case 2: //"재성 선택시"
+            print("///// shareButtonAction: 재성 \(self.jsAnswer.count)")
+            sharingText = ( (self.contentSharingTitle!) + "\n\n" + self.findSharingAnswerTextsOnlyOf(answer: self.jsAnswer) )
+            
+        default:
+            print("///// shareButtonAction: no data")
+        }
+        
+        shareTextOf(text: sharingText)
     }
     
     //--Like Button
