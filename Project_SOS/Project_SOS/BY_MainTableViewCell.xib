@@ -20,11 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메인 질문이 들어갑니다?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSx-Ki-m8L">
-<<<<<<< HEAD
-                        <rect key="frame" x="12" y="15" width="363" height="25.5"/>
-=======
+
                         <rect key="frame" x="12" y="14.5" width="363" height="25.5"/>
->>>>>>> 436cfefc31a9781f6ef4ea983f693bc4255237c5
+
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

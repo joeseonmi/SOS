@@ -15,6 +15,8 @@ import GoogleMobileAds
 
 //이미지 띄워지기 전 보여질 Indicator
 struct BY_Indicator: Indicator {
+
+
     let view: UIView = UIView()
     
     func startAnimatingView() {
@@ -29,7 +31,8 @@ struct BY_Indicator: Indicator {
     }
 }
 
-class BY_DetailViewController: UIViewController {
+class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
+  
     
     /*******************************************/
     //MARK:-        Properties                 //
@@ -40,6 +43,8 @@ class BY_DetailViewController: UIViewController {
     var byAnswer:[[String:String]] = []
     var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
+    
+    var popupURL:URL?
     
     //인디케이터
     let imageLoadingIndicator = BY_Indicator()
@@ -518,7 +523,7 @@ extension BY_DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
         cell.selectionStyle = .none
-        
+        cell.delegate = self
         //선택된 세그에 따라 이미지 변경
 //        재성 - unused 되는 코드여서 주석 처리합니다.
 //        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
@@ -539,6 +544,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = true
                 cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -567,6 +573,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = true
                 cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -595,6 +602,7 @@ extension BY_DetailViewController: UITableViewDataSource {
                 cell.explainBubbleText.isHidden = true
                 cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -781,6 +789,14 @@ extension BY_DetailViewController: UITableViewDelegate {
         bannerView.load(GADRequest())
         
         self.admobBannerBackgroundView.addSubview(bannerView)
+    }
+    
+    // MARK: -선미 델리게이트 함수
+    func presentPopup() {
+        print("델리게이트성공")
+        let popupVC:SM_ImagePopupViewController = storyboard?.instantiateViewController(withIdentifier: "SM_ImagePopupViewController") as! SM_ImagePopupViewController
+        popupVC.imageURL = popupURL
+        self.present(popupVC, animated: true, completion: nil)
     }
     
 }

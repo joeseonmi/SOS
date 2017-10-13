@@ -14,11 +14,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" rowHeight="231" id="KGk-i7-Jjw" customClass="BY_DetailTableViewCell" customModule="Project_SOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="349" height="231"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" rowHeight="227" id="KGk-i7-Jjw" customClass="BY_DetailTableViewCell" customModule="Project_SOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="227"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="349" height="230.66666666666666"/>
+                <rect key="frame" x="0.0" y="0.0" width="349" height="226.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BYFace" translatesAutoresizingMaskIntoConstraints="NO" id="IkZ-tr-mti">
@@ -29,30 +29,19 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8d-jh-6Be">
-                        <rect key="frame" x="77" y="12" width="264" height="210.66666666666666"/>
+                        <rect key="frame" x="77" y="12" width="264" height="206.66666666666666"/>
                         <subviews>
-<<<<<<< HEAD
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-4G-6Vs">
-                                <rect key="frame" x="8" y="9.3333333333333286" width="248" height="174"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="441" id="0gX-0X-sft"/>
-                                    <constraint firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="height" multiplier="4:3" constant="16" id="ELB-gu-nGp"/>
-                                </constraints>
-=======
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-4G-6Vs">
-                                <rect key="frame" x="8" y="8" width="248" height="194.66666666666666"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
->>>>>>> 436cfefc31a9781f6ef4ea983f693bc4255237c5
+                                <rect key="frame" x="8" y="8" width="248" height="190.66666666666666"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-UX-mTQ">
-                                <rect key="frame" x="8" y="9" width="248" height="174"/>
-                                <state key="normal" title="image"/>
+                                <rect key="frame" x="8" y="8" width="248" height="190.66666666666666"/>
                                 <connections>
                                     <action selector="clickedImageBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qi9-V6-0zT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-Yf-qcX">
-                                <rect key="frame" x="8" y="8" width="248" height="194.66666666666666"/>
+                                <rect key="frame" x="8" y="8" width="248" height="190.66666666666666"/>
                                 <string key="text">이 기상과 이 맘으로 충성을 다하여 
 괴로우나 즐거우나 나라 사랑하세 
 무궁화 삼천리 화려강산 
@@ -64,22 +53,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94181888989999996" green="0.94181888989999996" blue="0.94181888989999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerY" secondItem="DhP-4G-6Vs" secondAttribute="centerY" id="0cG-ws-4gc"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerY" secondItem="D8d-jh-6Be" secondAttribute="centerY" id="1WJ-eH-leU"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="width" secondItem="D8d-jh-6Be" secondAttribute="width" constant="-16" id="B8M-Hd-SOh"/>
                             <constraint firstAttribute="bottom" secondItem="3SW-Yf-qcX" secondAttribute="bottom" constant="8" id="KuZ-Xh-tGe"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="height" secondItem="D8d-jh-6Be" secondAttribute="height" constant="-16" id="NyJ-wA-WNb"/>
                             <constraint firstItem="3SW-Yf-qcX" firstAttribute="leading" secondItem="D8d-jh-6Be" secondAttribute="leading" constant="8" id="Qxb-Lq-9O0"/>
-<<<<<<< HEAD
-                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerY" secondItem="DhP-4G-6Vs" secondAttribute="centerY" id="RnA-Gq-Mdx"/>
-=======
->>>>>>> 436cfefc31a9781f6ef4ea983f693bc4255237c5
                             <constraint firstAttribute="trailing" secondItem="3SW-Yf-qcX" secondAttribute="trailing" constant="8" id="ULr-XZ-jh4"/>
-                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="height" secondItem="DhP-4G-6Vs" secondAttribute="height" id="WmT-wn-kCh"/>
                             <constraint firstItem="3SW-Yf-qcX" firstAttribute="top" secondItem="D8d-jh-6Be" secondAttribute="top" constant="8" id="Yi0-Du-mZS"/>
-<<<<<<< HEAD
-                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerX" secondItem="D8d-jh-6Be" secondAttribute="centerX" id="eJS-Od-0cE"/>
-                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="width" secondItem="D8d-jh-6Be" secondAttribute="width" constant="-16" id="eJt-q7-5dX"/>
-                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerX" secondItem="DhP-4G-6Vs" secondAttribute="centerX" id="ji3-hU-MIq"/>
-                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="width" id="szF-k4-3Zl"/>
-=======
->>>>>>> 436cfefc31a9781f6ef4ea983f693bc4255237c5
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerX" secondItem="DhP-4G-6Vs" secondAttribute="centerX" id="cYV-AW-eba"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerX" secondItem="D8d-jh-6Be" secondAttribute="centerX" id="obM-ie-cOy"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="width" id="sbe-R8-ILY"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="height" secondItem="DhP-4G-6Vs" secondAttribute="height" id="ukp-wK-az3"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bubletail" translatesAutoresizingMaskIntoConstraints="NO" id="J4q-yG-fmr">
@@ -110,7 +95,7 @@
                 <outlet property="explainBubbleImage" destination="DhP-4G-6Vs" id="Y3x-4L-hfb"/>
                 <outlet property="explainBubbleText" destination="3SW-Yf-qcX" id="DAF-bt-GA4"/>
             </connections>
-            <point key="canvasLocation" x="45.5" y="132.5"/>
+            <point key="canvasLocation" x="45.5" y="130.5"/>
         </tableViewCell>
     </objects>
     <resources>
