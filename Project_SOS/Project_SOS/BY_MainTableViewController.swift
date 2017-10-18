@@ -59,6 +59,20 @@ class BY_MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 최초 가입시 currentUser 값이 없다면 익명 유저로 가입시킵니다.
+        if Auth.auth().currentUser?.uid == nil {
+            Auth.auth().signInAnonymously(completion: { (user, error) in
+                guard let newUser = user else { return }
+                Database.database().reference().child(Constants.user).childByAutoId().setValue([Constants.user_userId:Auth.auth().currentUser?.uid])
+                self.requestAllQuestionData()
+                
+                if let error = error {
+                    print("error====================",error.localizedDescription)
+                    return
+                }
+            })
+        }
+        
         //ALL 데이터 가져오기
         requestAllQuestionData()
         
@@ -71,6 +85,8 @@ class BY_MainTableViewController: UITableViewController {
         self.tableView.backgroundView = imageView
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        
+        print("여기 뷰디드로드")
         
         //셀라인 삭제
         self.tableView.separatorStyle = .none
@@ -104,8 +120,8 @@ class BY_MainTableViewController: UITableViewController {
     
     //ALL 데이터 가져오기
     func requestAllQuestionData() {
-        Database.database().reference().child(Constants.question).observe(.value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String:Any]] else { return }
+        Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? [[String:Any]] else { return print("여기 안되여")}
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
             })
@@ -119,10 +135,12 @@ class BY_MainTableViewController: UITableViewController {
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
             
+            print("여기 퀘스천테그: \(self.questionTagData)\n퀘스쳔타이틀: \(self.questionTitleData)")
+            
             self.tableView.reloadData()
             
         }) { (error) in
-            print(error.localizedDescription)
+            print(print("여기 에러입니다"), error.localizedDescription)
         }
     }
     
