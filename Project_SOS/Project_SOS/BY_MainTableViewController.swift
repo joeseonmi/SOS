@@ -121,7 +121,7 @@ class BY_MainTableViewController: UITableViewController {
     //ALL 데이터 가져오기
     func requestAllQuestionData() {
         Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let data = snapshot.value as? [[String:Any]] else { return print("여기 안되여")}
+            guard let data = snapshot.value as? [[String:Any]] else { return }
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
             })
@@ -135,12 +135,10 @@ class BY_MainTableViewController: UITableViewController {
             self.questionTagData = tempTagArray
             self.questionTitleData = tempArray
             
-            print("여기 퀘스천테그: \(self.questionTagData)\n퀘스쳔타이틀: \(self.questionTitleData)")
-            
             self.tableView.reloadData()
             
         }) { (error) in
-            print(print("여기 에러입니다"), error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     

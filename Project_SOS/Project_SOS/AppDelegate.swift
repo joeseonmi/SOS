@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9821073709980211~4294519494")
     
         addUserDataToDatabase()
+    
         return true
     }
     
