@@ -61,9 +61,11 @@ class BY_MainTableViewController: UITableViewController {
         
         // 최초 가입시 currentUser 값이 없다면 익명 유저로 가입시킵니다.
         if Auth.auth().currentUser?.uid == nil {
+            
             Auth.auth().signInAnonymously(completion: { (user, error) in
                 guard let newUser = user else { return }
                 Database.database().reference().child(Constants.user).childByAutoId().setValue([Constants.user_userId:Auth.auth().currentUser?.uid])
+                
                 self.requestAllQuestionData()
                 
                 if let error = error {
