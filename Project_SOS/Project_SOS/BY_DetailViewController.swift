@@ -13,22 +13,6 @@ import SafariServices
 import Kingfisher
 import GoogleMobileAds
 
-//이미지 띄워지기 전 보여질 Indicator
-struct BY_Indicator: Indicator {
-    let view: UIView = UIView()
-    
-    func startAnimatingView() {
-        view.isHidden = false
-    }
-    func stopAnimatingView() {
-        view.isHidden = true
-    }
-    
-    init() {
-        view.backgroundColor = .red
-    }
-}
-
 class BY_DetailViewController: UIViewController {
     
     /*******************************************/
@@ -40,9 +24,6 @@ class BY_DetailViewController: UIViewController {
     var byAnswer:[[String:String]] = []
     var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
-    
-    //인디케이터
-    let imageLoadingIndicator = BY_Indicator()
     
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
