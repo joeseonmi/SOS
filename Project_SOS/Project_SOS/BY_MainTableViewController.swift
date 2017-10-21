@@ -126,6 +126,7 @@ class BY_MainTableViewController: UITableViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (snapshot) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard let data = snapshot.value as? [[String:Any]] else { return }
             let tempArray = data.map({ (dic) -> String in
                 return dic[Constants.question_QuestionTitle] as! String
@@ -142,7 +143,6 @@ class BY_MainTableViewController: UITableViewController {
             
             self.tableView.reloadData()
             
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -154,13 +154,13 @@ class BY_MainTableViewController: UITableViewController {
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
                 let tempUsersLikeData = tempLikeData.map({ (dic) -> Int in
                     let likedQuestionID = dic.value[Constants.like_QuestionId] as! Int
                     return likedQuestionID
                 })
                 self.favoriteQuestionIDs = tempUsersLikeData.sorted()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }, withCancel: { (error) in
                 print("즐겨찾기 데이터 에러", error.localizedDescription)
             })
@@ -171,6 +171,7 @@ class BY_MainTableViewController: UITableViewController {
     func requestFavoriteQuestionDataFor(questionID:Int, completion:@escaping (_ info:[[String:String]]) -> Void) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).queryOrdered(byChild: Constants.question_QuestionId).observeSingleEvent(of: .value, with: { (snapshot) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard let tempQuestionData = snapshot.value as? [[String:Any]] else {return print("좋아요테스트: 여기서 안됨 \(snapshot.value)")}
             let tempQuestionDic = tempQuestionData.map({ (dic) -> [String:String] in
                 var questionTitle:String = dic[Constants.question_QuestionTitle] as! String
@@ -178,7 +179,6 @@ class BY_MainTableViewController: UITableViewController {
                 return ["QuestionTitle":questionTitle, "QuestionTag":questionTag]
             })
             completion(tempQuestionDic)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
