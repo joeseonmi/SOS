@@ -122,6 +122,9 @@ class BY_MainTableViewController: UITableViewController {
     
     //ALL 데이터 가져오기
     func requestAllQuestionData() {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         Database.database().reference().child(Constants.question).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let data = snapshot.value as? [[String:Any]] else { return }
             let tempArray = data.map({ (dic) -> String in
@@ -139,6 +142,7 @@ class BY_MainTableViewController: UITableViewController {
             
             self.tableView.reloadData()
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -147,6 +151,8 @@ class BY_MainTableViewController: UITableViewController {
     //FAVORITE 데이터 가져오기
     func requestFavoriateQuestionData() {
         if Auth.auth().currentUser?.uid != nil {
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
                 let tempUsersLikeData = tempLikeData.map({ (dic) -> Int in
@@ -154,6 +160,7 @@ class BY_MainTableViewController: UITableViewController {
                     return likedQuestionID
                 })
                 self.favoriteQuestionIDs = tempUsersLikeData.sorted()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }, withCancel: { (error) in
                 print("즐겨찾기 데이터 에러", error.localizedDescription)
             })
@@ -162,6 +169,7 @@ class BY_MainTableViewController: UITableViewController {
     
     //Firebase 좋아요개수 데이터 가져오는 부분
     func requestFavoriteQuestionDataFor(questionID:Int, completion:@escaping (_ info:[[String:String]]) -> Void) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).queryOrdered(byChild: Constants.question_QuestionId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempQuestionData = snapshot.value as? [[String:Any]] else {return print("좋아요테스트: 여기서 안됨 \(snapshot.value)")}
             let tempQuestionDic = tempQuestionData.map({ (dic) -> [String:String] in
@@ -170,7 +178,7 @@ class BY_MainTableViewController: UITableViewController {
                 return ["QuestionTitle":questionTitle, "QuestionTag":questionTag]
             })
             completion(tempQuestionDic)
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -260,6 +268,7 @@ class BY_MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if editingStyle == UITableViewCellEditingStyle.delete && self.isfavoriteTableView == true {
             Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -278,6 +287,7 @@ class BY_MainTableViewController: UITableViewController {
                     self.favoriteQuestionIDs.remove(at: indexPath.row)
                     
                     tableView.reloadData()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
                 
             }) { (error) in

@@ -378,6 +378,8 @@ class BY_DetailViewController: UIViewController {
     // BY Func: 좋아요 구현 부분 테스트
     // --- BY: 해당 질문의 좋아요 여부
     func loadLikeData(questionID:Int) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
@@ -399,6 +401,8 @@ class BY_DetailViewController: UIViewController {
             default:
                 print("좋아요 이미지 에러: \(filteredLikeData)")
             }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }, withCancel: { (error) in
             print("좋아요 불러오는 에러입니다", error.localizedDescription)
         })
@@ -407,6 +411,7 @@ class BY_DetailViewController: UIViewController {
     // --- BY: 좋아요 버튼 액션. 별표(좋아요)를 누를 때마다 데이터 및 UI를 반영하여 나타냅니다.
     func likeButtonAction() {
         guard let realQuestionID = self.questionID else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if snapshot.childrenCount != 0 {
@@ -439,12 +444,15 @@ class BY_DetailViewController: UIViewController {
                 guard let realUid = Auth.auth().currentUser?.uid else { return }
                 Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
             }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("좋아요 액션 에러", error.localizedDescription)
         }
     }
     
     func loadData(from question_ID:Int) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
             guard let data = snapshot.value as? [String:Any],
                 let titleValue = data[Constants.question_QuestionTitle] as? String else { return }
@@ -459,17 +467,19 @@ class BY_DetailViewController: UIViewController {
             self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
             
             self.detailTableView.reloadData()
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     func loadAnswer(from question_ID:Int) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.byAnswer = byAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -477,6 +487,7 @@ class BY_DetailViewController: UIViewController {
             guard let jsAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.jsAnswer = jsAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("error: ",error.localizedDescription)
         }
@@ -484,6 +495,7 @@ class BY_DetailViewController: UIViewController {
             guard let smAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.smAnswer = smAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("error: ",error.localizedDescription)
         }

@@ -80,7 +80,9 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         }
         
         let resetCharacterSettingAction:UIAlertAction = UIAlertAction.init(title: "캐릭터 설정 초기화", style: .default) { (alert) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             UserDefaults.standard.removeObject(forKey: "SelectedCharacter")
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             self.informCharacterSettingReset()
         }
         
@@ -118,7 +120,9 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     
     //보영: 햄버거메뉴_'즐겨찾기 초기화' 액션
     func resetFavoriteDatas() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
             let tempLikeKeyString = tempLikeData.map({ (dic) -> String in
                 return dic.key
