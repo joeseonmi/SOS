@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e0-5u-wCD">
-                                <rect key="frame" x="19" y="158.5" width="337.5" height="350.5"/>
+                                <rect key="frame" x="19" y="151" width="337.5" height="365"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="취향인 캐릭터를 골라주세요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et9-C8-7Mp">
                                         <rect key="frame" x="20" y="20" width="258" height="27.5"/>
@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7I-QX-M27">
-                                        <rect key="frame" x="0.0" y="300.5" width="337.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="315" width="337.5" height="50"/>
                                         <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="WgR-pV-xSF"/>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UT7-Di-XNF">
-                                        <rect key="frame" x="0.0" y="149" width="337.5" height="53"/>
+                                        <rect key="frame" x="0.0" y="149" width="337.5" height="67.5"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfT-Gj-PaV">
                                                 <rect key="frame" x="8" y="-10" width="70" height="70"/>
@@ -79,11 +79,11 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLS-xZ-vU1">
-                                                <rect key="frame" x="92" y="0.0" width="225.5" height="53"/>
+                                                <rect key="frame" x="92" y="0.0" width="225.5" height="67.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUu-D8-XxE">
-                                                        <rect key="frame" x="10" y="5" width="210.5" height="43"/>
-                                                        <string key="text">디자인 + 개발 유니콘이 되고 싶은,  아직은 망아지입니다.
+                                                        <rect key="frame" x="10" y="5" width="210.5" height="57.5"/>
+                                                        <string key="text">비전공자의 시선에서 바라보는 스위프트! 디자인 + 개발 유니콘이 되고 싶은,  아직은 망아지입니다.
 과연 제가 이걸로 먹고 살 수 있을까여? </string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
@@ -113,7 +113,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AC-rf-2D9">
-                                        <rect key="frame" x="0.0" y="217" width="337.5" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="231.5" width="337.5" height="67.5"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gs5-by-JkT">
                                                 <rect key="frame" x="8" y="-10" width="70" height="70"/>
@@ -169,8 +169,8 @@ IT 서비스 기획자를 전전하다가  늦깎이 iOS 개발자가 되었�
                                             <constraint firstItem="cuf-H5-juX" firstAttribute="leading" secondItem="eB2-O4-SCo" secondAttribute="trailing" id="dg0-if-L2Z"/>
                                             <constraint firstItem="eB2-O4-SCo" firstAttribute="leading" secondItem="Gs5-by-JkT" secondAttribute="trailing" id="gjr-qt-6Vh"/>
                                             <constraint firstAttribute="trailing" secondItem="cuf-H5-juX" secondAttribute="trailing" constant="20" id="jte-RF-xgn"/>
-                                            <constraint firstItem="Gs5-by-JkT" firstAttribute="top" secondItem="6AC-rf-2D9" secondAttribute="top" constant="-10" id="muM-kx-VWj"/>
                                             <constraint firstItem="YpU-WJ-G4P" firstAttribute="top" secondItem="Gs5-by-JkT" secondAttribute="bottom" constant="-10" id="np7-9p-u6D"/>
+                                            <constraint firstItem="cuf-H5-juX" firstAttribute="top" secondItem="Gs5-by-JkT" secondAttribute="top" constant="10" id="yPe-YC-Yok"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKl-HQ-pVF">
