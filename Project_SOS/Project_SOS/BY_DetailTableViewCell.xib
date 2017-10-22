@@ -57,6 +57,7 @@
                             <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerY" secondItem="D8d-jh-6Be" secondAttribute="centerY" id="1WJ-eH-leU"/>
                             <constraint firstItem="DhP-4G-6Vs" firstAttribute="width" secondItem="D8d-jh-6Be" secondAttribute="width" constant="-16" id="B8M-Hd-SOh"/>
                             <constraint firstAttribute="bottom" secondItem="3SW-Yf-qcX" secondAttribute="bottom" constant="8" id="KuZ-Xh-tGe"/>
+                            <constraint firstAttribute="height" priority="250" id="LDb-em-cuX"/>
                             <constraint firstItem="DhP-4G-6Vs" firstAttribute="height" secondItem="D8d-jh-6Be" secondAttribute="height" constant="-16" id="NyJ-wA-WNb"/>
                             <constraint firstItem="3SW-Yf-qcX" firstAttribute="leading" secondItem="D8d-jh-6Be" secondAttribute="leading" constant="8" id="Qxb-Lq-9O0"/>
                             <constraint firstAttribute="trailing" secondItem="3SW-Yf-qcX" secondAttribute="trailing" constant="8" id="ULr-XZ-jh4"/>
@@ -94,6 +95,7 @@
                 <outlet property="clickedImageOutlet" destination="E1S-UX-mTQ" id="kom-or-XM5"/>
                 <outlet property="explainBubbleImage" destination="DhP-4G-6Vs" id="Y3x-4L-hfb"/>
                 <outlet property="explainBubbleText" destination="3SW-Yf-qcX" id="DAF-bt-GA4"/>
+                <outlet property="test" destination="LDb-em-cuX" id="qs5-TH-hFw"/>
             </connections>
             <point key="canvasLocation" x="45.5" y="130.5"/>
         </tableViewCell>

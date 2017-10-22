@@ -14,6 +14,7 @@ protocol bubbleImageCellDelegate {
 
 class BY_DetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var test: NSLayoutConstraint!
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
@@ -25,12 +26,14 @@ class BY_DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var characterIconImage: UIImageView!
     @IBOutlet weak var explainBubbleText: UILabel!
     @IBOutlet weak var explainBubbleImage: UIImageView!
+
     
     @IBAction func clickedImageBtn(_ sender: UIButton) {
         print("이미지셀이 눌렸다능")
         self.delegate?.presentPopup()
     }
 
+    
     //Explain ImageView Constraints
     @IBOutlet weak var explainImageViewCenterX: NSLayoutConstraint!
     @IBOutlet weak var explainImageViewCenterY: NSLayoutConstraint!
