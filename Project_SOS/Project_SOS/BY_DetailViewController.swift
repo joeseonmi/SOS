@@ -26,6 +26,9 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
     
+    var enKeyword:String = ""
+    var korKeyword:String = ""
+    
 
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
@@ -107,7 +110,6 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadData(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
-        
         //애드몹 광고 불러오는 function 호출 ( by 재성 )
         self.addAdMobView()
     }
@@ -130,7 +132,9 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
         
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadAnswer(from: realQuestionID)
-        
+        self.loadKorKeyword(from: realQuestionID)
+        print("--------------------------d-d-d-d-d-d-d-",self.korKeyword)
+        self.loadENKeyword(from: realQuestionID)
         self.detailTableView.reloadData()
     }
     
@@ -221,16 +225,38 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     
     //TODO:- 구글만 공백을 허용하지않는것인지? 우리는 타이틀기준 검색을 할것인지 tag기준 검색을 할것인지?
     //MARK: 구글링 / 네이버링 버튼 액션 정의 - by 재성
+    //키워드로드
+    
+    func loadENKeyword(from questionID: Int) {
+        Database.database().reference().child(Constants.question).child("\(questionID)").child(Constants.keyword_English).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? String else { return }
+            self.enKeyword = data
+            print("data------------------",self.enKeyword)
+        }) { (error) in
+            print("Keyword load error------------:",error)
+        }
+    }
+    
+    func loadKorKeyword(from questionID: Int) {
+        Database.database().reference().child(Constants.question).child("\(questionID)").child(Constants.keyword_Korean).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? String else { return }
+            self.korKeyword = data
+            print("data------------------",self.korKeyword)
+        }) { (error) in
+            print("Keyword load error------------:",error)
+        }
+    }
+    
     @IBAction func googlingButtonAction(_ sender: UIButton) {
-        let keyword:String = "생명주기" //키워드는 공백을 허용하지 않습니다.
+        let keyword:String = self.enKeyword
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return } // 한글 키워드를 그냥 넣으면, URL로 인코딩을 하지 못해서 웹뷰로 연결되지 않습니다.
-        
+
         openSafariViewOf(url: "https://www.google.co.kr/search?q=swift+\(realKeyword)")
-        
+
     }
     
     @IBAction func naveringButtonAction(_ sender: UIButton) {
-        let keyword:String = "생명주기"
+        let keyword:String = self.korKeyword
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return }
         
         openSafariViewOf(url: "http://search.naver.com/search.naver?query=swift+\(realKeyword)")
