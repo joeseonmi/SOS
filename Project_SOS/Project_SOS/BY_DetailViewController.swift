@@ -13,37 +13,23 @@ import SafariServices
 import Kingfisher
 import GoogleMobileAds
 
-//이미지 띄워지기 전 보여질 Indicator
-struct BY_Indicator: Indicator {
-    let view: UIView = UIView()
-    
-    func startAnimatingView() {
-        view.isHidden = false
-    }
-    func stopAnimatingView() {
-        view.isHidden = true
-    }
-    
-    init() {
-        view.backgroundColor = .red
-    }
-}
 
-class BY_DetailViewController: UIViewController {
+class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
-    
+    var popupURL:URL?
     var questionID:Int?
     var userUid = Auth.auth().currentUser?.uid
     var byAnswer:[[String:String]] = []
     var jsAnswer:[[String:String]] = []
     var smAnswer:[[String:String]] = []
     
-    //인디케이터
-    let imageLoadingIndicator = BY_Indicator()
+    var enKeyword:String = ""
+    var korKeyword:String = ""
     
+
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
     @IBOutlet weak var shareButtonOutlet: UIButton!
@@ -124,7 +110,6 @@ class BY_DetailViewController: UIViewController {
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadData(from: realQuestionID)
         self.loadLikeData(questionID: realQuestionID)
-        
         //애드몹 광고 불러오는 function 호출 ( by 재성 )
         self.addAdMobView()
     }
@@ -147,7 +132,9 @@ class BY_DetailViewController: UIViewController {
         
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadAnswer(from: realQuestionID)
-        
+        self.loadKorKeyword(from: realQuestionID)
+        print("--------------------------d-d-d-d-d-d-d-",self.korKeyword)
+        self.loadENKeyword(from: realQuestionID)
         self.detailTableView.reloadData()
     }
     
@@ -238,16 +225,38 @@ class BY_DetailViewController: UIViewController {
     
     //TODO:- 구글만 공백을 허용하지않는것인지? 우리는 타이틀기준 검색을 할것인지 tag기준 검색을 할것인지?
     //MARK: 구글링 / 네이버링 버튼 액션 정의 - by 재성
+    //키워드로드
+    
+    func loadENKeyword(from questionID: Int) {
+        Database.database().reference().child(Constants.question).child("\(questionID)").child(Constants.keyword_English).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? String else { return }
+            self.enKeyword = data
+            print("data------------------",self.enKeyword)
+        }) { (error) in
+            print("Keyword load error------------:",error)
+        }
+    }
+    
+    func loadKorKeyword(from questionID: Int) {
+        Database.database().reference().child(Constants.question).child("\(questionID)").child(Constants.keyword_Korean).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let data = snapshot.value as? String else { return }
+            self.korKeyword = data
+            print("data------------------",self.korKeyword)
+        }) { (error) in
+            print("Keyword load error------------:",error)
+        }
+    }
+    
     @IBAction func googlingButtonAction(_ sender: UIButton) {
-        let keyword:String = "생명주기" //키워드는 공백을 허용하지 않습니다.
+        let keyword:String = self.enKeyword
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return } // 한글 키워드를 그냥 넣으면, URL로 인코딩을 하지 못해서 웹뷰로 연결되지 않습니다.
-        
+
         openSafariViewOf(url: "https://www.google.co.kr/search?q=swift+\(realKeyword)")
-        
+
     }
     
     @IBAction func naveringButtonAction(_ sender: UIButton) {
-        let keyword:String = "생명주기"
+        let keyword:String = self.korKeyword
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return }
         
         openSafariViewOf(url: "http://search.naver.com/search.naver?query=swift+\(realKeyword)")
@@ -378,6 +387,8 @@ class BY_DetailViewController: UIViewController {
     // BY Func: 좋아요 구현 부분 테스트
     // --- BY: 해당 질문의 좋아요 여부
     func loadLikeData(questionID:Int) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let tempLikeDatas = snapshot.value as? [String:[String:Any]] else {
                 self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
@@ -399,6 +410,8 @@ class BY_DetailViewController: UIViewController {
             default:
                 print("좋아요 이미지 에러: \(filteredLikeData)")
             }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }, withCancel: { (error) in
             print("좋아요 불러오는 에러입니다", error.localizedDescription)
         })
@@ -407,6 +420,7 @@ class BY_DetailViewController: UIViewController {
     // --- BY: 좋아요 버튼 액션. 별표(좋아요)를 누를 때마다 데이터 및 UI를 반영하여 나타냅니다.
     func likeButtonAction() {
         guard let realQuestionID = self.questionID else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if snapshot.childrenCount != 0 {
@@ -439,12 +453,15 @@ class BY_DetailViewController: UIViewController {
                 guard let realUid = Auth.auth().currentUser?.uid else { return }
                 Database.database().reference().child(Constants.like).childByAutoId().setValue([Constants.like_QuestionId:realQuestionID,Constants.like_User_Id:realUid])
             }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("좋아요 액션 에러", error.localizedDescription)
         }
     }
     
     func loadData(from question_ID:Int) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).child("\(question_ID)").observe(.value, with: { (snapshot) in
             guard let data = snapshot.value as? [String:Any],
                 let titleValue = data[Constants.question_QuestionTitle] as? String else { return }
@@ -459,17 +476,19 @@ class BY_DetailViewController: UIViewController {
             self.summaryTextLabel.text = "\(summaryArray[0])\n\(summaryArray[1])\n\(summaryArray[2])"
             
             self.detailTableView.reloadData()
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     func loadAnswer(from question_ID:Int) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Database.database().reference().child(Constants.question).child("\(question_ID)").child(Constants.question_BYAnswer).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let byAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.byAnswer = byAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -477,6 +496,7 @@ class BY_DetailViewController: UIViewController {
             guard let jsAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.jsAnswer = jsAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("error: ",error.localizedDescription)
         }
@@ -484,6 +504,7 @@ class BY_DetailViewController: UIViewController {
             guard let smAnswerArray = snapshot.value as? [[String:String]] else { return }
             self.smAnswer = smAnswerArray
             self.detailTableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }) { (error) in
             print("error: ",error.localizedDescription)
         }
@@ -517,9 +538,8 @@ extension BY_DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
-        
         cell.selectionStyle = .none
-        
+        cell.delegate = self
         //선택된 세그에 따라 이미지 변경
 //        재성 - unused 되는 코드여서 주석 처리합니다.
 //        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
@@ -533,11 +553,14 @@ extension BY_DetailViewController: UITableViewDataSource {
             
             if byAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
                 cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -560,10 +583,13 @@ extension BY_DetailViewController: UITableViewDataSource {
             if smAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = smAnswer[indexPath.row][Constants.question_AnswerContents]
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -586,10 +612,13 @@ extension BY_DetailViewController: UITableViewDataSource {
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
                 cell.explainBubbleText.text = jsAnswer[indexPath.row][Constants.question_AnswerContents]
                 cell.explainBubbleImage.image = nil
+                cell.clickedImageOutlet.isHidden = true
                 cell.explainBubbleText.isHidden = false
             }else{
                 cell.explainBubbleText.isHidden = true
+                cell.clickedImageOutlet.isHidden = false
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
+                self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
@@ -776,6 +805,14 @@ extension BY_DetailViewController: UITableViewDelegate {
         bannerView.load(GADRequest())
         
         self.admobBannerBackgroundView.addSubview(bannerView)
+    }
+    
+    // MARK: -선미 델리게이트 함수
+    func presentPopup() {
+        print("델리게이트성공")
+        let popupVC:SM_ImagePopupViewController = storyboard?.instantiateViewController(withIdentifier: "SM_ImagePopupViewController") as! SM_ImagePopupViewController
+        popupVC.imageURL = popupURL
+        self.present(popupVC, animated: true, completion: nil)
     }
     
 }

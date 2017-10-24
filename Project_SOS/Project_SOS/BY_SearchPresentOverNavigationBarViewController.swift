@@ -65,36 +65,25 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
     
     func hamburgerMenuAlert() {
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         alert.view.tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
         
-        let rateAppAction:UIAlertAction = UIAlertAction.init(title: "쏘쓰 앱 평가하기", style: .default, handler: nil)
+        let rateAppAction:UIAlertAction = UIAlertAction.init(title: "쏘쓰 앱 평가하기", style: .default) { (alert) in
+            self.rateSOS() //TODO:- (보영) 재성님, 여기에 '쏘쓰 앱 평가하기' 에 대한 함수명을 기입해주세요.
+        }
         let indroduceDevelopersAction:UIAlertAction = UIAlertAction.init(title: "개발자 소개", style: .default) { (alert) in
-            let characterIntroduceViewController:BY_CharacterIntroduceViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharacterIntroduceViewController") as! BY_CharacterIntroduceViewController
-            self.present(characterIntroduceViewController, animated: true, completion: nil)
+            self.segueToCharacterIntroduceView()
         }
         
         let resetFavoriteSettingAction:UIAlertAction = UIAlertAction.init(title: "즐겨찾기 초기화", style: .default) { (alert) in
-            Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
-                let tempLikeKeyString = tempLikeData.map({ (dic) -> String in
-                    return dic.key
-                })
-                
-                for index in 0..<tempLikeKeyString.count {
-                Database.database().reference().child(Constants.like).child(tempLikeKeyString[index]).setValue(nil)
-                }
-                
-                self.favoriteQuestionIDs = []
-                self.tableView.reloadData()
-            }, withCancel: { (error) in
-                print(error.localizedDescription)
-            })
+            self.resetFavoriteDatas()
+            self.informFavoriteSettingReset()
         }
         
         let resetCharacterSettingAction:UIAlertAction = UIAlertAction.init(title: "캐릭터 설정 초기화", style: .default) { (alert) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             UserDefaults.standard.removeObject(forKey: "SelectedCharacter")
-            print("선택했던 캐릭터 값이 초기화 되었습니다. 현재 캐릭터 상태값:\(UserDefaults.standard.object(forKey: "SelectedCharacter") ?? "선택된 캐릭터가 없습니다.")")
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.informCharacterSettingReset()
         }
         
         let cancelAction:UIAlertAction = UIAlertAction.init(title: "취소", style: .cancel, handler: nil)
@@ -117,6 +106,60 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         }
         tableView.reloadData()
     }
+    
+    //TODO:- (보영) 재성님, 여기에 '쏘쓰 앱 평가하기' 에 대한 기능을 구현해주세요.
+    func rateSOS() {
+        //함수명은 가제입니다. 자유롭게 구현해주세요.
+    }
+    
+    //보영: 햄버거메뉴_'개발자소개' 액션
+    func segueToCharacterIntroduceView() {
+        let characterIntroduceViewController:BY_CharacterIntroduceViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharacterIntroduceViewController") as! BY_CharacterIntroduceViewController
+        self.present(characterIntroduceViewController, animated: true, completion: nil)
+    }
+    
+    //보영: 햄버거메뉴_'즐겨찾기 초기화' 액션
+    func resetFavoriteDatas() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Database.database().reference().child(Constants.like).queryOrdered(byChild: Constants.like_User_Id).queryEqual(toValue: Auth.auth().currentUser?.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            guard let tempLikeData = snapshot.value as? [String:[String:Any]] else {return}
+            let tempLikeKeyString = tempLikeData.map({ (dic) -> String in
+                return dic.key
+            })
+            
+            for index in 0..<tempLikeKeyString.count {
+                Database.database().reference().child(Constants.like).child(tempLikeKeyString[index]).setValue(nil)
+            }
+            
+            self.favoriteQuestionIDs = []
+            self.tableView.reloadData()
+        }, withCancel: { (error) in
+            print(error.localizedDescription)
+        })
+    }
+    
+    func informFavoriteSettingReset() {
+        let alert = UIAlertController.init(title: "알림", message: "모든 즐겨찾기가 초기화 되었습니다.", preferredStyle: .alert)
+        alert.view.tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
+        
+        let informFavoriteSettingResetAlertAction:UIAlertAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        alert.addAction(informFavoriteSettingResetAlertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //보영: 햄버거메뉴_'캐릭터 설정 초기화' 액션
+    func informCharacterSettingReset() {
+        let alert = UIAlertController.init(title: "알림", message: "선택하신 캐릭터 설정이 초기화 되었습니다.", preferredStyle: .alert)
+        alert.view.tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
+        
+        let informFavoriteSettingResetAlertAction:UIAlertAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        alert.addAction(informFavoriteSettingResetAlertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension BY_SearchPresentOverNavigationBarViewController:UISearchControllerDelegate {
