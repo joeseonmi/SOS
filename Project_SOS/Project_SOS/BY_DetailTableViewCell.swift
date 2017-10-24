@@ -8,16 +8,31 @@
 
 import UIKit
 
+protocol bubbleImageCellDelegate {
+    func presentPopup()
+}
+
 class BY_DetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var test: NSLayoutConstraint!
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
     
+    var delegate:bubbleImageCellDelegate?
+    
+    @IBOutlet weak var clickedImageOutlet: UIButton!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var characterIconImage: UIImageView!
     @IBOutlet weak var explainBubbleText: UILabel!
     @IBOutlet weak var explainBubbleImage: UIImageView!
+
+    
+    @IBAction func clickedImageBtn(_ sender: UIButton) {
+        print("이미지셀이 눌렸다능")
+        self.delegate?.presentPopup()
+    }
+
     
     //Explain ImageView Constraints
     @IBOutlet weak var explainImageViewCenterX: NSLayoutConstraint!

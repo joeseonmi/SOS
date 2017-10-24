@@ -28,6 +28,8 @@ struct Constants {
     static let question_QuestionTitle:String = "Question_Title"
     static let question_Summary:String = "Summary"
     static let question_Tag = "Tag"
+    static let keyword_English = "Keyword_English"
+    static let keyword_Korean = "Keyword_Korean"
     
     // User
     static let user:String = "User"
