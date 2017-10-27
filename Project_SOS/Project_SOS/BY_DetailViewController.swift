@@ -133,7 +133,6 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
         guard let realQuestionID:Int = self.questionID else {return print("QuestionID가 없습니다.")}
         self.loadAnswer(from: realQuestionID)
         self.loadKorKeyword(from: realQuestionID)
-        print("--------------------------d-d-d-d-d-d-d-",self.korKeyword)
         self.loadENKeyword(from: realQuestionID)
         self.detailTableView.reloadData()
     }
