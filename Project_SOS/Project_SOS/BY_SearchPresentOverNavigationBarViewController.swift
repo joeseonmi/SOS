@@ -68,7 +68,7 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         alert.view.tintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
         
         let rateAppAction:UIAlertAction = UIAlertAction.init(title: "쏘쓰 앱 평가하기", style: .default) { (alert) in
-            self.rateSOS() //TODO:- (보영) 재성님, 여기에 '쏘쓰 앱 평가하기' 에 대한 함수명을 기입해주세요.
+            self.rateSOS() // 쏘쓰 앱 평가하기 기능
         }
         let indroduceDevelopersAction:UIAlertAction = UIAlertAction.init(title: "개발자 소개", style: .default) { (alert) in
             self.segueToCharacterIntroduceView()
@@ -107,9 +107,10 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         tableView.reloadData()
     }
     
-    //TODO:- (보영) 재성님, 여기에 '쏘쓰 앱 평가하기' 에 대한 기능을 구현해주세요.
+    // MARK: 재성 - 앱 평가하기 기능 구현
     func rateSOS() {
-        //함수명은 가제입니다. 자유롭게 구현해주세요.
+        let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1297193120")
+        UIApplication.shared.openURL(url!)
     }
     
     //보영: 햄버거메뉴_'개발자소개' 액션
