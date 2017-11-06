@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gcg-1u-gul">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test Ad Mob View Controller-->
+        <scene sceneID="lUP-Yc-hVQ">
+            <objects>
+                <viewController id="HhU-jv-Nlq" customClass="JS_TestAdMobViewController" customModule="Project_SOS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I5q-43-JZV"/>
+                        <viewControllerLayoutGuide type="bottom" id="aXZ-lc-h14"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O3Q-2K-Wsx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JS_TestAdMobViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsI-6h-Efl">
+                                <rect key="frame" x="75" y="212" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tq-BV-eEE">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fg0-c7-pn9">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="32"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Tq-BV-eEE" secondAttribute="trailing" id="Q7m-Xd-rlk"/>
+                            <constraint firstItem="aXZ-lc-h14" firstAttribute="top" secondItem="2Tq-BV-eEE" secondAttribute="bottom" id="WvG-72-MPg"/>
+                            <constraint firstItem="2Tq-BV-eEE" firstAttribute="leading" secondItem="O3Q-2K-Wsx" secondAttribute="leading" id="z0p-kB-8xV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="uiViewAdmobBannerBackgroundView" destination="2Tq-BV-eEE" id="sGL-vw-qtA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-4q-4gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="668"/>
+        </scene>
+        <!--Test Web View View Controller-->
+        <scene sceneID="K84-AJ-Dll">
+            <objects>
+                <viewController id="c2W-56-U4J" customClass="JS_TestWebViewViewController" customModule="Project_SOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SQF-Mt-fwv"/>
+                        <viewControllerLayoutGuide type="bottom" id="m2E-UE-cR4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yd9-qT-Gow">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zEU-kc-hoC">
+                                <rect key="frame" x="16" y="80" width="343" height="260"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ai-WO-Pch">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <state key="normal" title="google.com"/>
+                                        <connections>
+                                            <action selector="buttonGoogle:" destination="c2W-56-U4J" eventType="touchUpInside" id="ACy-PY-aOt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7o-Cz-fyG">
+                                        <rect key="frame" x="0.0" y="46" width="343" height="30"/>
+                                        <state key="normal" title="naver.com"/>
+                                        <connections>
+                                            <action selector="buttonNaver:" destination="c2W-56-U4J" eventType="touchUpInside" id="fWM-ZS-wO9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkI-nZ-Ae1">
+                                        <rect key="frame" x="0.0" y="92" width="343" height="30"/>
+                                        <state key="normal" title="blackturtle2.net"/>
+                                        <connections>
+                                            <action selector="buttonblackturtle2:" destination="c2W-56-U4J" eventType="touchUpInside" id="wB1-64-0dA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEz-kd-jlp">
+                                        <rect key="frame" x="0.0" y="138" width="343" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xob-41-Rgd">
+                                        <rect key="frame" x="0.0" y="184" width="343" height="30"/>
+                                        <state key="normal" title="[구글링] - &quot;스위프트&quot; 키워드"/>
+                                        <connections>
+                                            <action selector="buttonGoogling:" destination="c2W-56-U4J" eventType="touchUpInside" id="iNr-K8-JeL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd0-hk-oct">
+                                        <rect key="frame" x="0.0" y="230" width="343" height="30"/>
+                                        <state key="normal" title="[네이버링] - &quot;스위프트&quot; 키워드"/>
+                                        <connections>
+                                            <action selector="buttonNavering:" destination="c2W-56-U4J" eventType="touchUpInside" id="182-20-ntz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zEU-kc-hoC" firstAttribute="leading" secondItem="Yd9-qT-Gow" secondAttribute="leading" constant="16" id="5dH-Uz-KFN"/>
+                            <constraint firstAttribute="trailing" secondItem="zEU-kc-hoC" secondAttribute="trailing" constant="16" id="K0A-Vr-316"/>
+                            <constraint firstItem="zEU-kc-hoC" firstAttribute="top" secondItem="SQF-Mt-fwv" secondAttribute="bottom" constant="16" id="xG6-dZ-rVj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAt-ub-z9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="668"/>
+        </scene>
+        <!--Test Share View Controller-->
+        <scene sceneID="V1B-Gm-twQ">
+            <objects>
+                <viewController id="2Fz-gv-lA9" customClass="JS_TestShareViewController" customModule="Project_SOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IB4-a3-nL7"/>
+                        <viewControllerLayoutGuide type="bottom" id="wmL-Em-ago"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aF1-Cn-pxi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-JQ-kQo">
+                                <rect key="frame" x="142" y="72" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share Button"/>
+                                <connections>
+                                    <action selector="buttonShareAction:" destination="2Fz-gv-lA9" eventType="touchUpInside" id="o5I-en-iJP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKf-xg-gdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492" y="668"/>
+        </scene>
+        <!--Test Simple Mark Down Parser View Controller-->
+        <scene sceneID="hdn-37-fwp">
+            <objects>
+                <viewController id="z1t-zF-flc" customClass="JS_TestSimpleMarkDownParserViewController" customModule="Project_SOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TpZ-HC-0si"/>
+                        <viewControllerLayoutGuide type="bottom" id="8qO-tg-4Xf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="evr-QJ-ND4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6qJ-y3-lrC">
+                                <rect key="frame" x="16" y="80" width="343" height="204.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abP-rh-ztv">
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="30"/>
+                                        <state key="normal" title="Move AdMob Test"/>
+                                        <connections>
+                                            <segue destination="HhU-jv-Nlq" kind="show" id="quG-EL-lGe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-dc-9ta">
+                                        <rect key="frame" x="0.0" y="46" width="138" height="30"/>
+                                        <state key="normal" title="Move SendMail Test"/>
+                                        <connections>
+                                            <segue destination="sQI-Zx-f3s" kind="show" id="esn-k1-t13"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH5-GB-84k">
+                                        <rect key="frame" x="0.0" y="92" width="138" height="30"/>
+                                        <state key="normal" title="Move WebView Test"/>
+                                        <connections>
+                                            <segue destination="c2W-56-U4J" kind="show" id="Kuc-D8-OXf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-Ah-0Cs">
+                                        <rect key="frame" x="0.0" y="138" width="181" height="30"/>
+                                        <state key="normal" title="Move ShareExtension Test"/>
+                                        <connections>
+                                            <segue destination="2Fz-gv-lA9" kind="show" id="riD-4Y-TK5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV1-ZJ-YW3">
+                                        <rect key="frame" x="0.0" y="184" width="343" height="20.5"/>
+                                        <color key="backgroundColor" red="0.92538958787918091" green="0.92554813623428345" blue="0.92537957429885864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZV1-ZJ-YW3" firstAttribute="width" secondItem="6qJ-y3-lrC" secondAttribute="width" id="7Ni-0Z-QeO"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6qJ-y3-lrC" secondAttribute="trailing" constant="16" id="Hcx-hH-aE8"/>
+                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="top" secondItem="evr-QJ-ND4" secondAttribute="topMargin" constant="16" id="qV3-0R-y81"/>
+                            <constraint firstItem="6qJ-y3-lrC" firstAttribute="leading" secondItem="evr-QJ-ND4" secondAttribute="leading" constant="16" id="xX1-eP-V2D"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gQn-0c-WTQ"/>
+                    <connections>
+                        <outlet property="uiLabelMarkdownTest" destination="ZV1-ZJ-YW3" id="4yh-OT-paR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4se-V3-J6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71.200000000000003" y="-107.49625187406298"/>
+        </scene>
+        <!--Test Send Mail View Controller-->
+        <scene sceneID="beH-Tb-OLT">
+            <objects>
+                <viewController id="sQI-Zx-f3s" customClass="JS_TestSendMailViewController" customModule="Project_SOS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="me7-xv-KeE"/>
+                        <viewControllerLayoutGuide type="bottom" id="bSc-RH-aAS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZW7-8g-w2W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JS_TestSendMailViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-Zj-cLs">
+                                <rect key="frame" x="66" y="214" width="241" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNf-8E-juN">
+                                <rect key="frame" x="141" y="318" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SendMailTest"/>
+                                <connections>
+                                    <action selector="buttonSendMailActionWithSender:" destination="sQI-Zx-f3s" eventType="touchUpInside" id="DJA-XN-7Jb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRj-NP-egi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71" y="668"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Fi-14-ArR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gcg-1u-gul" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iKp-5r-M7N">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z1t-zF-flc" kind="relationship" relationship="rootViewController" id="5UQ-jm-Olt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nd5-ZU-paZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="-107"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,5 +1,9 @@
-# SOS
+# SOS <img src = "https://github.com/joeseonmi/SOS/blob/DEV/Project_SOS/Project_SOS/Assets.xcassets/Navibar_logo.imageset/HamburgerMenu@2x.png?raw=true" width = 80 align = right >
 > ###### TEAM 쏘쓰의 첫 번째 Project
+
+[<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://itunes.apple.com/us/app/%EC%8F%98%EC%93%B0-project-sos/id1297193120?mt=8
+) [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store-kr.svg">](https://itunes.apple.com/kr/app/%EC%8F%98%EC%93%B0-project-sos/id1297193120?l=en&mt=8
+)
 
 ## Contents
 
@@ -30,8 +34,8 @@
 	3. `존중입니다 취향해주시죠`: 마음에 드는 캐릭터를 선택하면, 해당 캐릭터의 답변이 우선적으로 표시.
 
 - 쏘쓰는 이제 막 개발자로써 걸음마를 뗀 저희에게도 작은 도전입니다. 
-- 1차 release(2017.9 예정)<p>
-~이 후 추가적인 기능구현을 염두해두고 있습니다.~
+- 1차 release(2017.10.28)<p>
+- 2차 release(2017.11 예정)<p>
 
 ## Contact US
 

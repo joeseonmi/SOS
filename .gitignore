@@ -149,3 +149,8 @@ playground.xcworkspace
 /*.gcno
 
 # End of https://www.gitignore.io/api/xcode,swift,macos,cocoapods,objective-c
+
+GoogleService-Info.plist
+ProjectSOS_보안질문.png
+ProjectSOS_복구키.png
+Screen Shot 2017-10-11 at 9.28.37 AM.png
