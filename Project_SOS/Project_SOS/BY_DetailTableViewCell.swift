@@ -65,14 +65,15 @@ class BY_DetailTableViewCell: UITableViewCell {
             
             label.textColor = UIColor(red: 38.0/255.0, green: 38.0/255.0, blue: 38.0/255.0, alpha: 1.0)
             
-//            label.hashtagColor = UIColor(red: 0.0/255.0, green: 53.0/255.0, blue: 105.0/255.0, alpha: 1.0)
+//            label.hashtagColor = UIColor(red: 0.0/255.0, green: 53.0/255.0, blue: 105.0/255.0, alpha: 1.0) // 어두운(?) 파란색
             label.hashtagColor = UIColor(red: 239.0/255.0, green: 81.0/255.0, blue: 55.0/255.0, alpha: 1.0) // SOS main color
 
             // 주석(//) 텍스트를 인식하도록 mention의 Parser를 수정하였습니다. ( Pods/ActiveLabel/RegexParser.swift 참조 )
-//            label.mentionColor = UIColor(red: 238.0/255, green: 85.0/255, blue: 96.0/255, alpha: 1.0)
-            label.mentionColor = UIColor(red: 0.0/255.0, green: 131.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+//            label.mentionColor = UIColor(red: 238.0/255, green: 85.0/255, blue: 96.0/255, alpha: 1.0) // 붉은색
+            label.mentionColor = UIColor(red: 0.0/255.0, green: 131.0/255.0, blue: 0.0/255.0, alpha: 1.0) // 진한 초록색
 
-            label.URLColor = UIColor(red: 85.0/255, green: 172.0/255, blue: 238.0/255, alpha: 1.0)
+            label.URLColor = UIColor(red: 85.0/255, green: 172.0/255, blue: 238.0/255, alpha: 1.0) // 연한 파란색
+//            label.URLColor = UIColor(red: 20.0/255.0, green: 55.0/255.0, blue: 255.0/255.0, alpha: 1.0) // 진한 파란색
             label.URLSelectedColor = UIColor.gray
             
             label.handleMentionTap { self.alert("ㅅention", message: $0) } // 아직 의미 없는 alert가 표시됩니다.
