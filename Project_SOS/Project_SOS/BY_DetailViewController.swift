@@ -29,7 +29,7 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     var enKeyword:String = ""
     var korKeyword:String = ""
     
-
+    
     //네비게이션 바
     @IBOutlet weak var navigationBarLogoButtonOutlet: UIButton!
     @IBOutlet weak var shareButtonOutlet: UIButton!
@@ -120,6 +120,7 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
         self.headerHeightConstraint.constant = self.maxHeaderHeight
         updateHeader()
         
+        self.detailTableView.register(UINib(nibName: "SM_DetailTableViewIMGCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewIMGCell")
         self.detailTableView.register(UINib.init(nibName: "BY_DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewCell")
         awakeFromNib()
         
@@ -177,10 +178,10 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     
     @IBAction func characterSelectSegmentControlAction(_ sender: UISegmentedControl) {
         
-//        재성 - unused 되는 코드여서 주석 처리합니다.
-//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
+        //        재성 - unused 되는 코드여서 주석 처리합니다.
+        //        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
+        //        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
+        //        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
         
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -249,9 +250,9 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
     @IBAction func googlingButtonAction(_ sender: UIButton) {
         let keyword:String = self.enKeyword
         guard let realKeyword = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return } // 한글 키워드를 그냥 넣으면, URL로 인코딩을 하지 못해서 웹뷰로 연결되지 않습니다.
-
+        
         openSafariViewOf(url: "https://www.google.co.kr/search?q=swift+\(realKeyword)")
-
+        
     }
     
     @IBAction func naveringButtonAction(_ sender: UIButton) {
@@ -441,7 +442,7 @@ class BY_DetailViewController: UIViewController, bubbleImageCellDelegate {
                     self.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                     self.navigationViewFavoriteButtonOutlet.setImage(#imageLiteral(resourceName: "Like_off"), for: .normal)
                     for i in 0..<filteredLikeData.count {
-                    Database.database().reference().child(Constants.like).child(filteredLikeData[i].key).setValue(nil)
+                        Database.database().reference().child(Constants.like).child(filteredLikeData[i].key).setValue(nil)
                     }
                 }
                 
@@ -536,34 +537,23 @@ extension BY_DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
-        cell.selectionStyle = .none
-        cell.delegate = self
-        //선택된 세그에 따라 이미지 변경
-//        재성 - unused 되는 코드여서 주석 처리합니다.
-//        self.characterSelectSegmentedControl.titleForSegment(at: 0) == "보영"
-//        self.characterSelectSegmentedControl.titleForSegment(at: 1) == "선미"
-//        self.characterSelectSegmentedControl.titleForSegment(at: 2) == "재성"
-        
         switch self.characterSelectSegmentedControl.selectedSegmentIndex {
-
         case 0:
-            cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
-            
             if byAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
-                cell.explainBubbleImage.image = nil
-                cell.clickedImageOutlet.isHidden = true
-                cell.explainBubbleText.isHidden = false
+                let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
+                cell.selectionStyle = .none
                 cell.explainBubbleText.text = byAnswer[indexPath.row][Constants.question_AnswerContents]
+                return cell
             }else{
-                cell.explainBubbleText.isHidden = true
-                cell.clickedImageOutlet.isHidden = false
+                let cell:SM_DetailTableViewIMGCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewIMGCell", for: indexPath) as! SM_DetailTableViewIMGCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "BYFace")
+                cell.delegate = self
+                cell.selectionStyle = .none
                 guard let imageURL = URL(string: byAnswer[indexPath.row][Constants.question_AnswerContents]!) else { return cell }
                 self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-//                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-//                })
                 
                 let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
                     print("///// data 456: ", data ?? "no data")
@@ -575,24 +565,25 @@ extension BY_DetailViewController: UITableViewDataSource {
                     }
                 })
                 task.resume()
+                return cell
             }
             
         case 1:
-            cell.characterIconImage.image = #imageLiteral(resourceName: "SMFace")
             if smAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
+                let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "SMFace")
+                cell.selectionStyle = .none
                 cell.explainBubbleText.text = smAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.image = nil
-                cell.clickedImageOutlet.isHidden = true
-                cell.explainBubbleText.isHidden = false
+                return cell
             }else{
-                cell.explainBubbleText.isHidden = true
-                cell.clickedImageOutlet.isHidden = false
+                let cell:SM_DetailTableViewIMGCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewIMGCell", for: indexPath) as! SM_DetailTableViewIMGCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "SMFace")
+                cell.selectionStyle = .none
+                cell.delegate = self
                 guard let imageURL = URL(string: smAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-                //                })
                 
                 let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
                     print("///// data 456: ", data ?? "no data")
@@ -604,24 +595,26 @@ extension BY_DetailViewController: UITableViewDataSource {
                     }
                 })
                 task.resume()
+                return cell
             }
             
         case 2:
-            cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
             if jsAnswer[indexPath.row][Constants.question_AnswerType] == Constants.answerType_TEXT {
+                let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
+                cell.selectionStyle = .none
                 cell.explainBubbleText.text = jsAnswer[indexPath.row][Constants.question_AnswerContents]
-                cell.explainBubbleImage.image = nil
-                cell.clickedImageOutlet.isHidden = true
-                cell.explainBubbleText.isHidden = false
+                return cell
             }else{
-                cell.explainBubbleText.isHidden = true
-                cell.clickedImageOutlet.isHidden = false
+                let cell:SM_DetailTableViewIMGCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewIMGCell", for: indexPath) as! SM_DetailTableViewIMGCell
+                cell.characterIconImage.image = #imageLiteral(resourceName: "JSFace")
+                cell.selectionStyle = .none
+                cell.delegate = self
                 guard let imageURL = URL(string: jsAnswer[indexPath.row][Constants.question_AnswerContents]!) else { print("안되여?"); return cell}
                 self.popupURL = imageURL
                 cell.explainBubbleImage.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                //                cell.explainBubbleImage.kf.setImage(with:imageURL, placeholder:#imageLiteral(resourceName: "defaultImg"), options:[.processor(processor)], completionHandler: {(image, error, cacheType, imageUrl) in
-                //                })
+                
                 
                 let task = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, res, err) in
                     print("///// data 456: ", data ?? "no data")
@@ -633,11 +626,12 @@ extension BY_DetailViewController: UITableViewDataSource {
                     }
                 })
                 task.resume()
+                return cell
             }
         default:
             break
         }
-        
+        let cell:BY_DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! BY_DetailTableViewCell
         return cell
     }
 }
@@ -781,7 +775,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         safariViewController.delegate = self // 사파리 뷰에서 `Done` 버튼을 눌렀을 때의 액션 정의를 위한 Delegate 초기화입니다.
         self.present(safariViewController, animated: true, completion: nil)
     }
-
+    
     // MARK: 텍스트 공유 기능 function 정의
     func shareTextOf(text: String) {
         let activityVC = UIActivityViewController(activityItems: [text], applicationActivities: nil) // 액티비티 뷰 컨트롤러 설정
@@ -798,7 +792,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         // 쏘쓰에는 아이폰의 종류에 따라 광고 사이즈가 변하는 SmartBanner를 선택했습니다.
         // 참고: https://developers.google.com/admob/ios/banner?hl=ko
         
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트 adUnitID
+        //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트 adUnitID
         bannerView.adUnitID = "ca-app-pub-9821073709980211/5330955915" // 실제 사용 adUnitID
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
