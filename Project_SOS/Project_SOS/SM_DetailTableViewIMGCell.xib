@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" rowHeight="227" id="KGk-i7-Jjw" customClass="BY_DetailTableViewCell" customModule="Project_SOS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewIMGCell" rowHeight="227" id="KGk-i7-Jjw" customClass="SM_DetailTableViewIMGCell" customModule="Project_SOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="349" height="227"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -29,26 +29,32 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8d-jh-6Be">
-                        <rect key="frame" x="85" y="15" width="256" height="203.66666666666666"/>
+                        <rect key="frame" x="85" y="15" width="256" height="196"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-Yf-qcX">
-                                <rect key="frame" x="8" y="8" width="240" height="187.66666666666666"/>
-                                <string key="text">이 기상과 이 맘으로 충성을 다하여 
-괴로우나 즐거우나 나라 사랑하세 
-무궁화 삼천리 화려강산 
-대한 사람 대한으로 길이 보전하세</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-4G-6Vs">
+                                <rect key="frame" x="8" y="8" width="240" height="180"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-UX-mTQ">
+                                <rect key="frame" x="8" y="8" width="240" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="E1S-UX-mTQ" secondAttribute="height" multiplier="4:3" id="EX7-Ow-3pa"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="clickedImageBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a0d-kF-XF8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94181888989999996" green="0.94181888989999996" blue="0.94181888989999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="3SW-Yf-qcX" secondAttribute="bottom" constant="8" id="KuZ-Xh-tGe"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerY" secondItem="DhP-4G-6Vs" secondAttribute="centerY" id="0cG-ws-4gc"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerY" secondItem="D8d-jh-6Be" secondAttribute="centerY" id="1WJ-eH-leU"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="width" secondItem="D8d-jh-6Be" secondAttribute="width" constant="-16" id="B8M-Hd-SOh"/>
                             <constraint firstAttribute="height" priority="250" id="LDb-em-cuX"/>
-                            <constraint firstItem="3SW-Yf-qcX" firstAttribute="leading" secondItem="D8d-jh-6Be" secondAttribute="leading" constant="8" id="Qxb-Lq-9O0"/>
-                            <constraint firstAttribute="trailing" secondItem="3SW-Yf-qcX" secondAttribute="trailing" constant="8" id="ULr-XZ-jh4"/>
-                            <constraint firstItem="3SW-Yf-qcX" firstAttribute="top" secondItem="D8d-jh-6Be" secondAttribute="top" constant="8" id="Yi0-Du-mZS"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="height" secondItem="D8d-jh-6Be" secondAttribute="height" constant="-16" id="NyJ-wA-WNb"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="centerX" secondItem="DhP-4G-6Vs" secondAttribute="centerX" id="cYV-AW-eba"/>
+                            <constraint firstItem="DhP-4G-6Vs" firstAttribute="centerX" secondItem="D8d-jh-6Be" secondAttribute="centerX" id="obM-ie-cOy"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="width" secondItem="DhP-4G-6Vs" secondAttribute="width" id="sbe-R8-ILY"/>
+                            <constraint firstItem="E1S-UX-mTQ" firstAttribute="height" secondItem="DhP-4G-6Vs" secondAttribute="height" id="ukp-wK-az3"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bubletail" translatesAutoresizingMaskIntoConstraints="NO" id="J4q-yG-fmr">
@@ -73,10 +79,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bgView" destination="D8d-jh-6Be" id="nEe-KA-4wh"/>
-                <outlet property="characterIconImage" destination="IkZ-tr-mti" id="os0-JS-cA4"/>
-                <outlet property="explainBubbleText" destination="3SW-Yf-qcX" id="DAF-bt-GA4"/>
-                <outlet property="test" destination="LDb-em-cuX" id="qs5-TH-hFw"/>
+                <outlet property="bgView" destination="D8d-jh-6Be" id="IJb-37-gyH"/>
+                <outlet property="characterIconImage" destination="IkZ-tr-mti" id="pi3-Mj-WPN"/>
+                <outlet property="clickedImageOutlet" destination="E1S-UX-mTQ" id="lNM-wK-4tr"/>
+                <outlet property="explainBubbleImage" destination="DhP-4G-6Vs" id="3Xw-tJ-DiG"/>
             </connections>
             <point key="canvasLocation" x="45.5" y="130.5"/>
         </tableViewCell>
