@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SM_ImagePopupViewController: UIViewController {
+class SM_ImagePopupViewController: UIViewController,UIScrollViewDelegate{
     
     
     /*******************************************/
     //MARK:-        Properties                 //
     /*******************************************/
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var imageURL:URL? = nil
     @IBOutlet weak var contentsImage: UIImageView!
     
@@ -24,6 +25,10 @@ class SM_ImagePopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.scrollView.delegate = self
+        self.scrollView.minimumZoomScale = 0.5
+        self.scrollView.maximumZoomScale = 6.0
         
         let task = URLSession.shared.dataTask(with: imageURL!, completionHandler: { (data, res, err) in
             print("///// data 456: ", data ?? "no data")
@@ -43,6 +48,10 @@ class SM_ImagePopupViewController: UIViewController {
     /*******************************************/
     @IBAction func dismiss(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.contentsImage
     }
     
 }
