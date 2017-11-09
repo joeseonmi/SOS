@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ActiveLabel
 
 class BY_DetailTableViewCell: UITableViewCell {
 
@@ -19,7 +19,7 @@ class BY_DetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var characterIconImage: UIImageView!
-    @IBOutlet weak var explainBubbleText: UILabel!
+    @IBOutlet weak var explainBubbleText: ActiveLabel!
 
     
     //Explain ImageView Constraints
@@ -38,6 +38,7 @@ class BY_DetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bgView.layer.cornerRadius = 10
+        self.explainBubbleTextActiveLabelUISetting()
     }
     
     override func layoutSubviews() {
@@ -51,6 +52,35 @@ class BY_DetailTableViewCell: UITableViewCell {
     /*******************************************/
     //MARK:-         Functions                 //
     /*******************************************/
+    
+    func alert(_ title: String, message: String) {
+        let vc = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        vc.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+        print("///// alert- 8323")
+    }
+    
+    // MARK: JS: ActiveLabel setting function
+    // ActiveLabel.swift: https://github.com/optonaut/ActiveLabel.swift
+    func explainBubbleTextActiveLabelUISetting() {
+        self.explainBubbleText.urlMaximumLength = 31
+        
+        self.explainBubbleText.customize { (label) in
+            label.numberOfLines = 0
+            label.lineSpacing = 4
+            
+            label.textColor = UIColor(red: 38.0/255.0, green: 38.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+            label.hashtagColor = UIColor(red: 0.0/255.0, green: 53.0/255.0, blue: 105.0/255.0, alpha: 1.0)
+            label.mentionColor = UIColor(red: 238.0/255, green: 85.0/255, blue: 96.0/255, alpha: 1.0)
+            label.URLColor = UIColor(red: 85.0/255, green: 172.0/255, blue: 238.0/255, alpha: 1.0)
+            label.URLSelectedColor = UIColor.gray
+            
+            label.handleMentionTap { self.alert("Mention", message: $0) }
+            label.handleHashtagTap { self.alert("Hashtag", message: $0) }
+            label.handleURLTap { self.alert("URL", message: $0.absoluteString) }
+        }
+    }
     
 }
 

@@ -31,12 +31,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8d-jh-6Be">
                         <rect key="frame" x="85" y="15" width="256" height="203.66666666666666"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-Yf-qcX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-Yf-qcX" customClass="ActiveLabel" customModule="ActiveLabel">
                                 <rect key="frame" x="8" y="8" width="240" height="187.66666666666666"/>
-                                <string key="text">이 기상과 이 맘으로 충성을 다하여 
-괴로우나 즐거우나 나라 사랑하세 
-무궁화 삼천리 화려강산 
-대한 사람 대한으로 길이 보전하세</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
