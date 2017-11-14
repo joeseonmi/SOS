@@ -242,9 +242,12 @@
 				TargetAttributes = {
 					D86539481F5E8C2B00D34790 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NN7QXHC8A3;
+						DevelopmentTeam = 2DHMJ6Z3L3;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 0;
 							};
@@ -506,7 +509,7 @@
 			baseConfigurationReference = C657B9AEE75AF94BD49C18F3 /* Pods-Project_SOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				DEVELOPMENT_TEAM = 2DHMJ6Z3L3;
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -521,7 +524,7 @@
 			baseConfigurationReference = 4FFCFBBBCA24EB7416E4C41E /* Pods-Project_SOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				DEVELOPMENT_TEAM = 2DHMJ6Z3L3;
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
