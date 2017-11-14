@@ -20,8 +20,13 @@
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>4</string>
+<<<<<<< HEAD
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+=======
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+>>>>>>> f39c26be0a050b780840d5be9dfb364a7eb45495
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
