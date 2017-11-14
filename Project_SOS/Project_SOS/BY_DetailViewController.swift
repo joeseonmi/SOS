@@ -737,7 +737,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         return 72
     }
     
-    //MARK: - 재성님 email 보내기 function 정의
+    //MARK: 재성: email 보내기 function 정의
     // [주의] `MessageUI` import가 필요합니다!
     func sendEmailTo(emailAddress email:String) {
         let userSystemVersion = UIDevice.current.systemVersion // 현재 사용자 iOS 버전
@@ -752,7 +752,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         } // else일 경우, iOS 에서 자체적으로 메일 주소를 세팅하라는 메시지를 띄웁니다.
     }
     
-    // MARK: 메일 보내는 뷰컨트롤러 속성 세팅
+    // MARK: 재성: 메일 보내는 뷰컨트롤러 속성 세팅
     func configuredMailComposeViewController(emailAddress:String, systemVersion:String, appVersion:String) -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // 메일 보내기 Finish 이후의 액션 정의를 위한 Delegate 초기화.
@@ -764,7 +764,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         return mailComposerVC
     }
     
-    //MARK:- 재성님 웹뷰부분
+    // MARK: 재성: 웹뷰 function
     // 인앱웹뷰 열기 function 정의
     // `SafariServices`의 import가 필요합니다.
     func openSafariViewOf(url:String) {
@@ -776,7 +776,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         self.present(safariViewController, animated: true, completion: nil)
     }
     
-    // MARK: 텍스트 공유 기능 function 정의
+    // MARK: 재성: 텍스트 공유 기능 function
     func shareTextOf(text: String) {
         let activityVC = UIActivityViewController(activityItems: [text], applicationActivities: nil) // 액티비티 뷰 컨트롤러 설정
         activityVC.popoverPresentationController?.sourceView = self.view // 아이패드에서 작동하도록 pop over로 설정
@@ -785,7 +785,7 @@ extension BY_DetailViewController: UITableViewDelegate {
         self.present(activityVC, animated: true, completion: nil)
     }
     
-    // MARK: AdMob, UIView 추가 function 정의 - by 재성
+    // MARK: 재성: AdMob, UIView 추가 function
     func addAdMobView() {
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         // adSize에는 6가지 종류가 있고, 가장 보편적인 사이즈는 '320*50'입니다.

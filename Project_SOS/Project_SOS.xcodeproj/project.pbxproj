@@ -87,6 +87,7 @@
 		FE0E3E951F7C0F4A00FCBCCD /* JS_TestSendMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JS_TestSendMailViewController.swift; path = JS_Test/JS_TestSendMailViewController.swift; sourceTree = "<group>"; };
 		FE0E3E991F7C184900FCBCCD /* JS_TestWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestWebViewViewController.swift; path = JS_Test/JS_TestWebViewViewController.swift; sourceTree = "<group>"; };
 		FEA1675B1F7E264E00C6E9BA /* JS_TestShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JS_TestShareViewController.swift; path = JS_Test/JS_TestShareViewController.swift; sourceTree = "<group>"; };
+		FEBBB6DF1FB0223B0092B6F5 /* Project_SOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_SOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +168,7 @@
 		D865394B1F5E8C2B00D34790 /* Project_SOS */ = {
 			isa = PBXGroup;
 			children = (
+				FEBBB6DF1FB0223B0092B6F5 /* Project_SOS.entitlements */,
 				D86539501F5E8C2B00D34790 /* Main.storyboard */,
 				D86539551F5E8C2B00D34790 /* LaunchScreen.storyboard */,
 				D865394C1F5E8C2B00D34790 /* AppDelegate.swift */,
@@ -248,11 +250,11 @@
 				TargetAttributes = {
 					D86539481F5E8C2B00D34790 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NN7QXHC8A3;
+						DevelopmentTeam = 29Q45PKR77;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -304,6 +306,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project_SOS/Pods-Project_SOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -314,6 +317,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -514,12 +518,17 @@
 			baseConfigurationReference = C657B9AEE75AF94BD49C18F3 /* Pods-Project_SOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				CODE_SIGN_ENTITLEMENTS = Project_SOS/Project_SOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sos.projectsos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -529,12 +538,17 @@
 			baseConfigurationReference = 4FFCFBBBCA24EB7416E4C41E /* Pods-Project_SOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				CODE_SIGN_ENTITLEMENTS = Project_SOS/Project_SOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Project_SOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sos.projectsos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

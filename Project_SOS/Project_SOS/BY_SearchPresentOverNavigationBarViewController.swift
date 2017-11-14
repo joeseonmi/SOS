@@ -107,9 +107,9 @@ class BY_SearchPresentOverNavigationBarViewController: BY_MainTableViewControlle
         tableView.reloadData()
     }
     
-    // MARK: 재성 - 앱 평가하기 기능 구현
+    // MARK: 재성: 앱 평가하기 기능 구현
     func rateSOS() {
-        let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1297193120")
+        let url = URL(string: "itms-apps://itunes.apple.com/app/id1297193120")
         UIApplication.shared.openURL(url!)
     }
     
